@@ -18,6 +18,7 @@ a {
 	left: 0;
   	padding: 1rem;
   	background-color: #efefef;
+  	background-color: rgba(239,239,239,0.5);
   	text-align: center;
   	color: black;
 }
