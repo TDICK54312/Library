@@ -2,7 +2,7 @@
 	session_start();
 ?>
 <?php
-	include 'phpFiles/api.php';
+	include 'api.php';
 	if(!empty($_POST['submit'])){
 		if(!empty($_POST['email'])){
 			if(!empty($_POST['password'])){
