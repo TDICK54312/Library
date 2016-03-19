@@ -12,10 +12,14 @@
 				
 				if(!empty($result)){
 					
-					echo $result[7];
+					//echo $result[7];
 					//echo $result[2];
 					if($result[2] == 2){
-						echo "Please login under the admin page!";
+						echo " please login under the admin page!";
+					}
+					if($reult[2] == 1){
+						header("Location: dev.tdickson.co/phpFiles/userLogin.php");
+						exit;
 					}
 				}
 				else{
