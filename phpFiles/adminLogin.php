@@ -9,7 +9,7 @@
 				$user = $_POST['email'];
 				$pass = $_POST['password'];
 				
-				$result = authenticateAdmin($user, $password);
+				$result = authenticateAdmin($user, $pass);
 				
 				if(!empty($result)){
 					if($result[2] == 1){
