@@ -5,7 +5,7 @@
 	include 'phpFiles/api.php';
 	if(!empty($_POST['submit'])){
 		if(!empty($_POST['email'])){
-			if(!empty($_POST['password']))
+			if(!empty($_POST['password'])){
 				$user = $_POST['email'];
 				$pass = $_POST['password'];
 				
@@ -24,8 +24,9 @@
 				else{
 					echo "Sorry invalid username or password! Try again!";
 				}
-			
+			}
 		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
