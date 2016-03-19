@@ -16,8 +16,6 @@ session_start();
 				
 				if(!empty($result)){
 					$_SESSION["userinfo"] = $result;
-					//echo $result[7];
-					//echo $result[2];
 					if($result[2] == 2){
 						echo " please login under the admin page!";
 					}
