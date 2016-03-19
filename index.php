@@ -46,7 +46,7 @@ Password<br><input type="password" name="password" size="40"></br>
 <input id="button" type="submit" name="submit" value="Login">
 </form> 
 </div>
-<a href="dev.tdickson.co/phpFiles/adminLogin.php">Are you an admin?</a>
+<a href="phpFiles/adminLogin.php">Are you an admin?</a>
 <footer id="footer">&copy; 2016 Dickson and Team LLC.</footer>
 </body>
 </html>
