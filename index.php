@@ -13,7 +13,10 @@
 				if(!empty($result)){
 					
 					echo $result[7];
-					echo $result[2];
+					//echo $result[2];
+					if($result[2] == 2){
+						echo "Please login under the admin page!";
+					}
 				}
 				else{
 					echo "Sorry invalid username or password! Try again!";
