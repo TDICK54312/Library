@@ -13,6 +13,7 @@
 				if(!empty($result)){
 					
 					echo $result[7];
+					echo $result[2];
 				}
 				else{
 					echo "Sorry invalid username or password! Try again!";
