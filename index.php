@@ -18,7 +18,7 @@
 						echo " please login under the admin page!";
 					}
 					if($result[2] == 1){
-						header("Location: dev.tdickson.co/phpFiles/userLogin.php");
+						header("Location: /phpFiles/userLogin.php");
 						exit;
 					}
 				}
