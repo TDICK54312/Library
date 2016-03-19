@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <?php
+// Start the session
+session_start();
+?>
+<?php
 	include 'phpFiles/api.php';
 	if(!empty($_POST['submit'])){
 		if(!empty($_POST['email'])){
@@ -11,7 +15,7 @@
 				$result = authenticateUser($user, $pass);
 				
 				if(!empty($result)){
-					
+					$_SESSION["userinfo"] = $result;
 					//echo $result[7];
 					//echo $result[2];
 					if($result[2] == 2){

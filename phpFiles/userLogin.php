@@ -1,3 +1,10 @@
+<?php
+// Start the session
+session_start();
+?>
+<?php
+echo $_SESSION["userinfo"][7];
+?>
 <!DOCTYPE html>
 <html>
 <head>
