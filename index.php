@@ -38,7 +38,6 @@ session_start();
 <script src="javascript/jquery-1.12.0.js"></script>
 </head>
 <body>
-<div id="test1"><h1>CHANGE ME</h1></div>
 <div id="div1"><h2>User Login Page</h2></div>
 <div id="output">
 <form method = "POST" action = "">
