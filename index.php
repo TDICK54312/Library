@@ -16,7 +16,10 @@ session_start();
 				
 				if(!empty($result)){
 					if($result[2] == 2){
-						echo " please login under the admin page!";
+						//echo " please login under the admin page!";
+						$_SESSION["adminInfo"] = $result
+						header("Location: /phpFiles/adminProfile.php");
+						exit;
 					}
 					if($result[2] == 1){
 						$_SESSION["userinfo"] = $result;
