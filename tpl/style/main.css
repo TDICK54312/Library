@@ -1,0 +1,23 @@
+/* CSS Document */
+
+#wrapper {
+	width: 95%;
+	height: 100%;
+	min-width: 280px;
+	max-width: 1300px;
+	margin: 0 auto;
+	display: block;
+}
+#header {
+	background-color: #fff;
+}
+
+@media (min-width: 768px) {
+
+#wrapper {
+	width: 80%;
+}
+#header {
+	background-color: #000;
+}
+}
