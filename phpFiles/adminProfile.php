@@ -10,14 +10,14 @@
 </head>
 <body>
 <div id="hello">
-	<h1>Welcome <?php echo $_SESSION["admininfo"][5];?>, to the Admin Library Console</h1>
+	<h1>Welcome <i><?php echo $_SESSION["admininfo"][5];?></i>, to the Admin Library Console!</h1>
 </div>
 <div id='cssmenu'>
 	<ul>
 		<li class='active'><a href='#'><span>Home</span></a></li>
-		<li><a href='#'><span>Products</span></a></li>
-		<li><a href='#'><span>Company</span></a></li>
-		<li class='last'><a href='#'><span>Contact</span></a></li>
+		<li><a href='#'><span>Library Info</span></a></li>
+		<li><a href='#'><span>Admin Operations</span></a></li>
+		<li class='last'><a href='#'><span>Contact Us</span></a></li>
 	</ul>
 </div>
 </body>
