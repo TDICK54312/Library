@@ -5,3 +5,19 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 }
+
+a {
+	color: white;
+}
+
+#footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+  	padding: 1rem;
+  	background-color: #efefef;
+  	background-color: rgba(239,239,239,0.5);
+  	text-align: center;
+  	color: black;
+}
