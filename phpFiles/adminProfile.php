@@ -5,7 +5,7 @@
 <html>
 <head>
    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-   <script src="script.js"></script>
+   <script src="../javascript/script.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/adminLoginPage.css">
 </head>
 <body>
