@@ -15,13 +15,13 @@ session_start();
 				$result = authenticateUser($user, $pass);
 				
 				if(!empty($result)){
-					if($result[2] == 2){
+					if($result[1] == 1){
 						//echo " please login under the admin page!";
 						$_SESSION["admininfo"] = $result;
 						header("Location: /phpFiles/adminProfile.php");
 						exit;
 					}
-					if($result[2] == 1){
+					if($result[1] == 2){
 						$_SESSION["userinfo"] = $result;
 						header("Location: /phpFiles/userLogin.php");
 						exit;
