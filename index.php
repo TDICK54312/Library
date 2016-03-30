@@ -15,13 +15,13 @@ session_start();
 				$result = authenticateUser($user, $pass);
 				
 				if(!empty($result)){
-					if($result[2] == 2){
+					if($result[1] == 1){
 						//echo " please login under the admin page!";
 						$_SESSION["admininfo"] = $result;
 						header("Location: /phpFiles/adminProfile.php");
 						exit;
 					}
-					if($result[2] == 1){
+					if($result[1] == 2){
 						$_SESSION["userinfo"] = $result;
 						header("Location: /phpFiles/userLogin.php");
 						exit;
@@ -49,7 +49,6 @@ Password<br><input type="password" name="password" size="40"></br>
 <input id="button" type="submit" name="submit" value="Login">
 </form> 
 </div>
-<a href="phpFiles/adminLogin.php">Are you an admin?</a>
 <footer id="footer">&copy; 2016 Dickson and Team LLC.</footer>
 </body>
 </html>
