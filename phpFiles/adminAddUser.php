@@ -35,17 +35,29 @@ session_start();
 			echo "First Name was not entered!";
 			$everythingSet = false;
 		}
+		else{
+			$fname = $_POST['firstname'];
+		}
 		if(empty($_POST['lastname'])){
 			echo "Last Name was not entered!";
 			$everythingSet = false;
+		}
+		else{
+			$lname = $_POST['lastname'];
 		}
 		if(empty($_POST['email'])){
 			echo "Email was not entered!";
 			$everythingSet = false;
 		}
+		else{
+			$email = $_POST['email'];
+		}
 		if(empty($_POST['streetAddress'])){
 			echo "Street Address was not entered!";
 			$everythingSet = false;
+		}
+		else{
+			$street = $_POST['streetAddress'];
 		}
 		if(empty($_POST['password'])){
 			echo "Password was not entered!";
