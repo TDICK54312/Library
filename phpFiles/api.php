@@ -36,7 +36,7 @@
 			$user_ID = $variable[0];
 			
 			//Assigning the USER_ID to the correct table ID
-			$addUserToCorrectTableQuery = "INSERT INTO $addThisTable ('$user_ID', '$fname', '$lname', '$maxBooks', '$street');";	
+			$addUserToCorrectTableQuery = "INSERT INTO $addThisTable (FIRSTNAME, LASTNAME, MAX_TRANSACTION, ADDRESS) VALUES ('$fname', '$lname', '$maxBooks', '$street');";	
 			$result3 = mysqli_query($con, $addUserToCorrectTableQuery);
 		}
 		else{
