@@ -67,6 +67,7 @@ session_start();
 			if($result == true){
 				echo "Added User successfully!";
 				//need to clear all data in form
+				echo $tableToAdd, $userRole . " " . $pas . " " . $email . " " . $fname . " " . $lname . " " . $street;
 			}
 			else{
 				echo "Adding User failed!";
