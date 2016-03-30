@@ -11,10 +11,16 @@
 		return $array;
 	}
 
-	function addUser(){
+	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street){
 		include 'dbConnection.php';
+		$tableName = $addThisTable;
+		$query1 = "INSERT INTO User (USER_ROLE, PASSWORD, USER_EMAIL, FIRSTNAME, LASTNAME, ADDRESS) VALUES ('$role', '$pWord', '$Email', '$fname', '$lname', '$street');"
+		//Need to edit this so we can send data to the coresponding table
+		//$query2 = "INSERT INTO $addThisTable (USER_ROLE, PASSWORD, USER_EMAIL, FIRSTNAME, LASTNAME, ADDRESS) VALUES ('$role', '$pWord', '$Email', '$fname', '$lname', '$street');"
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
+		$result = mysqli_query($con, $query1);
+		return $result;
 	}
 	
 	

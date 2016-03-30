@@ -16,7 +16,6 @@ session_start();
 				
 				if(!empty($result)){
 					if($result[1] == 1){
-						//echo " please login under the admin page!";
 						$_SESSION["admininfo"] = $result;
 						header("Location: /phpFiles/adminProfile.php");
 						exit;
