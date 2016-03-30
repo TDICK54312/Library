@@ -13,6 +13,7 @@ session_start();
 	$email = "";
 	$street = "";
 	$pas = "";
+	$maxBooks = 0;
 	
 	if(!empty($_POST['submit'])){
 		if(empty($_POST['userRole'])){
@@ -23,12 +24,15 @@ session_start();
 			$userRole = $_POST['userRole'];
 			if($userRole == 1){
 				$tableToAdd = "Administrator";
+				$maxBooks = 10;
 			}
 			else if($userRole == 2){
 				$tableToAdd = "Teacher";
+				$tableToAdd = 10;
 			}
 			else if($userRole == 3){
 				$tableToAdd = "Student";
+				$tableToAdd = 5;
 			}
 		}
 		if(empty($_POST['firstname'])){
@@ -75,14 +79,11 @@ session_start();
 			$pas = $_POST['password'];
 		}
 		if($everythingSet == true && $passwordCorrect == true){
-			$error = addUser($tableToAdd, $userRole, $pas, $email, $fname, $lname, $street);
-			echo $error;
-			/*if($result == true){
-				echo "Added User successfully!";
+			$result = addUser($tableToAdd, $userRole, $pas, $email, $fname, $lname, $street, $maxBooks);
+			
+			if($result[0] == true && $result[1] == true){
+				echo "User added successfully!";
 			}
-			else{
-				echo "Adding User failed!";
-			}*/
 		}
 	}
 ?>
