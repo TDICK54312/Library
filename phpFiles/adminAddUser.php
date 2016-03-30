@@ -64,6 +64,7 @@ session_start();
 		}
 		if($everythingSet == true && $passwordCorrect == true){
 			$result = addUser($tableToAdd, $userRole, $pas, $email, $fname, $lname, $street);
+			echo $tableToAdd, $userRole . " " . $pas . " " . $email . " " . $fname . " " . $lname . " " . $street;
 			if($result == true){
 				echo "Added User successfully!";
 				//need to clear all data in form
