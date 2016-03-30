@@ -75,16 +75,14 @@ session_start();
 			$pas = $_POST['password'];
 		}
 		if($everythingSet == true && $passwordCorrect == true){
-			$result = addUser($tableToAdd, $userRole, $pas, $email, $fname, $lname, $street);
-			echo $tableToAdd, $userRole . " " . $pas . " " . $email . " " . $fname . " " . $lname . " " . $street;
-			if($result == true){
+			$error = addUser($tableToAdd, $userRole, $pas, $email, $fname, $lname, $street);
+			echo $error;
+			/*if($result == true){
 				echo "Added User successfully!";
-				//need to clear all data in form
-				echo $tableToAdd, $userRole . " " . $pas . " " . $email . " " . $fname . " " . $lname . " " . $street;
 			}
 			else{
 				echo "Adding User failed!";
-			}
+			}*/
 		}
 	}
 ?>

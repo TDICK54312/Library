@@ -20,7 +20,8 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		$result = mysqli_query($con, $query1);
-		return $result;
+		$errorStuffs = mysqli_error($con);
+		return $errorStuffs;
 	}
 	
 	
