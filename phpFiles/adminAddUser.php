@@ -81,9 +81,7 @@ session_start();
 		if($everythingSet == true && $passwordCorrect == true){
 			$result = addUser($tableToAdd, $userRole, $pas, $email, $fname, $lname, $street, $maxBooks);
 			
-			if($result[0] == true && $result[1] == true){
-				echo "User added successfully!";
-			}
+			echo $result;
 		}
 	}
 ?>

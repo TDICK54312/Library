@@ -14,7 +14,7 @@
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
 		include 'dbConnection.php';
 		$tableName = $addThisTable;
-		
+		$didItWork = " ";
 		$addUserQuery = "INSERT INTO User (USER_ROLE, PASSWORD, USER_EMAIL, HOLD) VALUES ('$role', '$pWord', '$Email', 0);";
 		$emailCheckQuery = "SELECT USER_EMAIL FROM User WHERE USER_EMAIL = '$Email'";
 		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$Email'";
@@ -37,7 +37,10 @@
 			
 			//Assigning the USER_ID to the correct table ID
 			$addUserToCorrectTableQuery = "INSERT INTO $addThisTable (FIRSTNAME, LASTNAME, MAX_TRANSACTION, ADDRESS) VALUES ('$fname', '$lname', '$maxBooks', '$street');";	
-			$result3 = mysqli_query($con, $addUserToCorrectTableQuery);
+			
+			if (!mysqli_query($con,$addUserToCorrectTableQuery)){
+				$didItWork = mysqli_error($con);
+  			}
 		}
 		else{
 			return false;
