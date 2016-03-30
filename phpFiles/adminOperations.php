@@ -13,7 +13,7 @@ session_start();
 	<h1>Admin Operations</h1>
 </div>
 <div id="operationsMenu">
-	<a href='adminAddUser.php'>Add User</a>
+	<a href='#'>Add User</a>
 </div>
 </body>
 </html>
