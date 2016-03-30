@@ -28,11 +28,11 @@ session_start();
 			}
 			else if($userRole == 2){
 				$tableToAdd = "Teacher";
-				$tableToAdd = 10;
+				$maxBooks = 10;
 			}
 			else if($userRole == 3){
 				$tableToAdd = "Student";
-				$tableToAdd = 5;
+				$maxBooks = 5;
 			}
 		}
 		if(empty($_POST['firstname'])){
