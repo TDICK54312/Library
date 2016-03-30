@@ -37,11 +37,11 @@
 			
 			//Assigning the USER_ID to the correct table ID
 			$addUserToCorrectTableQuery = "INSERT INTO $tableName (FIRSTNAME, LASTNAME, MAX_TRANSACTION, ADDRESS) VALUES ('$fname', '$lname', '$maxBooks', '$street');";
-			$didItWork = $addUserToCorrectTableQuery;	
+			//$didItWork = $addUserToCorrectTableQuery;	
 			
-			/*if (!mysqli_query($con,$addUserToCorrectTableQuery)){
+			if (!mysqli_query($con,$addUserToCorrectTableQuery)){
 				$didItWork = mysqli_error($con);
-  			}*/
+  			}
 		}
 		else{
 			return false;
