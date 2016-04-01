@@ -47,7 +47,7 @@
 		
 		
 		//return $didItWork;
-		return $user_ID;
+		return $didItWork;
 	}
 	
 	
