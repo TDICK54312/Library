@@ -31,12 +31,9 @@
 			$result = mysqli_query($con, $addUserQuery);
 			
 			//Get the ID assigned to the user entered
-			$user_IDquery = mysqli_query($con, $getUserIDQuery);
-			$variable = mysqli_fetch_row($user_IDquery);
-			$user_ID = $variable[0];
-			
+			$user_ID = mysqli_insert_id($con);
 			//Assigning the USER_ID to the correct table ID
-			$addUserToCorrectTableQuery = "INSERT INTO $tableName VALUES ('$user_ID', '$fname', '$lname', '$maxBooks', '$street');";
+			$addUserToCorrectTableQuery = "INSERT INTO $tableName (USER_ID, FIRSTNAME, LASTNAME, MAX_TRANSACTION, ADDRESS) VALUES ('$user_ID', '$fname', '$lname', '$maxBooks', '$street');";
 			//$didItWork = $addUserToCorrectTableQuery;	
 			
 			if (!mysqli_query($con,$addUserToCorrectTableQuery)){
