@@ -25,7 +25,7 @@
 		$dbs = mysqli_select_db($con, $databaseName);
 		
 		$usersRoleResult = mysqli_query($con, $getRoleQuery);
-		$array = mysqli_fetch_row($result);
+		$array = mysqli_fetch_row($usersRoleResult);
 		
 		if($array[0] == 1){
 			$deleteQuery = $deleteUserQuery . "DELETE Administrator WHERE USER_ID = '$usersID';";

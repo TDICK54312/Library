@@ -40,7 +40,7 @@ session_start();
 <div id="hello">
 	<h1>Admin Delete User</h1>
 </div>
-<div id='addUserForm'>
+<div id='deleteUserForm'>
 	<form method = "POST" action = "">
 	User ID<br><input type="text" name="user_ID" size="40"></br>
 	Email<br><input type="text" name="email" size="40"></br>
