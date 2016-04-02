@@ -6,7 +6,7 @@ session_start();
 	include 'api.php';
 	
 	if(!empty($_POST['submit'])){
-		echo $_POST['submit'];
+		echo $_POST['bookTitle'] . " " . $_POST['summary'];
 		
 	}
 ?>
