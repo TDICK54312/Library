@@ -10,11 +10,55 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	
+	function deleteUser($usersID, $usersEmail){
+		include 'dbConnection.php';
+		
+		//query
+		$getRoleQuery = "SELECT USER_ROLE FROM User WHERE USER_ID = '$usersID' AND USER_EMAIL = '$usersEmail'";
+		$deleteUserQuery = "DELETE User WHERE USER_ID = '$usersID' AND USER_EMAIL = '$usersEmail';";
+		$deleteQuery = "";
+		$didItWork = "";
+		
+		//Make connection and find the role of this user
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$usersRoleResult = mysqli_query($con, $getRoleQuery);
+		$array = mysqli_fetch_row($result);
+		
+		if($array[0] == 1){
+			$deleteQuery = $deleteUserQuery . "DELETE Administrator WHERE USER_ID = '$usersID';";
+			if (!mysqli_query($con,$deleteQuery)){
+				$didItWork = mysqli_error($con);
+  			}		
+		}
+		
+		if($array[0] == 2){
+			$deleteQuery = $deleteUserQuery . "DELETE Teacher WHERE USER_ID = '$usersID';";
+			if (!mysqli_query($con,$deleteQuery)){
+				$didItWork = mysqli_error($con);
+  			}			
+  		}
+  		
+		if($array[0] == 3){
+			$deleteQuery = $deleteUserQuery . "DELETE Student WHERE USER_ID = '$usersID';";
+			if (!mysqli_query($con,$deleteQuery)){
+				$didItWork = mysqli_error($con);
+  			}			
+  		}
+  		
+  		return $didItWork;	
+	}
 
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
 		include 'dbConnection.php';
+		
+		//variables
 		$tableName = $addThisTable;
 		$didItWork = " ";
+		
+		//queries
 		$addUserQuery = "INSERT INTO User (USER_ROLE, PASSWORD, USER_EMAIL, HOLD) VALUES ('$role', '$pWord', '$Email', 0);";
 		$emailCheckQuery = "SELECT USER_EMAIL FROM User WHERE USER_EMAIL = '$Email'";
 		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$Email'";
@@ -30,25 +74,22 @@
 			//Insert into User table
 			$result = mysqli_query($con, $addUserQuery);
 			
-			//Get the ID assigned to the user entered
+			//Get the ID assigned to the user just entered
 			$user_ID = mysqli_insert_id($con);
+			
 			//Assigning the USER_ID to the correct table ID
 			$addUserToCorrectTableQuery = "INSERT INTO $tableName (USER_ID, FIRSTNAME, LASTNAME, MAX_TRANSACTION, ADDRESS) VALUES ('$user_ID', '$fname', '$lname', '$maxBooks', '$street');";
-			//$didItWork = $addUserToCorrectTableQuery;	
 			
 			if (!mysqli_query($con,$addUserToCorrectTableQuery)){
 				$didItWork = mysqli_error($con);
   			}
 		}
 		else{
-			return false;
+			$duplicate = "A user is already entered with the same email.";
+			return $duplicate;
 		}
-		
-		
-		
+
 		//return $didItWork;
 		return $didItWork;
 	}
-	
-	
 ?>
