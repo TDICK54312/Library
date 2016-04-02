@@ -48,7 +48,7 @@
   			}	
   		}
   		
-  		return $deleteQuery;	
+  		return $didItWork;	
 	}
 
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
