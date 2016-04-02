@@ -29,26 +29,26 @@
 		
 		if($array[0] == 1){
 			$deleteQuery = $deleteUserQuery . " DELETE Administrator WHERE USER_ID = '$usersID';";
-			if (!mysqli_query($con,$deleteQuery)){
+			/*if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
-  			}		
+  			}*/		
 		}
 		
 		if($array[0] == 2){
 			$deleteQuery = $deleteUserQuery . " DELETE Teacher WHERE USER_ID = '$usersID';";
-			if (!mysqli_query($con,$deleteQuery)){
+			/*if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
-  			}			
+  			}	*/		
   		}
   		
 		if($array[0] == 3){
 			$deleteQuery = $deleteUserQuery . " DELETE Student WHERE USER_ID = '$usersID';";
-			if (!mysqli_query($con,$deleteQuery)){
+			/*if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
-  			}			
+  			}	*/		
   		}
   		
-  		return $didItWork;	
+  		return $deleteQuery;	
 	}
 
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
