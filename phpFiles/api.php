@@ -16,7 +16,7 @@
 		
 		//query
 		$getRoleQuery = "SELECT USER_ROLE FROM User WHERE USER_ID = '$usersID' AND USER_EMAIL = '$usersEmail'";
-		$deleteUserQuery = "DELETE User WHERE USER_ID = '$usersID' AND USER_EMAIL = '$usersEmail';";
+		$deleteUserQuery = "DELETE FROM User WHERE USER_ID = '$usersID' AND USER_EMAIL = '$usersEmail';";
 		$deleteQuery = "";
 		$didItWork = "";
 		
@@ -28,24 +28,24 @@
 		$array = mysqli_fetch_row($usersRoleResult);
 		
 		if($array[0] == 1){
-			$deleteQuery = $deleteUserQuery . " DELETE Administrator WHERE USER_ID = '$usersID';";
-			/*if (!mysqli_query($con,$deleteQuery)){
+			$deleteQuery = $deleteUserQuery . " DELETE FROM Administrator WHERE USER_ID = '$usersID';";
+			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
-  			}*/		
+  			}		
 		}
 		
 		if($array[0] == 2){
-			$deleteQuery = $deleteUserQuery . " DELETE Teacher WHERE USER_ID = '$usersID';";
-			/*if (!mysqli_query($con,$deleteQuery)){
+			$deleteQuery = $deleteUserQuery . " DELETE FROM Teacher WHERE USER_ID = '$usersID';";
+			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
-  			}	*/		
+  			}		
   		}
   		
 		if($array[0] == 3){
-			$deleteQuery = $deleteUserQuery . " DELETE Student WHERE USER_ID = '$usersID';";
-			/*if (!mysqli_query($con,$deleteQuery)){
+			$deleteQuery = $deleteUserQuery . " DELETE FROM Student WHERE USER_ID = '$usersID';";
+			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
-  			}	*/		
+  			}	
   		}
   		
   		return $deleteQuery;	
