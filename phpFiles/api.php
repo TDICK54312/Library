@@ -28,21 +28,21 @@
 		$array = mysqli_fetch_row($usersRoleResult);
 		
 		if($array[0] == 1){
-			$deleteQuery = $deleteUserQuery . "DELETE Administrator WHERE USER_ID = '$usersID';";
+			$deleteQuery = $deleteUserQuery . " DELETE Administrator WHERE USER_ID = '$usersID';";
 			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
   			}		
 		}
 		
 		if($array[0] == 2){
-			$deleteQuery = $deleteUserQuery . "DELETE Teacher WHERE USER_ID = '$usersID';";
+			$deleteQuery = $deleteUserQuery . " DELETE Teacher WHERE USER_ID = '$usersID';";
 			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
   			}			
   		}
   		
 		if($array[0] == 3){
-			$deleteQuery = $deleteUserQuery . "DELETE Student WHERE USER_ID = '$usersID';";
+			$deleteQuery = $deleteUserQuery . " DELETE Student WHERE USER_ID = '$usersID';";
 			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
   			}			
