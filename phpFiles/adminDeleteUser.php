@@ -33,7 +33,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-   <script src="../javascript/script.js"></script>
+   <!--<script src="../javascript/script.js"></script> -->
 <link rel="stylesheet" type="text/css" href="../css/adminLoginPage.css">
 </head>
 <body>
