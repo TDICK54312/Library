@@ -97,7 +97,11 @@ session_start();
 </div>
 <div id='addUserForm'>
 	<form method = "POST" action = "">
-	User Role<br><input type="text" name="userRole" size="40"></br>
+	User Role<select>
+		<option value="1">Administrator</option>
+		<option value="2">Teacher</option>
+		<option value="3">Student</option>
+	</select>
 	First Name<br><input type="text" name="firstname" size="40"></br>
 	Last Name<br><input type="text" name="lastname" size="40"></br>
 	Email<br><input type="text" name="email" size="40"></br>
