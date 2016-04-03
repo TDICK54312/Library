@@ -12,6 +12,10 @@
   position: relative;
   font-family: Capriola, Helvetica, sans-serif;
 }
+#errmsg
+{
+color: red;
+}
 #cssmenu {
   width: auto;
   height: 59px;
