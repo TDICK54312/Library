@@ -33,13 +33,12 @@ session_start();
 		if(empty($_POST['summary'])){
 			$everythingSet = false;
 			echo "Summary not entered!";
+		}
+		if($everythingSet == true){
+			$result = addBook($_POST['isbnNumber'], $_POST['authorFName'], $_POST['authorLName'], $_POST['publisher'], $_POST['summary'], $_POST['tag'], $_POST['bookTitle']);
+			echo $result;
 		}	
 	}
-	if($everythingSet == true){
-		$result = addBook($_POST['isbnNumber'], $_POST['authorFName'], $_POST['authorLName'], $_POST['publisher'], $_POST['summary'], $_POST['tag'], $_POST['bookTitle']);
-		echo $result;
-	}
-	
 ?>
 <!DOCTYPE html>
 <html>

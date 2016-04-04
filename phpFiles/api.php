@@ -60,20 +60,107 @@
   		
   		return $didItWork;	
 	}
-	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title){
+	
+	function deleteBook($isbn, $numToRemove){
 		include 'dbConnection.php';
 		
-		$didItWork = " ";
-		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME) VALUES ('$isbn','$authorFname', '$publisher', '$summary', '$tag', '$title', '$authorLname');";
+		$checkInventoryQuery = "SELECT AMOUNT_IN, AMOUNT_OUT FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
+		$message = "";
+		
 		
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		if (!mysqli_query($con,$query)){
+		$result = mysqli_query($con, $checkInventoryQuery);
+		$arrayInventory = mysqli_fetch_row($result);
+		
+		//may need this?
+		//$totalBooksInventory = $arrayInventory[0] + $arrayInventory[1];
+		$checkAmountIn = $arrayInventory[0] - $numToRemove;
+		
+		if(empty($arrayInventory)){
+			$message = "No Books with this ISBN number where found!";
+			return $message;
+		}
+		elseif($checkAmountIn >= 0){
+			//If AMOUNT_IN and AMOUNT_OUT will be equal to 0 then remove from Inventory and Book table
+			if($checkAmountIn == 0 && $arrayInventory[1] == 0){
+				$deleteBookFromInventoryQuery = "DELETE FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
+				$deleteBookFromLibraryQuery = "DELETE FROM Book WHERE ISBN_NUMBER = '$isbn';";
+				
+				if (!mysqli_query($con,$deleteBookFromInventoryQuery)){
+					$message = mysqli_error($con);
+  				}
+  				if (!mysqli_query($con,$deleteBookFromLibraryQuery)){
+					$message = mysqli_error($con);
+  				}
+  				return $message;				
+			}
+			//If AMOUNT_IN will be 0 BUT there are books still out then UPDATE Inventory table AMOUNT_IN to be 0 but still leave row in Inventory and Book tables
+			elseif($checkAmountIn == 0 && $arrayInventory[1] > 0){
+				$deleteBookFromInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = $checkAmountIn WHERE ISBN_NUMBER = '$isbn';";
+				
+				if (!mysqli_query($con,$deleteBookFromInventoryQuery)){
+					$message = mysqli_error($con);
+  				}
+  				return $message;
+			}
+			//If AMOUNT_IN will still be positive then UPDATE Inventory table to new amount
+			elseif($checkAmountIn > 0 && $arrayInventory[1] >= 0){
+				$deleteBookFromInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = $checkAmountIn WHERE ISBN_NUMBER = '$isbn';";
+				
+				if (!mysqli_query($con,$deleteBookFromInventoryQuery)){
+					$message = mysqli_error($con);
+  				}
+  				return $message;
+			}
+			else{
+				$message = "Im missing a case...";
+				return $message;
+			}
+		}
+		else{
+			$message = "You entered a number that does not make sense please retry.";
+			return message;
+		}
+		
+		
+		
+	}
+	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title){
+		include 'dbConnection.php';
+		
+		$didItWork = " ";
+		$didItwork2 = " ";
+		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME) VALUES ('$isbn','$authorFname','$publisher','$summary','$tag','$title','$authorLname');";
+		$checkIfBookExistQuery = "SELECT ISBN_NUMBER FROM Book WHERE ISBN_NUMBER = '$isbn';"
+		$addToInventoryQuery = "";
+		
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$checkBook = mysqli_query($con,$checkIfBookExistQuery);
+		$array = mysqli_fetch_row($checkBook);
+		
+		if(empty($array)){
+			$addToInventoryQuery = "INSERT INTO Inventory (ISBN_NUMBER, AMOUNT_IN, AMOUNT_OUT) VALUES ('$isbn', '1', '0');";
+			if (!mysqli_query($con,$query)){
 				$didItWork = mysqli_error($con);
   			}
-  		return $didItWork;
+  			if (!mysqli_query($con,$addToInventoryQuery)){
+				$didItWork2 = mysqli_error($con);
+  			}
+		}
+		else{
+			addToInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = AMOUNT_IN + 1 WHERE ISBN_NUMBER = '$isbn';";
+			if (!mysqli_query($con,$addToInventoryQuery)){
+				$didItWork2 = mysqli_error($con);
+  			}
+		}
+		
+  		return $didItWork2;
 	}
+	
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
 		include 'dbConnection.php';
 		
