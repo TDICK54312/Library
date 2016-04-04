@@ -60,7 +60,63 @@
   		
   		return $didItWork;	
 	}
-	
+	function deleteBook($isbn, $numToRemove){
+		include 'dbConnection.php';
+		$checkInventoryQuery = "SELECT AMOUNT_IN, AMOUNT_OUT FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
+		$message = "";
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$result = mysqli_query($con, $checkInventoryQuery);
+		$arrayInventory = mysqli_fetch_row($result);
+		$checkAmountIn = $arrayInventory[0] - $numToRemove;
+		
+		if(empty($arrayInventory)){
+			$message = "No Books with this ISBN number where found!";
+			return $message;
+		}
+		elseif($checkAmountIn >= 0){
+			//If AMOUNT_IN and AMOUNT_OUT will be equal to 0 then remove from Inventory and Book table
+			if($checkAmountIn == 0 && $arrayInventory[1] == 0){
+				$deleteBookFromInventoryQuery = "DELETE FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
+				$deleteBookFromLibraryQuery = "DELETE FROM Book WHERE ISBN_NUMBER = '$isbn';";
+				
+				if (!mysqli_query($con,$deleteBookFromInventoryQuery)){
+					$message = mysqli_error($con);
+  				}
+  				if (!mysqli_query($con,$deleteBookFromLibraryQuery)){
+					$message = mysqli_error($con);
+  				}
+  				return $message;				
+			}
+			//If AMOUNT_IN will be 0 BUT there are books still out then UPDATE Inventory table AMOUNT_IN to be 0 but still leave row in Inventory and Book tables
+			elseif($checkAmountIn == 0 && $arrayInventory[1] > 0){
+				$deleteBookFromInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = $checkAmountIn WHERE ISBN_NUMBER = '$isbn';";
+				
+				if (!mysqli_query($con,$deleteBookFromInventoryQuery)){
+					$message = mysqli_error($con);
+  				}
+  				return $message;
+			}
+			//If AMOUNT_IN will still be positive then UPDATE Inventory table to new amount
+			elseif($checkAmountIn > 0 && $arrayInventory[1] >= 0){
+				$deleteBookFromInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = $checkAmountIn WHERE ISBN_NUMBER = '$isbn';";
+				
+				if (!mysqli_query($con,$deleteBookFromInventoryQuery)){
+					$message = mysqli_error($con);
+  				}
+  				return $message;
+			}
+			else{
+				$message = "Im missing a case...";
+				return $message;
+			}
+		}
+		else{
+			$message = "You entered a number that does not make sense please retry.";
+			return message;
+		}	
+	}
 	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title){
 		include 'dbConnection.php';
 		
