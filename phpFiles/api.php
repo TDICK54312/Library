@@ -66,7 +66,7 @@
 		$didItWork = " ";
 		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME) VALUES ('$isbn','$authorFname', '$publisher', '$summary', '$tag', '$title', '$authorLname');";
 		
-		con = mysqli_connect($host, $user, $pass);
+		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
 		if (!mysqli_query($con,$query)){
