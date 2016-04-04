@@ -15,7 +15,7 @@ session_start();
 			echo "Number to remove not entered!";
 		}
 		if($everythingSet == true){
-			//$result = deleteBook($_POST['isbnNumber'], $_POST['removeNum']);
+			$result = deleteBook($_POST['isbnNumber'], $_POST['removeNum']);
 			echo $result;
 		}
 	}
