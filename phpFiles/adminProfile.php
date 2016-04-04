@@ -16,7 +16,7 @@
 	<ul>
 		<li class='active'><a href='#'><span>Home</span></a></li>
 		<li><a href='#'><span>Library Info</span></a></li>
-		<li><a href='adminAddUser.php'><span>Admin Operations</span></a></li>
+		<li><a href='adminAddBook.php'><span>Admin Operations</span></a></li>
 		<li class='last'><a href='#'><span>Contact Us</span></a></li>
 	</ul>
 </div>

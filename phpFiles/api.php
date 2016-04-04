@@ -60,7 +60,20 @@
   		
   		return $didItWork;	
 	}
-
+	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title){
+		include 'dbConnection.php';
+		
+		$didItWork = " ";
+		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME) VALUES ('$isbn','$authorFname', '$publisher', '$summary', '$tag', '$title', '$authorLname');";
+		
+		con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		if (!mysqli_query($con,$query)){
+				$didItWork = mysqli_error($con);
+  			}
+  		return $didItWork;
+	}
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
 		include 'dbConnection.php';
 		
