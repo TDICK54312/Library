@@ -63,19 +63,13 @@
 	
 	function deleteBook($isbn, $numToRemove){
 		include 'dbConnection.php';
-		
 		$checkInventoryQuery = "SELECT AMOUNT_IN, AMOUNT_OUT FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
 		$message = "";
-		
-		
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
 		$result = mysqli_query($con, $checkInventoryQuery);
 		$arrayInventory = mysqli_fetch_row($result);
-		
-		//may need this?
-		//$totalBooksInventory = $arrayInventory[0] + $arrayInventory[1];
 		$checkAmountIn = $arrayInventory[0] - $numToRemove;
 		
 		if(empty($arrayInventory)){
@@ -122,11 +116,9 @@
 		else{
 			$message = "You entered a number that does not make sense please retry.";
 			return message;
-		}
-		
-		
-		
+		}	
 	}
+	
 	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title){
 		include 'dbConnection.php';
 		
