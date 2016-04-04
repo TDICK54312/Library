@@ -133,7 +133,7 @@
 		$didItWork = " ";
 		$didItwork2 = " ";
 		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME) VALUES ('$isbn','$authorFname','$publisher','$summary','$tag','$title','$authorLname');";
-		$checkIfBookExistQuery = "SELECT ISBN_NUMBER FROM Book WHERE ISBN_NUMBER = '$isbn';"
+		$checkIfBookExistQuery = "SELECT ISBN_NUMBER FROM Book WHERE ISBN_NUMBER = '$isbn';";
 		//$addToInventoryQuery = "";
 		
 		$con = mysqli_connect($host, $user, $pass);
