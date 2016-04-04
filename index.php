@@ -16,11 +16,11 @@ session_start();
 				
 				if(!empty($result)){
 					if($result[1] == 1){
-						$_SESSION["admininfo"] = $result;
+						$_SESSION["userinfo"] = $result;
 						header("Location: /phpFiles/adminProfile.php");
 						exit;
 					}
-					if($result[1] == 2){
+					if($result[1] == 2 || $result[1] == 3){
 						$_SESSION["userinfo"] = $result;
 						header("Location: /phpFiles/userLogin.php");
 						exit;
