@@ -26,7 +26,7 @@ session_start();
 			$everythingSet = false;
 			echo "Publisher name not entered!";
 		}
-		if(empty($_POST['Genre'])){
+		if(empty($_POST['genreTag'])){
 			$everythingSet = false;
 			echo "Genre First not entered!";
 		}
