@@ -86,7 +86,7 @@
   			}
 		}
 		else{
-			addToInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = AMOUNT_IN + 1 WHERE ISBN_NUMBER = '$isbn';";
+			$addToInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = AMOUNT_IN + 1 WHERE ISBN_NUMBER = '$isbn';";
 			if (!mysqli_query($con,$addToInventoryQuery)){
 				$didItWork2 = mysqli_error($con);
   			}
