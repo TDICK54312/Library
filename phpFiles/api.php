@@ -11,6 +11,56 @@
 		return $array;
 	}
 	
+	function deleteUser($usersID, $usersEmail){
+		include 'dbConnection.php';
+		
+		//query
+		$getRoleQuery = "SELECT USER_ROLE FROM User WHERE USER_ID = '$usersID' AND USER_EMAIL = '$usersEmail'";
+		$deleteUserQuery = "DELETE FROM User WHERE User.USER_ID = '$usersID' AND User.USER_EMAIL = '$usersEmail';";
+		$deleteQuery = "";
+		$didItWork = "";
+		$didItWork2 = "";
+		
+		//Make connection and find the role of this user
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$usersRoleResult = mysqli_query($con, $getRoleQuery);
+		$array = mysqli_fetch_row($usersRoleResult);
+		
+		if($array[0] == 1){
+			$deleteQuery = "DELETE FROM Administrator WHERE Administrator.USER_ID = '$usersID';";
+			if (!mysqli_query($con,$deleteQuery)){
+				$didItWork = mysqli_error($con);
+  			}
+  			if (!mysqli_query($con,$deleteUserQuery)){
+				$didItWork2 = mysqli_error($con);
+  			}		
+		}
+		
+		if($array[0] == 2){
+			$deleteQuery = "DELETE FROM Teacher WHERE Teacher.USER_ID = '$usersID';"; 
+			if (!mysqli_query($con,$deleteQuery)){
+				$didItWork = mysqli_error($con);
+  			}
+  			if (!mysqli_query($con,$deleteUserQuery)){
+				$didItWork2 = mysqli_error($con);
+  			}			
+  		}
+  		
+		if($array[0] == 3){
+			$deleteQuery = "DELETE FROM Student WHERE Student.USER_ID = '$usersID';";
+			if (!mysqli_query($con,$deleteQuery)){
+				$didItWork = mysqli_error($con);
+  			}
+  			if (!mysqli_query($con,$deleteUserQuery)){
+				$didItWork2 = mysqli_error($con);
+  			}		
+  		}
+  		
+  		return $didItWork;	
+	}
+	
 	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title){
 		include 'dbConnection.php';
 		
