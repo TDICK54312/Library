@@ -9,7 +9,7 @@
       </ul>
    </li>
    <li><a href="#">Contact</a></li>
-   <?php if(!$_SESSION['logged_in'])
+   <?php if(!$_SESSION['userinfo'])
    		{
 			?>
    		<li><a href="login.php">Login</a></li>
