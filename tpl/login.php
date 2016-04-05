@@ -50,8 +50,8 @@
 	<h1>User Login</h1>
 	<div class="login-cont">
 		<form id ="loginForm" name="loginForm" method="POST" action="">
-			<label for="username">Username:</label>
-			<input type="text" name="username" id="username" class="txtfield" tabindex="1">
+			<label for="email">Username:</label>
+			<input type="text" name="email" id="email" class="txtfield" tabindex="1">
 			<label for="password">Password:</label>
 			<input type="password" name="password" id="password" class="txtfield" tabindex="2">
 			<div class="center"><input type="submit" name="submit" id="loginbtn" value="Log In"></div>
