@@ -19,7 +19,7 @@
 	    		<ul>
 		    		<li><a href="#">Check-In Book</a></li>
 		    		<li><a href="#">Check-Out Book</a></li>
-		    		<li><a href="#">Add User</a></li>
+		    		<li><a href="adminAddUser.php">Add User</a></li>
 		    		<li><a href="#">Add Book</a></li>
 		    		<li><a href="#">Delete User</a></li>
 		    		<li><a href="#">Delete Book</a></li>

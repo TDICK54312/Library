@@ -11,6 +11,38 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function updateTimeLoggedIn($userID){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$query = "UPDATE User SET LAST_ACTIVITY = now() WHERE USER_ID = '$userID';";
+		
+		$result = mysqli_query($con, $query);
+		mysqli_close($con);
+		
+	}
+	function getUserInfo($userID, $role){
+		include 'dbConnection.php';
+		
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		if($role == 1){
+			$query = "SELECT * FROM Administrator WHERE USER_ID = '$userID';";
+		}
+		if($role == 2){
+			$query = "SELECT * FROM Teacher WHERE USER_ID = '$userID';";
+		}
+		if($role == 3){
+			$query = "SELECT * FROM Student WHERE USER_ID = '$userID';";
+		}
+		
+		$result = mysqli_query($con, $query);
+		$array = mysqli_fetch_row($result);
+		mysqli_close($con);
+		return $array;
+	}
 	
 	function deleteUser($usersID, $usersEmail){
 		include 'dbConnection.php';

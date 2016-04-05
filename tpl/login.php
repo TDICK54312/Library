@@ -12,10 +12,16 @@
 					session_start();
 					$_SESSION["userinfo"] = $result;
 					if($result[1] == 1){
+						$result2 = getUserInfo($result[0], $result[1])
+						updateTimeLoggedIn($result[0]);
+						$_SESSION["user"] = $result2;
 						header("Location: adminProfile.php");
 						exit;
 					}
 					if($result[1] == 2 || $result[1] == 3){
+						$result2 = getUserInfo($result[0], $result[1])
+						updateTimeLoggedIn($result[0]);
+						$_SESSION["user"] = $result2;
 						header("Location: userProfile.php");
 						exit;
 					}
