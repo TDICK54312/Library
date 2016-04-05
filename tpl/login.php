@@ -9,7 +9,7 @@
 				$result = authenticateUser($user, $pass);
 				
 				if(!empty($result)){
-					session_start()
+					session_start();
 					$_SESSION["userinfo"] = $result;
 					if($result[1] == 1){
 						header("Location: adminProfile.php");
