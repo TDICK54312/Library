@@ -1,3 +1,32 @@
+<?php
+	include 'api.php';
+	if(!empty($_POST['submit'])){
+		if(!empty($_POST['email'])){
+			if(!empty($_POST['password'])){
+				$user = $_POST['email'];
+				$pass = $_POST['password'];
+
+				$result = authenticateUser($user, $pass);
+				
+				if(!empty($result)){
+					session_start()
+					$_SESSION["userinfo"] = $result;
+					if($result[1] == 1){
+						header("Location: adminProfile.php");
+						exit;
+					}
+					if($result[1] == 2 || $result[1] == 3){
+						header("Location: userProfile.php");
+						exit;
+					}
+				}
+				else{
+					echo "Sorry invalid username or password! Try again!";
+				}
+			}
+		}
+	}	
+?>
 <!doctype html>
 <html>
 <head>
@@ -25,7 +54,7 @@
 			<input type="text" name="username" id="username" class="txtfield" tabindex="1">
 			<label for="password">Password:</label>
 			<input type="password" name="password" id="password" class="txtfield" tabindex="2">
-			<div class="center"><input type="submit" name="loginbtn" id="loginbtn" value="Log In"></div>
+			<div class="center"><input type="submit" name="submit" id="loginbtn" value="Log In"></div>
 		</form>
 	</div>
 </div>
