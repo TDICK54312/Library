@@ -9,12 +9,12 @@
       </ul>
    </li>
    <li><a href="#">Contact</a></li>
-   <?php if(!$_SESSION['userinfo'])
+   <?php if(!$_SESSION["userinfo"])
    		{
 			?>
    		<li><a href="login.php">Login</a></li>
     <?php } else { ?>
-    <?php if($_SESSION['userinfo'][1] == 1){?>
+    <?php if($_SESSION["userinfo"][1] == 1){?>
 	    	<li><a href="#">Admin Functions</a>
 	    		<ul>
 		    		<li><a href="#">Check-In Book</a></li>

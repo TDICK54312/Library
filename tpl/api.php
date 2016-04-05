@@ -6,7 +6,7 @@
 		$dbs = mysqli_select_db($con, $databaseName);
 		$result = mysqli_query($con,"SELECT * FROM $tableName WHERE USER_EMAIL = '$username' AND PASSWORD = '$password'");
 		$array = mysqli_fetch_row($result);
-		mysqli_close();
+		mysqli_close($con);
 
 	//	echo json_encode($array);
 		return $array;
@@ -58,7 +58,7 @@
 				$didItWork2 = mysqli_error($con);
   			}		
   		}
-  		mysqli_close();
+  		mysqli_close($con);
   		return $didItWork;	
 	}
 	function deleteBook($isbn, $numToRemove){
@@ -88,7 +88,7 @@
   				if (!mysqli_query($con,$deleteBookFromLibraryQuery)){
 					$message = mysqli_error($con);
   				}
-  				mysqli_close();
+  				mysqli_close($con);
   				return $message;				
 			}
 			//If AMOUNT_IN will be 0 BUT there are books still out then UPDATE Inventory table AMOUNT_IN to be 0 but still leave row in Inventory and Book tables
@@ -98,7 +98,7 @@
 				if (!mysqli_query($con,$deleteBookFromInventoryQuery)){
 					$message = mysqli_error($con);
   				}
-  				mysqli_close();
+  				mysqli_close($con);
   				return $message;
 			}
 			//If AMOUNT_IN will still be positive then UPDATE Inventory table to new amount
@@ -108,18 +108,18 @@
 				if (!mysqli_query($con,$deleteBookFromInventoryQuery)){
 					$message = mysqli_error($con);
   				}
-  				mysqli_close();
+  				mysqli_close($con);
   				return $message;
 			}
 			else{
 				$message = "Im missing a case...";
-				mysqli_close();
+				mysqli_close($con);
 				return $message;
 			}
 		}
 		else{
 			$message = "You entered a number that does not make sense please retry.";
-			mysqli_close();
+			mysqli_close($con);
 			return message;
 		}	
 	}
@@ -153,7 +153,7 @@
 				$didItWork2 = mysqli_error($con);
   			}
 		}
-		mysqli_close();
+		mysqli_close($con);
   		return $didItWork2;
 	}
 	
@@ -192,10 +192,10 @@
 		}
 		else{
 			$duplicate = "A user is already entered with the same email.";
-			mysqli_close();
+			mysqli_close($con);
 			return $duplicate;
 		}
-		mysqli_close();
+		mysqli_close($con);
 		//return $didItWork;
 		return $didItWork;
 	}
