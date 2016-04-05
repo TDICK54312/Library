@@ -60,5 +60,4 @@ Fusce at iaculis urna. Cras sagittis, quam nec porttitor finibus, purus felis ef
 <div id="footer">Copyright (c) 2016. Template by <a href="mailto:albien.fezga@live.com">Albien Fezga</a>.</div>
 </div>
 </body>
-<script src="js/login.js" type="text/javascript"></script>
 </html>
