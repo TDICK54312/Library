@@ -47,6 +47,8 @@
 	function deleteUser($usersID, $usersEmail){
 		include 'dbConnection.php';
 		
+		//Need to check if the user has any fines or transactions still
+		
 		//query
 		$getRoleQuery = "SELECT USER_ROLE FROM User WHERE USER_ID = '$usersID' AND USER_EMAIL = '$usersEmail'";
 		$deleteUserQuery = "DELETE FROM User WHERE User.USER_ID = '$usersID' AND User.USER_EMAIL = '$usersEmail';";
