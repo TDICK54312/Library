@@ -1,6 +1,7 @@
 <?php
 	function logoutUser(){
 		session_unset();
+		session_destroy();
 	}
 	if(isset($_GET["hi"])){
 		logoutUser();
