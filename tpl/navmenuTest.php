@@ -8,8 +8,8 @@
 ?>
 <div id="cssmenu" class="align-center">
 <ul>
-   <li><a href="#">Home</a></li>
-   <li><a href="#">About</a></li>
+   <li><a href="indexx.php">Home</a></li>
+   <li><a href="aboutUs.php">About</a></li>
    <li><a href="#">Library</a>
       <ul>
          <li><a href="#">View Books</a></li>
@@ -23,7 +23,7 @@
    		<li><a href="login.php">Login</a></li>
     <?php } else { ?>
     <?php if($_SESSION["userinfo"][1] == 1){?>
-	    	<li><a href="#">Admin Functions</a>
+	    	<li><a>Admin Functions</a>
 	    		<ul>
 		    		<li><a href="#">Check-In Book</a></li>
 		    		<li><a href="#">Check-Out Book</a></li>
