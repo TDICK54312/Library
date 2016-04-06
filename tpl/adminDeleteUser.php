@@ -56,7 +56,7 @@
 			<input type="text" name="email" id="email" class="txtfield" tabindex="1">
 			<label for="user_ID">User ID:</label>
 			<input type="text" name="user_ID" id="user_ID" class="txtfield" tabindex="2">
-			<div class="center"><input type="submit" name="submit" id="loginbtn" value="send"></div>
+			<div class="center"><input type="submit" name="submit" id="loginbtn" value="Enter"></div>
 		</form>
 	</div>
 </div>

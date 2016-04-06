@@ -51,7 +51,19 @@
    <script src="js/menu_script.js"></script><title>Library Database System</title>
    <script src="http://use.edgefonts.net/berkshire-swash;noticia-text.js"></script>
 </head>
-
+<script>
+$(document).ready(function () {
+  //called when key is pressed in textbox
+  $("#isbn").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").html("Digits Only").show().fadeOut("slow");
+               return false;
+    }
+   });
+});
+</script>
 <body>
 <div id="wrapper">
 <div id="header"><img src="images/header.jpg" style="width: 100%;"></div>
