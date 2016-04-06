@@ -1,3 +1,4 @@
 <?php
-	$_SESSION["userinfo"][1] = 0;
+	$stuff = $_SESSION["userinfo"];
+	echo $stuff;
 ?>
