@@ -29,7 +29,7 @@ $(function(){
 		    		<li><a href="adminAddUser.php">Add User</a></li>
 		    		<li><a href="adminAddBook.php">Add Book</a></li>
 		    		<li><a href="adminDeleteUser.php">Delete User</a></li>
-		    		<li><a href="#">Delete Book</a></li>
+		    		<li><a href="adminDeleteBook.php">Delete Book</a></li>
 		    		<li><a href="#">Reports</a></li>
 	    		</ul>
 	    	</li>
