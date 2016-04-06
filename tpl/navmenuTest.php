@@ -33,8 +33,11 @@ $(function(){
 		    		<li><a href="#">Reports</a></li>
 	    		</ul>
 	    	</li>
-    <?php } ?> 
-    <li><a href="#">My Account</a></li>
+	    	<li><a href="adminProfile.php">My Account</a></li>
+    <?php } ?>
+    <?php if($_SESSION["userinfo"][1] == 2 || $_SESSION["userinfo"][1] == 3){?> 
+    	<li><a href="#">My Account</a></li>
+    	<?php } ?>
     <li><a href="login.php" id="logout">Logout</a></li>
     <?php } ?>
 </ul>
