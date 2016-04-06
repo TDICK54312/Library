@@ -17,7 +17,7 @@ $(function(){
          <li><a href="#">View Authors</a></li>
       </ul>
    </li>
-   <li><a href="#">Contact</a></li>
+   <li><a href="contactUs.php">Contact</a></li>
    <?php if(!$_SESSION["userinfo"]){ ?>
    		<li><a href="login.php">Login</a></li>
     <?php } else { ?>
