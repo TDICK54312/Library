@@ -18,9 +18,7 @@ $(function(){
       </ul>
    </li>
    <li><a href="#">Contact</a></li>
-   <?php if(!$_SESSION["userinfo"])
-   		{
-			?>
+   <?php if(!$_SESSION["userinfo"]){ ?>
    		<li><a href="login.php">Login</a></li>
     <?php } else { ?>
     <?php if($_SESSION["userinfo"][1] == 1){?>

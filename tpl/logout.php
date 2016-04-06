@@ -1,9 +1,3 @@
 <?php
-	if(isset($_SESSION["userinfo"])){
-		unset($_SESSION["userinfo"]);
-	}
-	if(isset($_SESSION["user"])){
-		unset($_SESSION["user"]);
-	}
-	session_destroy():
+	$_SESSION["userinfo"][1] = 0;
 ?>
