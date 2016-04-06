@@ -50,13 +50,13 @@
 </div>
 <div id="content">
 	<h1>Delete User</h1>
-	<div class="delete-cont">
-		<form id ="deleteUserForm" name="deleteUserForm" method="POST" action="">
+	<div class="login-cont">
+		<form id ="loginForm" name="loginForm" method="POST" action="">
 			<label for="email">Email:</label>
 			<input type="text" name="email" id="email" class="txtfield" tabindex="1">
-			<label for="address">User ID:</label>
+			<label for="user_ID">User ID:</label>
 			<input type="text" name="user_ID" id="user_ID" class="txtfield" tabindex="2">
-			<div class="center"><input type="submit" name="submit" id="deletebtn" value="send"></div>
+			<div class="center"><input type="submit" name="submit" id="loginbtn" value="send"></div>
 		</form>
 	</div>
 </div>
