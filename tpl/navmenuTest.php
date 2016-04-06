@@ -1,12 +1,12 @@
-<?php
-	function logoutUser(){
-		session_unset();
-		session_destroy();
-	}
-	if(isset($_GET["hi"])){
-		logoutUser();
-	}
-?>
+<script>
+$(function(){
+  $("#logout").click(function(){
+        $.post("logout.php",function(data){
+        // if you want you can show some message to user here
+     });
+	});
+});
+</script>
 <div id="cssmenu" class="align-center">
 <ul>
    <li><a href="indexx.php">Home</a></li>
@@ -37,7 +37,7 @@
 	    	</li>
     <?php } ?> 
     <li><a href="#">My Account</a></li>
-    <li><a href="login.php?hi=true">Logout</a></li>
+    <li><a href="login.php" id="logout">Logout</a></li>
     <?php } ?>
 </ul>
 </div>
