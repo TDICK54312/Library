@@ -76,7 +76,7 @@
 			<input type="text" name="genre" id="genre" class="txtfield" tabindex="6">
 			<label for="summary">Summary:</label>
 			<textarea maxlength="255" placeholder="Only 255 characters allowed..." cols="30" rows="4" name="summary" tabindex="7"></textarea>
-			<div class="center"><input type="submit" name="submit" id="loginbtn" value="Log In"></div>
+			<div class="center"><input type="submit" name="submit" id="loginbtn" value="Enter"></div>
 		</form>
 	</div>
 </div>
