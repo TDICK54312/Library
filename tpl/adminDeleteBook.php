@@ -15,7 +15,7 @@ session_start();
 			echo "Number to remove not entered!";
 		}
 		if($everythingSet == true){
-			$result = deleteBook($_POST['isbnNumber'], $_POST['removeNum']);
+			$result = deleteBook($_POST['isbn'], $_POST['removeNum']);
 			echo $result;
 		}
 	}
@@ -66,7 +66,7 @@ $(document).ready(function () {
 		<form id ="loginForm" name="loginForm" method="POST" action="">
 			<label for="isbn">ISBN Number:</label>
 			<input type="text" name="isbn" id="isbn" class="txtfield" tabindex="1">
-			<label for="removeNum">User ID:</label>
+			<label for="removeNum">Amount to Remove:</label>
 			<input type="text" name="removeNum" id="removeNum" class="txtfield" tabindex="2">
 			<div class="center"><input type="submit" name="submit" id="loginbtn" value="send"></div>
 		</form>
