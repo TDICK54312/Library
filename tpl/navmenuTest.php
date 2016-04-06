@@ -1,3 +1,11 @@
+<?php
+	function logoutUser(){
+		session_unset();
+	}
+	if(isset($_GET["hi"])){
+		logoutUser();
+	}
+?>
 <div id="cssmenu" class="align-center">
 <ul>
    <li><a href="#">Home</a></li>
@@ -28,7 +36,7 @@
 	    	</li>
     <?php } ?> 
     <li><a href="#">My Account</a></li>
-    <li><a href="#">Logout</a></li>
+    <li><a href="login.php?hi=true">Logout</a></li>
     <?php } ?>
 </ul>
 </div>
