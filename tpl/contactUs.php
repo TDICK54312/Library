@@ -22,6 +22,7 @@
 	<h1>Contact Us</h1>
 	<p> Email: fogucksouryelf@gmail.com </p>
 	<p> Phone: (800) 273-8255 </p>
+	<p> We would love to hear your feedback and if you have any issues with our software! </p>
 </div>
 </div>
 </body>
