@@ -16,7 +16,7 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$queryBookTable = "SELECT ISBN_NUMBER, TITLE, AUTHOR_FNAME, AUTHOR_LNAME FROM BOOK;";
+		$queryBookTable = "SELECT ISBN_NUMBER, TITLE, AUTHOR_FNAME, AUTHOR_LNAME FROM Book;";
 		
 		$result = mysqli_query($con, $queryBookTable);
 		while($row = mysqli_fetch_array($result)){
