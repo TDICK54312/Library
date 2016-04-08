@@ -48,7 +48,7 @@
 		$dbs = mysqli_select_db($con, $databaseName);
 		
 		//This finds all the books that are in the inventory that the amount in is not 0
-		$queryBookTable = "SELECT Book.ISBN_NUMBER, Book.TITLE, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME FROM Book, Inventory WHERE Book.ISBN_NUMBER = Inventory.ISBN_NUMBER AND Inventory.AMOUNT_IN != '0'";
+		$queryBookTable = "SELECT Book.ISBN_NUMBER, Book.TITLE, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME FROM Book, Inventory WHERE Book.ISBN_NUMBER = Inventory.ISBN_NUMBER AND Inventory.AMOUNT_IN != '0';";
 		
 		$result = mysqli_query($con, $queryBookTable);
 		while($row = mysqli_fetch_array($result)){
