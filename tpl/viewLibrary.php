@@ -13,6 +13,7 @@
 			$theISBN = $_POST['isbn'];
 			$theTitle = $_POST['title'];
 			header("Location: lookAtBook.php?isbn=$theISBN?title=$theTitle");
+			exit;
 		}
 	}
 ?>
@@ -38,7 +39,6 @@
 <h1>Book Catalog</h1>
 <div id="content">
 	<?php
-		include 'api.php';
 		getBookInventory();
 	?>
 </div>
