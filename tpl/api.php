@@ -27,11 +27,11 @@
 			echo '<div>';
 			echo '<form id = "inv" name="inv" method="POST" action=""';
 			echo '<label for="title"> Title: </label>';
-			echo "<input type='text' name='title' id='title' class='txtfield' value="$title" readonly tabindex='1'>";
+			echo "<input type='text' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
 			echo '<label for="author"> Author: </label>';
-			echo "<input type='text' name='author' id='author' class='txtfield' value="$author" readonly tabindex='2'>";
+			echo "<input type='text' name='author' id='author' class='txtfield' value='$author' readonly tabindex='2'>";
 			echo '<label for="isbn"> ISBN Number: </label>';
-			echo "<input type='text' name='isbn' id='isbn' class='txtfield' value="$isbn" readonly tabindex='3'>";
+			echo "<input type='text' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly tabindex='3'>";
 			echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
 			echo '</form>';
 			echo '</div>';
