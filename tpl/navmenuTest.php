@@ -13,7 +13,7 @@ $(function(){
    <li><a href="aboutUs.php">About</a></li>
    <li><a href="#">Library</a>
       <ul>
-         <li><a href="#">View Books</a></li>
+         <li><a href="viewLibrary.php">View Books</a></li>
          <li><a href="#">View Authors</a></li>
       </ul>
    </li>
@@ -25,7 +25,7 @@ $(function(){
 	    	<li><a>Admin Functions</a>
 	    		<ul>
 		    		<li><a href="#">Check-In Book</a></li>
-		    		<li><a href="#">Check-Out Book</a></li>
+		    		<li><a href="viewLibrary.php">Check-Out Book</a></li>
 		    		<li><a href="adminAddUser.php">Add User</a></li>
 		    		<li><a href="adminAddBook.php">Add Book</a></li>
 		    		<li><a href="adminDeleteUser.php">Delete User</a></li>

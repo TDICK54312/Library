@@ -11,6 +11,32 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function getBookInventory(){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$queryBookTable = "SELECT ISBN_NUMBER, TITLE, AUTHOR_FNAME, AUTHOR_LNAME FROM BOOK;";
+		
+		$result = mysqli_query($con, $queryBookTable);
+		while($row = mysqli_fetch_array($result)){
+			$isbn = $row['ISBN_NUMBER'];
+			$title = $row['TITLE'];
+			$author = $row['AUTHOR_FNAME'] . " " . $row['AUTHOR_LNAME'];
+			
+			echo "<div>";
+			echo "<form id ="inv" name="inv" method="POST" action="">";
+			echo "<label for="title"> Title: </label>";
+			echo "<input type="text" name="title" id="title" class="txtfield" value="$title" readonly tabindex="1">";
+			echo "<label for="author"> Author: </label>";
+			echo "<input type="text" name="author" id="author" class="txtfield" value="$author" readonly tabindex="2">";
+			echo "<label for="isbn"> ISBN Number: </label>";
+			echo "<input type="text" name="isbn" id="isbn" class="txtfield" value="$isbn" readonly tabindex="3">";
+			echo "<input type="submit" name="submit" id="loginbtn" value="Check Out">";
+			echo "</form>";
+			echo "</div>";
+		}
+	}
 	function updateTimeLoggedIn($userID){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
