@@ -52,9 +52,9 @@
 		
 		$result = mysqli_query($con, $queryBookTable);
 		while($row = mysqli_fetch_array($result)){
-			$isbn = $row['Book.ISBN_NUMBER'];
-			$title = $row['Book.TITLE'];
-			$author = $row['Book.AUTHOR_FNAME'] . " " . $row['Book.AUTHOR_LNAME'];
+			$isbn = $row['ISBN_NUMBER'];
+			$title = $row['TITLE'];
+			$author = $row['AUTHOR_FNAME'] . " " . $row['AUTHOR_LNAME'];
 			
 			echo '<div>';
 			echo '<form id = "inv" name="inv" method="POST" action=""';
