@@ -11,18 +11,50 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function lookAtBook($isbn){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$query = "SELECT * FROM Book WHERE ISBN_NUMBER = '$isbn'";
+		
+		$result = mysqli_query($con, $queryBookTable);
+		
+		$author = $result[2] . " " . $result[7];
+		$genre = $result[5];
+		$publisher = $result[3];
+		$summary = $result[4];
+		
+		
+		echo '<div>';
+		echo '<form id = "aBook" name="aBook" method="POST" action=""';
+		echo '<label for="genre"> Genre: </label>';
+		echo "<input type='text' name='genre' id='genre' class='txtfield' value='$genre' readonly tabindex='2'>";
+		echo '<label for="isbn"> ISBN Number: </label>';
+		echo "<input type='text' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly tabindex='3'>";
+		echo '<label for="author"> Author: </label>';
+		echo "<input type='text' name='author' id='author' class='txtfield' value='$author' readonly tabindex='4'>";
+		echo '<label for="publisher"> Publisher: </label>';
+		echo "<input type='text' name='publisher' id='publisher' class='txtfield' value='$publisher' readonly tabindex='5'>";
+		echo '<label for="summary"> Summary: </label>';
+		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly tabindex='6'>";
+		echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
+		echo '</form>';
+		echo '</div>';
+	}
 	function getBookInventory(){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$queryBookTable = "SELECT ISBN_NUMBER, TITLE, AUTHOR_FNAME, AUTHOR_LNAME FROM Book;";
+		//This finds all the books that are in the inventory that the amount in is not 0
+		$queryBookTable = "SELECT Book.ISBN_NUMBER, Book.TITLE, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME FROM Book, Inventory WHERE Book.ISBN_NUMBER = Inventory.ISBN_NUMBER AND Inventory.AMOUNT_IN != '0'";
 		
 		$result = mysqli_query($con, $queryBookTable);
 		while($row = mysqli_fetch_array($result)){
-			$isbn = $row['ISBN_NUMBER'];
-			$title = $row['TITLE'];
-			$author = $row['AUTHOR_FNAME'] . " " . $row['AUTHOR_LNAME'];
+			$isbn = $row['Book.ISBN_NUMBER'];
+			$title = $row['Book.TITLE'];
+			$author = $row['Book.AUTHOR_FNAME'] . " " . $row['Book.AUTHOR_LNAME'];
 			
 			echo '<div>';
 			echo '<form id = "inv" name="inv" method="POST" action=""';
@@ -30,8 +62,8 @@
 			echo "<input type='text' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
 			echo '<label for="author"> Author: </label>';
 			echo "<input type='text' name='author' id='author' class='txtfield' value='$author' readonly tabindex='2'>";
-			echo '<label for="isbn"> ISBN Number: </label>';
-			echo "<input type='text' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly tabindex='3'>";
+			//echo '<label for="isbn"> ISBN Number: </label>';
+			echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly>";
 			echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
 			echo '</form>';
 			echo '</div>';

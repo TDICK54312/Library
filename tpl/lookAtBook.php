@@ -1,21 +1,6 @@
 <?php
 	session_start();
 ?>
-<?php
-	include 'api.php';
-	$everythingSet = true;
-	if(!empty($_POST['submit'])){
-		if(empty($_POST['isbn'])){
-			$everythingSet = false;
-			echo "ISBN Number not entered!";
-		}
-		else{
-			$theISBN = $_POST['isbn'];
-			$theTitle = $_POST['title'];
-			header("Location: lookAtBook.php?isbn=$theISBN?title=$theTitle");
-		}
-	}
-?>
 <!doctype html>
 <html>
 <head>
@@ -35,11 +20,11 @@
 <div id="navarea" style="text-align: center; display: block; margin: 0 auto;">
 	<?php include_once('navmenuTest.php'); ?>
 </div>
-<h1>Book Catalog</h1>
+<h1><?php echo $_GET['title']; ?> </h1>
 <div id="content">
 	<?php
 		include 'api.php';
-		getBookInventory();
+		lookAtBook($_GET['isbn']);
 	?>
 </div>
 </div>
