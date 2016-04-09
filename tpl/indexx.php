@@ -1,10 +1,9 @@
 <?php
 	session_start();
-	$timezone = date_default_timezone_get();
-	$date = date('m/d/Y h:i:s a', time());
-	date_add($date,date_interval_create_from_date_string("10 days"));
 	
-	echo date_format($date,"Y-m-d"); 
+	$date = date('m/d/Y h:i:s a', time())
+	
+	echo "<p>$date</p>"
 ?>
 <!doctype html>
 <html>
