@@ -24,6 +24,8 @@
 
 		$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID', '$userID', '$date', '0', '0.00');";
 		
+		$result = mysqli_query($con, $addTransactionQuery);
+		
 		
 		mysqli_close($con);
 	}
