@@ -20,6 +20,7 @@
 <div id="navarea" style="text-align: center; display: block; margin: 0 auto;">
 	<?php include_once('navmenuTest.php'); ?>
 </div>
+<h1><?php $dt = new DateTime(); echo $dt->format('Y-m-d H:i:s'); ?></h1>
 <div id="content">
 	<h1>About Us</h1>
 	<div class="about-cont">
