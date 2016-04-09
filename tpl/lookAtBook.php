@@ -24,7 +24,8 @@
 <div id="content">
 	<?php
 		include 'api.php';
-		lookAtBook($_GET['isbn']);
+		$aISBN = $_GET['isbn'];
+		lookAtBook($aISBN);
 	?>
 </div>
 </div>
