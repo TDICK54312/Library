@@ -20,7 +20,10 @@
 <div id="navarea" style="text-align: center; display: block; margin: 0 auto;">
 	<?php include_once('navmenuTest.php'); ?>
 </div>
-<h1><?php $dt = new DateTime(); echo $dt->format('Y-m-d H:i:s'); ?></h1>
+<h1><?php $date = "2013-07-04 08:10:25";
+$date = strtotime($date);
+$date = strtotime("+7 day", $date);
+echo date('Y-M-d h:i:s', $date); ?></h1>
 <div id="content">
 	<h1>About Us</h1>
 	<div class="about-cont">
