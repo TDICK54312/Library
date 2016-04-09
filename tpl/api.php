@@ -15,8 +15,10 @@
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
+		
+		//$dueDate = date
 
-		$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, ACTUAL_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID', '$userID', ' ', ' ', '0', '0.00');";
+		$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID', '$userID', ' ', '0', '0.00');";
 		
 		
 		mysqli_close($con);
