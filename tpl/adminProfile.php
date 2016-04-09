@@ -20,8 +20,11 @@
 <div id="navarea" style="text-align: center; display: block; margin: 0 auto;">
 	<?php include_once('navmenuTest.php'); ?>
 </div>
+<h1>Welcome <i><?php echo $_SESSION["user"][1] . " " . $_SESSION["user"][2]; ?></i> you last logged in on <i><?php echo $_SESSION["userinfo"][5]; ?></i> !</h1>
 <div id="content">
-	<h1>Welcome <i><?php echo $_SESSION["user"][1] . " " . $_SESSION["user"][2]; ?></i> you last logged in on <i><?php echo $_SESSION["userinfo"][5]; ?></i> !</h1>
+	<?php
+		//put current checked out books and stuff here. 
+		?>
 </div>
 </div>
 </body>

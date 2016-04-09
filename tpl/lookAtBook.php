@@ -1,5 +1,17 @@
 <?php
+	include 'api.php';
 	session_start();
+?>
+<?php
+	if(!empty($_POST['submit'])){
+		if($_SESSION["userinfo"][1] == 1 || $_SESSION["userinfo"][1] == 2 || $_SESSION["userinfo"][1] == 3){
+			$inventoryID = $_GET['invID'];
+			$result = addToUserRental($_SESSION["userinfo"][0], $_POST['isbn'], $inventoryID);
+		}
+		else{
+			echo "<p>Please Login in order to add this book.</p>";
+		}
+	}
 ?>
 <!doctype html>
 <html>
@@ -23,7 +35,6 @@
 <h1><?php echo $_GET['title']; ?> </h1>
 <div id="content">
 	<?php
-		include 'api.php';
 		$aISBN = $_GET['isbn'];
 		lookAtBook($aISBN);
 	?>

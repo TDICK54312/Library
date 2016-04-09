@@ -12,7 +12,8 @@
 		else{
 			$theISBN = $_POST['isbn'];
 			$theTitle = $_POST['title'];
-			header("Location: lookAtBook.php?isbn=$theISBN&title=$theTitle");
+			$theInvID = $_POST['invID'];
+			header("Location: lookAtBook.php?isbn=$theISBN&title=$theTitle&invID=$theInvID");
 			exit;
 		}
 	}

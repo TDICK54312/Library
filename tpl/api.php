@@ -11,22 +11,34 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function addToUserRental($userID, $isbn, $invID){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+
+		$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, ACTUAL_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID', '$userID', ' ', ' ', '0', '0.00');";
+		
+		
+		mysqli_close($con);
+	}
 	function lookAtBook($isbn){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
 		//$query = "SELECT  FROM Book WHERE ISBN_NUMBER = '$isbn';";
-		$query = "SELECT Book.TAG, Book.PUBLISHER, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.SUMMARY, Inventory.AMOUNT_IN FROM Book, Inventory WHERE Book.ISBN_NUMBER = '$isbn' AND Inventory.ISBN_NUMBER = '$isbn';";
+		$query = "SELECT Book.TAG, Book.PUBLISHER, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.SUMMARY, Inventory.AMOUNT_IN, Inventory.INVENTORY_ID FROM Book, Inventory WHERE Book.ISBN_NUMBER = '$isbn' AND Inventory.ISBN_NUMBER = '$isbn';";
 		
 		$stuff = mysqli_query($con, $query);
 		$result = mysqli_fetch_row($stuff);
+		mysqli_close($con);
 		
 		$author = $result[2] . " " . $result[3];
 		$genre = $result[0];
 		$publisher = $result[1];
 		$summary = $result[4];
 		$in = $result[5];
+		$invID = $result[6];
 		
 		
 		echo '<div>';
@@ -43,6 +55,7 @@
 		echo "<input type='text' name='in' id='in' class='txtfield' value='$in' readonly tabindex='5'>";
 		echo '<label for="summary"> Summary: </label>';
 		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly cols='30' rows='4' tabindex='6'>";
+		echo "<input type='hidden' name='invID' id='invID' class='txtfield' value='$invID' readonly>";
 		echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
 		echo '</form>';
 		echo '</div>';
@@ -56,6 +69,7 @@
 		$queryBookTable = "SELECT Book.ISBN_NUMBER, Book.TITLE, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME FROM Book, Inventory WHERE Book.ISBN_NUMBER = Inventory.ISBN_NUMBER AND Inventory.AMOUNT_IN != '0';";
 		
 		$result = mysqli_query($con, $queryBookTable);
+		mysqli_close($con);
 		while($row = mysqli_fetch_array($result)){
 			$isbn = $row['ISBN_NUMBER'];
 			$title = $row['TITLE'];
@@ -71,6 +85,8 @@
 			echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly>";
 			echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
 			echo '</form>';
+			echo '</div>';
+			echo '<div>';
 			echo '</div>';
 		}
 	}
