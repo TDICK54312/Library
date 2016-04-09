@@ -11,7 +11,7 @@
 	//	echo json_encode($array);
 		return $array;
 	}
-	function addToUserRental($userID, $isbn, $invID){
+	function addToUserRental($userID, $isbn){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
@@ -20,9 +20,14 @@
 		$date = strtotime("+7 day", $date);
 		$date = date('Y-M-d h:i:s', $date);
 		
+		$getinventoryIDQuery = "SELECT INVENTORY_ID FROM Inventory WHERE Inventory.ISBN_NUMBER = $isbn;";
+		
+		$invId = mysqli_query($con, $getinventoryIDQuery);
+		$arrayInvID = mysqli_fetch_row($result);
+		
 		//$dueDate = date
 
-		$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID', '$userID', '$date', '0', '0.00');";
+		$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$arrayInvID', '$userID', '$date', '0', '0.00');";
 		
 		$result = mysqli_query($con, $addTransactionQuery);
 		
