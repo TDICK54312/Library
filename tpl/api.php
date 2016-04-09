@@ -18,7 +18,8 @@
 		
 		$query = "SELECT * FROM Book WHERE ISBN_NUMBER = '$isbn';";
 		
-		$result = mysqli_query($con, $query);
+		$stuff = mysqli_query($con, $query);
+		$result = mysqli_fetch_row($stuff);
 		
 		$author = $result[2] . " " . $result[7];
 		$genre = $result[5];
