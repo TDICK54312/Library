@@ -16,15 +16,17 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$query = "SELECT * FROM Book WHERE ISBN_NUMBER = '$isbn';";
+		//$query = "SELECT  FROM Book WHERE ISBN_NUMBER = '$isbn';";
+		$query = "SELECT Book.TAG, Book.PUBLISHER, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.SUMMARY, Inventory.AMOUNT_IN FROM Book, Inventory WHERE Book.ISBN_NUMBER = '$isbn' AND Inventory = '$isbn';";
 		
 		$stuff = mysqli_query($con, $query);
 		$result = mysqli_fetch_row($stuff);
 		
-		$author = $result[2] . " " . $result[7];
-		$genre = $result[5];
-		$publisher = $result[3];
+		$author = $result[2] . " " . $result[3];
+		$genre = $result[0];
+		$publisher = $result[1];
 		$summary = $result[4];
+		$in = $result[5];
 		
 		
 		echo '<div>';
@@ -37,8 +39,10 @@
 		echo "<input type='text' name='author' id='author' class='txtfield' value='$author' readonly tabindex='3'>";
 		echo '<label for="publisher"> Publisher: </label>';
 		echo "<input type='text' name='publisher' id='publisher' class='txtfield' value='$publisher' readonly tabindex='4'>";
+		echo '<label for="in"> Amount In: </label>';
+		echo "<input type='text' name='in' id='in' class='txtfield' value='$in' readonly tabindex='5'>";
 		echo '<label for="summary"> Summary: </label>';
-		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly tabindex='5'>";
+		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly tabindex='6'>";
 		echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
 		echo '</form>';
 		echo '</div>';
