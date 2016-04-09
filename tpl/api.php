@@ -42,7 +42,7 @@
 		echo '<label for="in"> Amount In: </label>';
 		echo "<input type='text' name='in' id='in' class='txtfield' value='$in' readonly tabindex='5'>";
 		echo '<label for="summary"> Summary: </label>';
-		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly tabindex='6'>";
+		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly cols='30' rows='4' tabindex='6'>";
 		echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
 		echo '</form>';
 		echo '</div>';
