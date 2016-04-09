@@ -16,9 +16,9 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$query = "SELECT * FROM Book WHERE ISBN_NUMBER = '$isbn'";
+		$query = "SELECT * FROM Book WHERE ISBN_NUMBER = '$isbn';";
 		
-		$result = mysqli_query($con, $queryBookTable);
+		$result = mysqli_query($con, $query);
 		
 		$author = $result[2] . " " . $result[7];
 		$genre = $result[5];
