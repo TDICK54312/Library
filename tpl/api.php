@@ -17,7 +17,7 @@
 		$dbs = mysqli_select_db($con, $databaseName);
 		
 		//$query = "SELECT  FROM Book WHERE ISBN_NUMBER = '$isbn';";
-		$query = "SELECT Book.TAG, Book.PUBLISHER, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.SUMMARY, Inventory.AMOUNT_IN FROM Book, Inventory WHERE Book.ISBN_NUMBER = '$isbn' AND Inventory = '$isbn';";
+		$query = "SELECT Book.TAG, Book.PUBLISHER, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.SUMMARY, Inventory.AMOUNT_IN FROM Book, Inventory WHERE Book.ISBN_NUMBER = '$isbn' AND Inventory.ISBN_NUMBER = '$isbn';";
 		
 		$stuff = mysqli_query($con, $query);
 		$result = mysqli_fetch_row($stuff);
