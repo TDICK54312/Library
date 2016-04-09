@@ -23,7 +23,7 @@
 		$getinventoryIDQuery = "SELECT INVENTORY_ID FROM Inventory WHERE Inventory.ISBN_NUMBER = $isbn;";
 		
 		$invId = mysqli_query($con, $getinventoryIDQuery);
-		$arrayInvID = mysqli_fetch_row($result);
+		$arrayInvID = mysqli_fetch_row($invId);
 		
 		//$dueDate = date
 
