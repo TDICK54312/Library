@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	$timezone = date_default_timezone_get();
+	$date = date('m/d/Y h:i:s a', time());
+	date_add($date,date_interval_create_from_date_string("10 days"));
+	
 ?>
 <!doctype html>
 <html>
@@ -21,7 +25,7 @@
 	<?php include_once('navmenuTest.php'); ?>
 </div>
 <div id="content">
-	<h1><?php echo date_add(now(), INTERVAL 10 DAYS); ?></h1>
+	<h1><?php echo date_format($date,"Y-m-d"); ?></h1>
 	<h1>Welcome to our Library!</h1>
     <p> Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing elit. Vestibulum in euismod nisl. Proin et ultrices est. Fusce mattis ligula a tellus dignissim, bibendum cursus magna aliquam. Fusce ullamcorper, sapien at dignissim dictum, odio purus placerat lorem, ac eleifend lectus ex vel urna. Vivamus porta accumsan tincidunt. Sed facilisis, erat eu fringilla lacinia, dui velit euismod lectus, tincidunt condimentum sem turpis in leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam convallis pharetra ligula vel maximus. Quisque sem nibh, aliquam non nibh scelerisque, fringilla finibus neque. Sed sagittis sagittis lorem a sagittis. Nulla eget enim sit amet erat commodo aliquet eu eu enim.
 </p><p>
