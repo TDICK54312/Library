@@ -93,12 +93,13 @@
 			
 			echo '<div class="book-cont">';
 			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
+			echo '<label for="title2"> Title: </label>';
+			echo "<p name='title2' id='title2'>$title</p>";
+			echo '<label for="author2"> Author: </label>';
+			echo "<p name='author2' id='author2'>$author</p>";
 			echo '<form id = "inv" name="inv" method="POST" action=""';
-			echo '<label for="title"> Title: </label>';
-			echo "<input type='text' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
-			echo '<label for="author"> Author: </label>';
-			echo "<input type='text' name='author' id='author' class='txtfield' value='$author' readonly tabindex='2'>";
-			//echo '<label for="isbn"> ISBN Number: </label>';
+			echo "<input type='hidden' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
+			echo "<input type='hidden' name='author' id='author' class='txtfield' value='$author' readonly tabindex='2'>";
 			echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly>";
 			echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
 			echo '</form>';
