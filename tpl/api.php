@@ -251,12 +251,12 @@
 			return message;
 		}	
 	}
-	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title){
+	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title, $imageName){
 		include 'dbConnection.php';
 		
 		$didItWork = " ";
 		$didItwork2 = " ";
-		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME) VALUES ('$isbn','$authorFname','$publisher','$summary','$tag','$title','$authorLname');";
+		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME, IMAGE_NAME) VALUES ('$isbn','$authorFname','$publisher','$summary','$tag','$title','$authorLname', '$imageName');";
 		$checkIfBookExistQuery = "SELECT ISBN_NUMBER FROM Book WHERE ISBN_NUMBER = '$isbn';";
 		//$addToInventoryQuery = "";
 		
