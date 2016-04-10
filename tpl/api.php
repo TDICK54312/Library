@@ -1,5 +1,5 @@
 <?php
-	include_once('dbConnection.php');
+	include('dbConnection.php');
 	function authenticateUser($username, $password){
 		
 		$tableName = "User";
