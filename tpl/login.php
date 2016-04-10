@@ -46,8 +46,8 @@
 		.login-cont label {
 			width: 100%;
 		}
-		.login-cont input[type=text], .login-cont input[type=password] {
-			width: 100%;
+		.login-cont input[type=email], .login-cont input[type=password] {
+			width: 95%;
 			-webkit-box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
 			-moz-box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
 			box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
@@ -59,7 +59,8 @@
 			margin-bottom: 20px;
 			font-size: 20px;
 			padding-left: 8px;
-			color: 
+			color: #848484;
+			text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
 		}
 		.login-cont input[type=submit] {
 			width: 100%;
@@ -69,13 +70,19 @@
 			color: white;
 			border: 0;
 		}
+		.login-cont input[type=submit]:active {
+			background-color: #5A0507;
+			color: #848484;
+			padding-top: 5px;
+			webkit-box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+			-moz-box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+			box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+		}
 	</style>
 	<div class="login-cont">
 		<form id ="loginForm" name="loginForm" method="POST" action="">
-			<label for="email">Username:</label>
-			<input type="text" name="email" id="email" class="txtfield" tabindex="1" value="E-Mail">
-			<label for="password">Password:</label>
-			<input type="password" name="password" id="password" class="txtfield" tabindex="2">
+			<input type="email" required name="email" id="email" class="txtfield" tabindex="1" placeholder="email">
+			<input type="password" name="password" id="password" class="txtfield" tabindex="2" placeholder="password">
 			<div class="center"><input type="submit" name="submit" id="loginbtn" value="Log In"></div>
 		</form>
 	</div>
