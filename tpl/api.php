@@ -90,7 +90,8 @@
 			$title = $row['TITLE'];
 			$author = $row['AUTHOR_FNAME'] . " " . $row['AUTHOR_LNAME'];
 			
-			echo '<div>';
+			echo '<div class="book-cont">';
+			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
 			echo '<form id = "inv" name="inv" method="POST" action=""';
 			echo '<label for="title"> Title: </label>';
 			echo "<input type='text' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
