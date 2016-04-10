@@ -52,9 +52,11 @@
 		$summary = $result[4];
 		$in = $result[5];
 		$invID = $result[6];
+		$image = $result[7];
 		
 		
-		echo '<div>';
+		echo '<div class="book-cont">';
+		echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
 		echo '<form id = "aBook" name="aBook" method="POST" action=""';
 		echo '<label for="genre"> Genre: </label>';
 		echo "<input type='text' name='genre' id='genre' class='txtfield' value='$genre' readonly tabindex='1'>";
