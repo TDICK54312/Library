@@ -89,6 +89,7 @@
 			$isbn = $row['ISBN_NUMBER'];
 			$title = $row['TITLE'];
 			$author = $row['AUTHOR_FNAME'] . " " . $row['AUTHOR_LNAME'];
+			$image = $row['IMAGE'];
 			
 			echo '<div class="book-cont">';
 			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
