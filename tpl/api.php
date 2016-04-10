@@ -1,7 +1,6 @@
 <?php
-	include('dbConnection.php');
 	function authenticateUser($username, $password){
-		
+		include_once 'dbConnection.php';
 		$tableName = "User";
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
@@ -13,7 +12,7 @@
 		return $array;
 	}
 	function addToUserRental($userID, $isbn){
-		
+		include_once 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		$date = date("Y-m-d H:i:s"); 
@@ -36,7 +35,7 @@
 		mysqli_close($con);
 	}
 	function lookAtBook($isbn){
-		
+		include_once 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
@@ -75,7 +74,7 @@
 		echo '</div>';
 	}
 	function getBookInventory(){
-		
+		include_once 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
@@ -105,7 +104,7 @@
 		}
 	}
 	function updateTimeLoggedIn($userID){
-		
+		include_once 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
@@ -116,7 +115,7 @@
 		
 	}
 	function getUserInfo($userID, $role){
-		
+		include_once 'dbConnection.php';
 		
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
@@ -138,7 +137,7 @@
 	}
 	
 	function deleteUser($usersID, $usersEmail){
-		
+		include_once 'dbConnection.php';
 		
 		//Need to check if the user has any fines or transactions still
 		
@@ -189,7 +188,7 @@
   		return $didItWork;	
 	}
 	function deleteBook($isbn, $numToRemove){
-		
+		include_once 'dbConnection.php';
 		$checkInventoryQuery = "SELECT AMOUNT_IN, AMOUNT_OUT FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
 		$message = "";
 		$con = mysqli_connect($host, $user, $pass);
@@ -251,7 +250,7 @@
 		}	
 	}
 	function addBook($isbn, $authorFname, $authorLname, $publisher, $summary, $tag, $title){
-		
+		include_once 'dbConnection.php';
 		
 		$didItWork = " ";
 		$didItwork2 = " ";
@@ -285,7 +284,7 @@
 	}
 	
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
-		
+		include_once 'dbConnection.php';
 		
 		//variables
 		$tableName = $addThisTable;
