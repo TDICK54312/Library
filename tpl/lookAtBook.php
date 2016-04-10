@@ -1,9 +1,8 @@
 <?php
 	include 'api.php';
 	include_once('header.php');
-	session_start();
-?>
-<?php
+	
+
 	if(!empty($_POST['submit'])){
 		if($_SESSION["userinfo"][1] == 1 || $_SESSION["userinfo"][1] == 2 || $_SESSION["userinfo"][1] == 3){
 			$result = addToUserRental($_SESSION["userinfo"][0], $_POST['isbn']);

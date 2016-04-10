@@ -11,7 +11,7 @@
 				$result = authenticateUser($user, $pass);
 				
 				if(!empty($result)){
-					session_start();
+					
 					$_SESSION["userinfo"] = $result;
 					if($result[1] == 1){
 						$result2 = getUserInfo($result[0], $result[1]);

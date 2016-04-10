@@ -1,6 +1,6 @@
 <?php
 // Start the session
-	session_start();
+	
 	include_once('header.php');
 	
 	include 'api.php';

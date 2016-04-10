@@ -30,10 +30,10 @@ body {
 }
 
 .book-cont {
-	width: 31%;
+	width: 29%;
 	min-width: 280px;
 	display: inline-block;
-	max-width: 500px;
+	max-width: 400px;
 	min-height: 300px;
 	text-align: center;
 	margin-right: 1%;
