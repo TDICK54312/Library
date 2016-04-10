@@ -93,7 +93,7 @@
 			
 			echo '<div class="book-cont">';
 			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/><br>';
-			echo "<strong>$title</strong>";
+			echo "<strong>$title</strong><br>";
 			echo $author;
 			echo '<form id = "inv" name="inv" method="POST" action=""';
 			echo "<input type='hidden' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
