@@ -91,7 +91,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="style/menu-styleTest.css">
-   <link rel="stylesheet" href="style/addUser.css">
+   <link rel="stylesheet" href="style/main.css">
    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
    <script src="js/menu_script.js"></script><title>Library Database System</title>
    <script src="http://use.edgefonts.net/berkshire-swash;noticia-text.js"></script>
