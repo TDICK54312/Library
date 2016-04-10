@@ -104,8 +104,7 @@
 			echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
 			echo '</form>';
 			echo '</div>';
-			echo '<div>';
-			echo '</div>';
+			
 		}
 	}
 	function updateTimeLoggedIn($userID){
