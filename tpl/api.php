@@ -26,7 +26,7 @@
 		
 		//$dueDate = date
 
-		$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID_NEW', '$userID', '$date', '0', '0.00');";
+		$addTransactionQuery = "INSERT INTO Transactions (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID_NEW', '$userID', '$date', '0', '0.00');";
 		
 		if (!mysqli_query($con,$addTransactionQuery)){
 				$didItWork = mysqli_error($con);
