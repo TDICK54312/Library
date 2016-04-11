@@ -75,10 +75,10 @@
 			} 
 		}
 		if($everythingSet == true && $uploadOk == 1){
-			$data = file_get_contents($_FILES['image']['tmp_name']);
+			//$data = file_get_contents($_FILES['image']['tmp_name']);
             //$data = mysql_real_escape_string($data);
             
-			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $data);
+			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $_POST['image']);
 			echo print_r($_FILES);
 			echo $result;
 		}	
@@ -101,7 +101,7 @@ $(document).ready(function () {
 </script>
 	<h1>Add Book</h1>
 	<div class="login-cont">
-		<form id ="loginForm" name="loginForm" method="POST" action="">
+		<form id ="loginForm" name="loginForm" method="POST" enctype="multipart/form-data" action="">
 			<label for="booktitle">Book Title:</label>
 			<input type="text" name="booktitle" id="booktitle" class="txtfield" tabindex="1">
 			<label for="isbn">ISBN Number:</label>
