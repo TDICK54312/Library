@@ -4,7 +4,7 @@
 	include_once('header.php');
 	include('api.php');	
 	
-	if($_POST['tp' ] == 'Title')
+	if($_POST['tp' ] == "Title")
 		$type = 1;
 	else if($_POST['tp'] == 'Author')
 		$type = 2;
@@ -12,6 +12,7 @@
 		$type = 3;
 	else {
 		echo "Invalid input.";
+		$type = 0;
 	}
 	
 	$content = htmlspecialchars($_POST['c']);
@@ -24,6 +25,7 @@
 	if(isset($type) && isset($content))
 		search($type,$content);
 	else
+		echo $type;
 		echo "<p>Invalid search.</p>";
 		
 	 ?>
