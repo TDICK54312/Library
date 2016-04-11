@@ -31,6 +31,12 @@
 		if (!mysqli_query($con,$addTransactionQuery)){
 				$didItWork = mysqli_error($con);
   		}
+  		else{
+	  		$moveToOutQuery = "UPDATE Inventory SET AMOUNT_IN = (AMOUNT_IN - 1), AMOUNT_OUT = (AMOUNT_OUT + 1) WHERE ISBN_NUMBER = '$isbn';";
+	  		if (!mysqli_query($con,$moveToOutQuery)){
+				$didItWork = mysqli_error($con);
+  			}
+  		}
 		
 		mysqli_close($con);
 		return $didItWork;
