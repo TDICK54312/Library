@@ -17,8 +17,8 @@
 	<h1>Albien Fezga : Web Developer</h1>
 	<div class="aboutprofile-cont">
 		<div id="aboutpic">
-			<img src="http://placehold.it/150x120.jpg">
-			<p> Stuff about Albien </p>
+			<img src="images/albien.jpg">
+			<p> Albien is a web developer extraordinaire!</p>
 		</div>
 	</div>
 	<h1>Geoffrey Charleston : Database Administrator</h1>
@@ -31,15 +31,15 @@
 	<h1>Sok Chiv : Web Developer</h1>
 	<div class="aboutprofile-cont">
 		<div id="aboutpic">
-			<img src="http://placehold.it/150x120.jpg">
-			<p> Stuff about Sok </p>
+			<img src="images/sok.jpg">
+			<p> Sok is not a sock but actually a dude that programs </p>
 		</div>
 	</div>
 	<h1>Cody Coomes : Database Administrator</h1>
 	<div class="aboutprofile-cont">
 		<div id="aboutpic">
-			<img src="http://placehold.it/150x120.jpg">
-			<p> Stuff about Cody </p>
+			<img src="images/cody.jpg">
+			<p> Cody is a programing enthusiast and marketing genius. </p>
 		</div>
 	</div>
 </div>
