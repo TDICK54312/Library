@@ -355,13 +355,13 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		if($type == 1) {
+		if($stype == 1) {
 			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE TITLE LIKE '%$cnt%';"; 
 		}
-		else if($type == 2) {
+		else if($stype == 2) {
 			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE (AUTHOR_FNAME LIKE '%$cnt%' OR AUTHOR_LNAME LIKE '%$cnt') ;"; 
 		}
-		else if($type == 3) {
+		else if($stype == 3) {
 			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE ISBN LIKE '$cnt';"; 
 		}
 		
