@@ -86,6 +86,48 @@
 ?>
 <div id="content">
 	<h1>Add User</h1>
+     <style type="text/css">
+		.login-cont {
+			width: 30%;
+			display: block;
+			margin: 0 auto;
+		}
+		.login-cont label {
+			width: 100%;
+		}
+		.login-cont input, .login-cont input[type=email], .login-cont input[type=password] {
+			width: 95%;
+			-webkit-box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
+			-moz-box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
+			box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
+			border-radius: 15px 15px 15px 15px;
+			-moz-border-radius: 15px 15px 15px 15px;
+			-webkit-border-radius: 15px 15px 15px 15px;
+			border: 1px solid #CF8283;
+			height: 50px;
+			margin-bottom: 20px;
+			font-size: 20px;
+			padding-left: 8px;
+			color: #848484;
+			text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
+		}
+		.login-cont input[type=submit] {
+			width: 100%;
+			height: 30px;
+			background-color: #CF8283;
+			font-size: 18px;
+			color: white;
+			border: 0;
+		}
+		.login-cont input[type=submit]:active {
+			background-color: #5A0507;
+			color: #848484;
+			padding-top: 5px;
+			webkit-box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+			-moz-box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+			box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+		}
+	</style>
 	<div class="login-cont">
 		<form id ="loginForm" name="loginForm" method="POST" action="">
 			<div>
@@ -96,18 +138,18 @@
 					<option value="3">Student</option>
 				</select>
 			</div>
-			<label for="firstname">First Name:</label>
-			<input type="text" name="firstname" id="firstname" class="txtfield" tabindex="1">
-			<label for="lastname">Last Name:</label>
-			<input type="text" name="lastname" id="lastname" class="txtfield" tabindex="2">
-			<label for="email">Email:</label>
-			<input type="text" name="email" id="email" class="txtfield" tabindex="3">
-			<label for="address">Address:</label>
-			<input type="text" name="address" id="address" class="txtfield" tabindex="4">
-			<label for="password">Enter Password:</label>
-			<input type="password" name="password" id="password" class="txtfield" tabindex="5">
-			<label for="re-password">Enter Password:</label>
-			<input type="password" name="re-password" id="re-password" class="txtfield" tabindex="6">
+			<label for="firstname">First Name*:</label>
+			<input type="text" name="firstname" id="firstname" class="txtfield" tabindex="1" required>
+			<label for="lastname">Last Name*:</label>
+			<input type="text" name="lastname" id="lastname" class="txtfield" tabindex="2" required>
+			<label for="email">Email*:</label>
+			<input type="text" name="email" id="email" class="txtfield" tabindex="3" required>
+			<label for="address">Address*:</label>
+			<input type="text" name="address" id="address" class="txtfield" tabindex="4" required>
+			<label for="password">Enter Password*:</label>
+			<input type="password" name="password" id="password" class="txtfield" tabindex="5" required>
+			<label for="re-password">Re-enter Password*:</label>
+			<input type="password" name="re-password" id="re-password" class="txtfield" tabindex="6" required>
 			<div class="center"><input type="submit" name="submit" id="loginbtn" value="send"></div>
 		</form>
 	</div>
