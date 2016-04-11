@@ -76,7 +76,9 @@
 		}
 		if($everythingSet == true && $uploadOk == 1){
 			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $_FILES['image']['tmp_name']);
-			echo "<pre> <?php vardump($_POST['image']) ?></pre>";
+			echo "<pre>";
+			echo vardump($_POST['image']);
+			echo "</pre>"
 			echo $result;
 		}	
 	}
