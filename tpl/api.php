@@ -58,7 +58,7 @@
 		
 		echo '<div class="book-cont">';
 		echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
-		echo '<form id = "aBook" name="aBook" method="POST" action=""';
+		echo '<form class="inv-form" name="aBook" method="POST" action=""';
 		echo '<ul style="text-align: left; margin-left: 5%;">';
 		echo '<li><strong>Title</strong>: '.$title.'</li>';
 		echo '<li><strong>Author</strong>: '.$author.'</li>';
@@ -105,7 +105,7 @@
 			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/><br>';
 			echo "<strong>$title</strong><br>";
 			echo $author;
-			echo '<form id = "inv" name="inv" method="POST" action=""';
+			echo '<form class="inv-form" name="inv" method="POST" action=""';
 			echo "<input type='hidden' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
 			echo "<input type='hidden' name='author' id='author' class='txtfield' value='$author' readonly tabindex='2'>";
 			echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly>";

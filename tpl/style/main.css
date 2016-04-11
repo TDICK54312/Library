@@ -21,7 +21,6 @@ body {
 	margin-top: 10px;
 	padding: 15px;
 	background-color: #fff;
-	
 	border-radius: 5px;
 	border-left: #DDDCDC solid 1px;
 	border-right: #DDDCDC solid 1px;
@@ -31,7 +30,6 @@ body {
 
 .book-cont {
 	width: 29%;
-	vertical-align: top;
 	min-width: 280px;
 	display: inline-block;
 	max-width: 400px;
@@ -42,6 +40,16 @@ body {
 .book-cont img {
 	width: 107px;
 	height: 170px;
+}
+.inv-form input[type=submit] {
+	color: #D8282A;
+	text-decoration: underline;
+	font-weight: 700;
+	display: inline;
+}
+.inv-form input[type=submit]:hover {
+	color: #563536;
+	text-decoration: overline;
 }
 @media (min-width: 768px) {
 
