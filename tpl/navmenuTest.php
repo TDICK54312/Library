@@ -30,7 +30,7 @@ $(function(){
 		    		<li><a href="adminAddBook.php">Add Book</a></li>
 		    		<li><a href="adminDeleteUser.php">Delete User</a></li>
 		    		<li><a href="adminDeleteBook.php">Delete Book</a></li>
-		    		<li><a href="#">Reports</a></li>
+		    		<li><a href="viewReports.php">Reports</a></li>
 	    		</ul>
 	    	</li>
 	    	<li><a href="adminProfile.php">My Account</a></li>
