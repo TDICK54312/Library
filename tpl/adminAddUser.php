@@ -95,7 +95,7 @@
 		.login-cont label {
 			width: 100%;
 		}
-		.login-cont input[type=email], .login-cont input[type=password] {
+		.login-cont input, .login-cont input[type=email], .login-cont input[type=password] {
 			width: 95%;
 			-webkit-box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
 			-moz-box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
