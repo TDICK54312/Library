@@ -33,6 +33,7 @@
 		mysqli_close($con);
 		
 		return $didItWork;*/
+		mysqli_close($con);
 		return $date;
 	}
 	function lookAtBook($isbn){
