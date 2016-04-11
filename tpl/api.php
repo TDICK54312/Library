@@ -16,25 +16,24 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		$date = date('Y-m-d', strtotime("+7 days"));
+		$date = $date . " 21:00:00";
 		
 		$getinventoryIDQuery = "SELECT INVENTORY_ID FROM Inventory WHERE Inventory.ISBN_NUMBER = $isbn;";
 		
 		$invId = mysqli_query($con, $getinventoryIDQuery);
 		$arrayInvID = mysqli_fetch_row($invId);
+		$invID_NEW = $arrayInvID[0];
 		
 		//$dueDate = date
 
-		/*$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$arrayInvID', '$userID', '$date', '0', '0.00');";
+		$addTransactionQuery = "INSERT INTO Transaction (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID_NEW', '$userID', '$date', '0', '0.00');";
 		
 		if (!mysqli_query($con,$addTransactionQuery)){
 				$didItWork = mysqli_error($con);
   		}
 		
 		mysqli_close($con);
-		
-		return $didItWork;*/
-		mysqli_close($con);
-		return $date;
+		return $didItWork;
 	}
 	function lookAtBook($isbn){
 		include 'dbConnection.php';
