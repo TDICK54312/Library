@@ -148,7 +148,7 @@
 			<input type="text" name="address" id="address" class="txtfield" tabindex="4">
 			<label for="password">Enter Password:</label>
 			<input type="password" name="password" id="password" class="txtfield" tabindex="5">
-			<label for="re-password">Enter Password:</label>
+			<label for="re-password">Re-enter Password:</label>
 			<input type="password" name="re-password" id="re-password" class="txtfield" tabindex="6">
 			<div class="center"><input type="submit" name="submit" id="loginbtn" value="send"></div>
 		</form>
