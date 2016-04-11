@@ -1,14 +1,15 @@
 <?php 
-
+	echo "$_POST['tp']";
+	echo "$_POST['c']";
+	
 	if($_POST['tp' ] == "Title")
 		$type = 1;
-	else if($_POST['tp'] == 'Author')
+	else if($_POST['tp'] == "Author")
 		$type = 2;
-	else if($_POST['tp'] == 'ISBN')
+	else if($_POST['tp'] == "ISBN")
 		$type = 3;
 	else {
 		echo "Invalid input.";
-		$type = 0;
 	}
 	
 	$content = htmlspecialchars($_POST['c']);
@@ -22,11 +23,7 @@
 <div id="content">
 	<?php 
 	echo "$type";
-	if(isset($type) && isset($content))
 		search($type,$content);
-	else
-		echo $type;
-		echo "<p>Invalid search.</p>";
 		
 	 ?>
 
