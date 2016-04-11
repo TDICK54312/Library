@@ -78,12 +78,12 @@
 		if($everythingSet == true && $uploadOk == 1){
 			$data = file_get_contents($_FILES['image']['tmp_name']);
             $dataimage = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+            $isbn = $_POST['isbn'];
             
-			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $dataimage);
-			echo $dataimage;
-			echo print_r($_FILES);
+			$result = addBook($isbn, $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $dataimage);
+			//echo $dataimage;
 			
-			echo $result;
+			//echo $result;
 		}	
 	}
 ?>
