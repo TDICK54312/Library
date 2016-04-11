@@ -52,6 +52,7 @@ body {
 .inv-form input[type=submit]:hover {
 	color: #563536;
 	text-decoration: overline;
+	cursor: pointer;
 }
 @media (min-width: 768px) {
 
