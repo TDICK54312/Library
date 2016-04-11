@@ -3,6 +3,7 @@
 ?>
 <?php
 	include 'api.php';
+	include 'header.php';
 	$userID = 0;
 	$userEmail = " ";
 	$userIDSet = false;
@@ -29,7 +30,7 @@
 		echo $result;
 	}
 ?>
-<!doctype html>
+<!--<!doctype html>
 <html>
 <head>
  <meta charset='utf-8'>
@@ -47,7 +48,7 @@
 <div id="header"><img src="images/header.jpg" style="width: 100%;"></div>
 <div id="navarea" style="text-align: center; display: block; margin: 0 auto;">
 	<?php include_once('navmenuTest.php'); ?>
-</div>
+</div>-->
 <div id="content">
 	<h1>Delete Book</h1>
 	<div class="login-cont">
@@ -60,5 +61,4 @@
 		</form>
 	</div>
 </div>
-</body>
-</html>
+<?php include 'footer.php';
