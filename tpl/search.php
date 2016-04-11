@@ -1,6 +1,6 @@
 <?php 
-	echo "$_POST['tp']";
-	echo "$_POST['c']";
+	echo $_POST['tp'];
+	echo $_POST['c'];
 	
 	if($_POST['tp' ] == "Title")
 		$type = 1;
