@@ -66,6 +66,9 @@
 		echo '<li><strong>Publisher</strong>: '.$publisher.'</li>';
 		echo '<li><strong>Summary</strong>: '.$summary.'</li>';
 		echo '</ul>';
+		echo '<br><br>';
+		echo '<p><strong>Books in Inventory:</strong> '.$in.'</p>';
+		echo '<p><strong>Inv. ID:</strong> '.$invID.'</p>';
 		echo "<input type='hidden' name='genre' id='genre' class='txtfield' value='$genre' readonly tabindex='1'>";
 		
 		echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly tabindex='2'>";
