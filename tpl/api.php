@@ -59,12 +59,12 @@
 		echo '<div class="book-cont">';
 		echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
 		echo '<form id = "aBook" name="aBook" method="POST" action=""';
-		echo '<ul style="text-align: left;">';
-		echo '<li>Title: '.$title.'</li>';
-		echo '<li>Author: '.$author.'</li>';
-		echo '<li>Genre: '.$genre.'</li>';
-		echo '<li>Publisher: '.$publisher.'</li>';
-		echo '<li>Summary: '.$summary.'</li>';
+		echo '<ul style="text-align: left; margin-left: 5%;">';
+		echo '<li><strong>Title</strong>: '.$title.'</li>';
+		echo '<li><strong>Author</strong>: '.$author.'</li>';
+		echo '<li><strong>Genre</strong>: '.$genre.'</li>';
+		echo '<li><strong>Publisher</strong>: '.$publisher.'</li>';
+		echo '<li><strong>Summary</strong>: '.$summary.'</li>';
 		echo '</ul>';
 		echo "<input type='hidden' name='genre' id='genre' class='txtfield' value='$genre' readonly tabindex='1'>";
 		
