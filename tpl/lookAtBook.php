@@ -7,6 +7,7 @@
 <?php if(!empty($_POST['submit'])){
 		if($_SESSION["userinfo"][1] == 1 || $_SESSION["userinfo"][1] == 2 || $_SESSION["userinfo"][1] == 3){
 			$result = addToUserRental($_SESSION["userinfo"][0], $_POST['isbn']);
+			echo "<p>$result</p>";
 		}
 		else{
 			echo "<p>Please Login in order to add this book.</p>";
