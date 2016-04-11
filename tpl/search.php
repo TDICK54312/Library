@@ -1,9 +1,5 @@
 <?php 
 
-	// search function
-	include_once('header.php');
-	include('api.php');	
-	
 	if($_POST['tp' ] == "Title")
 		$type = 1;
 	else if($_POST['tp'] == 'Author')
@@ -16,12 +12,16 @@
 	}
 	
 	$content = htmlspecialchars($_POST['c']);
+	// search function
+	include_once('header.php');
+	include('api.php');	
 	
 		
 
 ?>
 <div id="content">
 	<?php 
+	echo "$type";
 	if(isset($type) && isset($content))
 		search($type,$content);
 	else
