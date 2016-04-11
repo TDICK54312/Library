@@ -115,6 +115,36 @@
 			
 		}
 	}
+	function getNewBooksInventory(){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$queryBookTable = "SELECT Book.ISBN_NUMBER, Book.TITLE, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.IMAGE FROM Book, Inventory, NewBooks WHERE Book.ISBN_NUMBER = Inventory.ISBN_NUMBER AND Inventory.AMOUNT_IN != '0' AND Book.BOOK_ID = NewBooks.BOOK_ID;";
+		
+		$result = mysqli_query($con, $queryBookTable);
+		mysqli_close($con);
+		
+		while($row = mysqli_fetch_array($result)){
+			$isbn = $row['ISBN_NUMBER'];
+			$title = $row['TITLE'];
+			$author = $row['AUTHOR_FNAME'] . " " . $row['AUTHOR_LNAME'];
+			$image = $row['IMAGE'];
+			
+			echo '<div class="book-cont">';
+			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/><br>';
+			echo "<strong>$title</strong><br>";
+			echo $author;
+			echo '<form class="inv-form" name="inv" method="POST" action=""';
+			echo "<input type='hidden' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
+			echo "<input type='hidden' name='author' id='author' class='txtfield' value='$author' readonly tabindex='2'>";
+			echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly>";
+			echo '<input type="submit" name="submit" id="loginbtn" value="View Book">';
+			echo '</form>';
+			echo '</div>';
+			
+		}
+	}
 	function updateTimeLoggedIn($userID){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
@@ -281,9 +311,15 @@
 			if (!mysqli_query($con,$query)){
 				$didItWork = mysqli_error($con);
   			}
+  			$newBookID = mysqli_insert_id($con);
   			if (!mysqli_query($con,$addToInventoryQuery)){
 				$didItWork2 = mysqli_error($con);
   			}
+  			$newBookQuery = "INSERT INTO NewBooks (BOOK_ID) VALUES ('$newBookID');";
+  			if (!mysqli_query($con,$newBookQuery)){
+				$didItWork2 = mysqli_error($con);
+  			}
+  			
 		}
 		else{
 			$addToInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = AMOUNT_IN + 1 WHERE ISBN_NUMBER = '$isbn';";

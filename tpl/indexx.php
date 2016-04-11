@@ -1,5 +1,5 @@
 <?php
-	
+	include('api.php');
 	include_once('header.php');
 ?>
 
@@ -11,7 +11,8 @@ Fusce at iaculis urna. Cras sagittis, quam nec porttitor finibus, purus felis ef
 
 	<h1>New Additions</h1>
 	<div>
-    	<div class="book-cont">
+	<?php getNewBooksInventory(); ?>
+    	<!--<div class="book-cont">
         	<img src="http://placehold.it/150x120.jpg"><br>
             <a href="#">Book Title</a><br>
             Publisher
@@ -40,7 +41,7 @@ Fusce at iaculis urna. Cras sagittis, quam nec porttitor finibus, purus felis ef
         	<img src="http://placehold.it/150x120.jpg"><br>
             <a href="#">Book Title</a><br>
             Publisher
-        </div>
+        </div>-->
     </div>
 </div>
 <?php include_once('footer.php'); ?>
