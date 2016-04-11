@@ -1,5 +1,6 @@
 <?php
 $indicesServer = array('PHP_SELF',
+'PATH',
 'argv',
 'argc',
 'GATEWAY_INTERFACE',
