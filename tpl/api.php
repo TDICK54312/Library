@@ -311,14 +311,14 @@
 			if (!mysqli_query($con,$query)){
 				$didItWork = mysqli_error($con);
   			}
-  			//$newBookID = mysqli_insert_id($con);
+  			$newBookID = mysqli_insert_id($con);
   			if (!mysqli_query($con,$addToInventoryQuery)){
 				$didItWork2 = mysqli_error($con);
   			}
-  			//$newBookQuery = "INSERT INTO NewBooks (BOOK_ID) VALUES ('$newBookID');";
-  			/*if (!mysqli_query($con,$newBookQuery)){
+  			$newBookQuery = "INSERT INTO NewBooks (BOOK_ID) VALUES ('$newBookID');";
+  			if (!mysqli_query($con,$newBookQuery)){
 				$didItWork2 = mysqli_error($con);
-  			}*/
+  			}
   			
 		}
 		else{
