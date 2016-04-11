@@ -76,10 +76,10 @@
 		}
 		if($everythingSet == true && $uploadOk == 1){
 			$data = file_get_contents($_FILES['image']['tmp_name']);
-            $data = mysqli_real_escape_string($data);
+            $data = addslashes($data);
             
-			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $data);
-			echo $data;
+			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $_POST['image']);
+			echo $_POST['image'];
 			echo print_r($_FILES);
 			
 			echo $result;
