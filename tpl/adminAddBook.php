@@ -34,6 +34,7 @@
 			$everythingSet = false;
 			echo "Summary not entered!";
 		}
+		/*
 		if(!empty($_POST['image'])){
 			$target_file = basename($_FILES['image']['name']);
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -55,7 +56,7 @@
 				//echo "Sorry, file already exists.";
 				$uploadOk = 0;
 			}*/
-			// Check file size
+			/*// Check file size
 			if ($_FILES['image']['size'] > 64000) {
 				echo "Sorry, your file is too large.";
 				$uploadOk = 0;
@@ -67,19 +68,19 @@
 				$uploadOk = 0;
 			}*/
 			
-			// Check if $uploadOk is set to 0 by an error
+			/*// Check if $uploadOk is set to 0 by an error
 			if ($uploadOk == 0) {
 				echo "Sorry, your file was not uploaded.";
 				
 				// if everything is ok, try to upload file
 			} 
-		}
+		}*/
 		if($everythingSet == true && $uploadOk == 1){
 			$data = file_get_contents($_FILES['image']['tmp_name']);
-            $dataimage = addslashes($data);
+            $dataimage = addslashes(file_get_contents($_FILES['image']['tmp_name']));
             
 			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $dataimage);
-			echo $_POST['image'];
+			echo $dataimage;
 			echo print_r($_FILES);
 			
 			echo $result;
