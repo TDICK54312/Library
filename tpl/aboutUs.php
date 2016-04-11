@@ -25,7 +25,7 @@
 	<div class="aboutprofile-cont">
 		<div id="aboutpic">
 			<img src="http://placehold.it/150x120.jpg">
-			<p> Geoffrey loves databases! </p>
+			<p> Geoffrey loves databases! But hates pictures! </p>
 		</div>
 	</div>
 	<h1>Sok Chiv : Web Developer</h1>
