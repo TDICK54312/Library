@@ -138,18 +138,18 @@
 					<option value="3">Student</option>
 				</select>
 			</div>
-			<label for="firstname">First Name:</label>
-			<input type="text" name="firstname" id="firstname" class="txtfield" tabindex="1">
-			<label for="lastname">Last Name:</label>
-			<input type="text" name="lastname" id="lastname" class="txtfield" tabindex="2">
-			<label for="email">Email:</label>
-			<input type="text" name="email" id="email" class="txtfield" tabindex="3">
-			<label for="address">Address:</label>
-			<input type="text" name="address" id="address" class="txtfield" tabindex="4">
-			<label for="password">Enter Password:</label>
-			<input type="password" name="password" id="password" class="txtfield" tabindex="5">
-			<label for="re-password">Re-enter Password:</label>
-			<input type="password" name="re-password" id="re-password" class="txtfield" tabindex="6">
+			<label for="firstname">First Name*:</label>
+			<input type="text" name="firstname" id="firstname" class="txtfield" tabindex="1" required>
+			<label for="lastname">Last Name*:</label>
+			<input type="text" name="lastname" id="lastname" class="txtfield" tabindex="2" required>
+			<label for="email">Email*:</label>
+			<input type="text" name="email" id="email" class="txtfield" tabindex="3" required>
+			<label for="address">Address*:</label>
+			<input type="text" name="address" id="address" class="txtfield" tabindex="4" required>
+			<label for="password">Enter Password*:</label>
+			<input type="password" name="password" id="password" class="txtfield" tabindex="5" required>
+			<label for="re-password">Re-enter Password*:</label>
+			<input type="password" name="re-password" id="re-password" class="txtfield" tabindex="6" required>
 			<div class="center"><input type="submit" name="submit" id="loginbtn" value="send"></div>
 		</form>
 	</div>
