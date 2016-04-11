@@ -19,8 +19,11 @@
 ?>
 <div id="content">
 	<?php 
-	 if(isset($type) && isset($content))
+	 if(isset($type) && isset($content)) {
+	 	echo "$type";
+		echo  "$content";
 		search($type,$content);
+	 }
 	else 
 		echo "Invalid search.";
 		
