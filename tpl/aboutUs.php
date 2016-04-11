@@ -24,7 +24,7 @@
 	<h1>Geoffrey Charleston : Database Administrator</h1>
 	<div class="aboutprofile-cont">
 		<div id="aboutpic">
-			<img src="http://placehold.it/150x120.jpg">
+			<img src="images/gcharleston.jpg">
 			<p> Geoffrey loves databases! But hates pictures! </p>
 		</div>
 	</div>
