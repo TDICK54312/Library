@@ -75,10 +75,10 @@
 			} 
 		}
 		if($everythingSet == true && $uploadOk == 1){
-			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $_FILES['image']['tmp_name']);
-			echo "<pre>";
-			echo print_r($_FILES['image']);
-			echo "</pre>";
+			$data = file_get_contents($_FILES['image']['tmp_name']);
+            $data = mysql_real_escape_string($data);
+            
+			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $data);
 			echo $result;
 		}	
 	}
