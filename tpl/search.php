@@ -1,7 +1,4 @@
 <?php 
-	echo $_POST['tp'];
-	echo $_POST['c'];
-	
 	if($_POST['tp' ] == "Title")
 		$type = 1;
 	else if($_POST['tp'] == "Author")
@@ -22,8 +19,10 @@
 ?>
 <div id="content">
 	<?php 
-	echo "$type";
+	 if(isset($type) && isset($content))
 		search($type,$content);
+	else 
+		echo "Invalid search.";
 		
 	 ?>
 
