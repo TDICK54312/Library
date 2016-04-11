@@ -4,6 +4,7 @@
 
 	include 'api.php';
 	$everythingSet = true;
+	$uploadOk = 1;
 	if(!empty($_POST['submit'])){
 		if(empty($_POST['booktitle'])){
 			$everythingSet = false;
@@ -35,7 +36,6 @@
 		}
 		if(!empty($_POST['image'])){
 			$target_file = basename($_FILES['image']['name']);
-			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 			
 			// Check if image file is a actual image or fake image
@@ -56,7 +56,7 @@
 				$uploadOk = 0;
 			}*/
 			// Check file size
-			if ($_FILES['image']['size'] < 64000) {
+			if ($_FILES['image']['size'] > 64000) {
 				echo "Sorry, your file is too large.";
 				$uploadOk = 0;
 			}
@@ -74,8 +74,8 @@
 				// if everything is ok, try to upload file
 			} 
 		}
-		if($everythingSet == true){
-			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $_POST['image']);
+		if($everythingSet == true && $uploadOk == 1){
+			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $_FILES['image']['tmp_name']);
 			echo var_dump($_POST['image']);
 			echo $result;
 		}	
