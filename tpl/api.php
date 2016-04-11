@@ -59,24 +59,24 @@
 		echo '<div class="book-cont">';
 		echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
 		echo '<form id = "aBook" name="aBook" method="POST" action=""';
-		echo '<ul>\n';
-		echo '\t<li>Title: '.$title.'</li>\n';
-		echo '\t<li>Author: '.$author.'</li>\n';
-		echo '\t<li>Genre: '.$genre.'</li>\n';
-		echo '\t<li>Publisher: '.$publisher.'</li>\n';
-		echo '\t<li>Summary: '.$summary.'</li>\n';
-		echo '</ul>\n';
-		echo "<input type='text' name='genre' id='genre' class='txtfield' value='$genre' readonly tabindex='1'>";
+		echo '<ul style="text-align: left;">';
+		echo '<li>Title: '.$title.'</li>';
+		echo '<li>Author: '.$author.'</li>';
+		echo '<li>Genre: '.$genre.'</li>';
+		echo '<li>Publisher: '.$publisher.'</li>';
+		echo '<li>Summary: '.$summary.'</li>';
+		echo '</ul>';
+		echo "<input type='hidden' name='genre' id='genre' class='txtfield' value='$genre' readonly tabindex='1'>";
 		
-		echo "<input type='text' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly tabindex='2'>";
+		echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly tabindex='2'>";
 		
-		echo "<input type='text' name='author' id='author' class='txtfield' value='$author' readonly tabindex='3'>";
+		echo "<input type='hidden' name='author' id='author' class='txtfield' value='$author' readonly tabindex='3'>";
 		
-		echo "<input type='text' name='publisher' id='publisher' class='txtfield' value='$publisher' readonly tabindex='4'>";
+		echo "<input type='hidden' name='publisher' id='publisher' class='txtfield' value='$publisher' readonly tabindex='4'>";
 		
-		echo "<input type='text' name='in' id='in' class='txtfield' value='$in' readonly tabindex='5'>";
+		echo "<input type='hidden' name='in' id='in' class='txtfield' value='$in' readonly tabindex='5'>";
 		
-		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly cols='30' rows='4' tabindex='6'>";
+		echo "<input type='hidden' name='summary' id='summary' class='txtfield' value='$summary' readonly cols='30' rows='4' tabindex='6'>";
 		echo "<input type='hidden' name='invID' id='invID' class='txtfield' value='$invID' readonly>";
 		echo '<input type="submit" name="submit" id="loginbtn" value="Check out">';
 		echo '</form>';
