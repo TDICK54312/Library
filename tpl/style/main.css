@@ -46,6 +46,8 @@ body {
 	text-decoration: underline;
 	font-weight: 700;
 	display: inline;
+	background-color: transparent;
+	border: 0;
 }
 .inv-form input[type=submit]:hover {
 	color: #563536;
