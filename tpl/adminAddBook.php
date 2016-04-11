@@ -79,7 +79,7 @@
             //$data = mysql_real_escape_string($data);
             
 			$result = addBook($_POST['isbn'], $_POST['authorfname'], $_POST['authorlname'], $_POST['pub'], $_POST['summary'], $_POST['genre'], $_POST['booktitle'], $data);
-			echo var_dump($_FILES['image']);
+			echo print_r($_FILES);
 			echo $result;
 		}	
 	}
