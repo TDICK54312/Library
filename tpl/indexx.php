@@ -26,36 +26,6 @@ Fusce at iaculis urna. Cras sagittis, quam nec porttitor finibus, purus felis ef
 	<h1>New Additions</h1>
 	<div>
 	<?php getNewBooksInventory(); ?>
-    	<!--<div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>-->
     </div>
 </div>
 <?php include_once('footer.php'); ?>
