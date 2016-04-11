@@ -50,7 +50,7 @@
 	<?php include_once('navmenuTest.php'); ?>
 </div>-->
 <div id="content">
-	<h1>Delete Book</h1>
+	<h1>Delete User</h1>
 	<div class="login-cont">
 		<form id ="loginForm" name="loginForm" method="POST" action="">
 			<label for="email">Email:</label>
