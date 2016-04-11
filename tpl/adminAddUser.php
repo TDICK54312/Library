@@ -104,9 +104,9 @@
 			-moz-border-radius: 15px 15px 15px 15px;
 			-webkit-border-radius: 15px 15px 15px 15px;
 			border: 1px solid #CF8283;
-			height: 50px;
+			height: 25px;
 			margin-bottom: 20px;
-			font-size: 20px;
+			font-size: 15px;
 			padding-left: 8px;
 			color: #848484;
 			text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
@@ -131,7 +131,7 @@
 	<div class="login-cont">
 		<form id ="loginForm" name="loginForm" method="POST" action="">
 			<div>
-				<label for="role">Role:</label>
+				<label for="role">Role*:</label>
 				<select name="role" id="role" class="txtfield">
 					<option value="1">Administrator</option>
 					<option value="2">Teacher</option>
@@ -143,7 +143,7 @@
 			<label for="lastname">Last Name*:</label>
 			<input type="text" name="lastname" id="lastname" class="txtfield" tabindex="2" required>
 			<label for="email">Email*:</label>
-			<input type="text" name="email" id="email" class="txtfield" tabindex="3" required>
+			<input type="email" name="email" id="email" class="txtfield" tabindex="3" required>
 			<label for="address">Address*:</label>
 			<input type="text" name="address" id="address" class="txtfield" tabindex="4" required>
 			<label for="password">Enter Password*:</label>
