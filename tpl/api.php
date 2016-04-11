@@ -11,6 +11,14 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function getRentedBooks($userID){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		//i was working here
+		$query = "SELECT Transactions.RETURN_DATE, Transactions.DID_RETURN, Transactions.AMOUNT_DUE, Inventory.ISBN_NUMBER , Book.TITLE FROM Transactions, Inventory, Book WHERE Transactions.USER_ID = '$userID' AND Transaction.INVENTORY_ID = Inventory.INVENTORY_ID;";
+	}
 	function addToUserRental($userID, $isbn){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
