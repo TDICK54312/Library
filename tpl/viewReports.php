@@ -5,8 +5,10 @@
 ?>
 <div id="content">
 	<h1>Run and View Report!</h1>
-	<a href="viewUsersReport.php">View Users</a>
-	<a href="viewTransactionsReport.php">View Transactions</a>
-	<a href="viewBooksReport">View Books</a>
+	<ul style="text-align: left; margin-left: 5%;">
+		<li><a href="viewUsersReport.php">View Users</a></li><br>
+		<li><a href="viewTransactionsReport.php">View Transactions</a></li><br>
+		<li><a href="viewBooksReport">View Books</a></li><br>
+	</ul>
 </div>
 <?php include_once('footer.php'); ?>
