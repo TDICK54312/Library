@@ -71,7 +71,7 @@
 		echo '<label for="summary"> Summary: </label>';
 		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly cols='30' rows='4' tabindex='6'>";
 		echo "<input type='hidden' name='invID' id='invID' class='txtfield' value='$invID' readonly>";
-		echo '<input type="submit" name="submit" id="loginbtn" value="View">';
+		echo '<input type="submit" name="submit" id="loginbtn" value="Check out">';
 		echo '</form>';
 		echo '</div>';
 	}
@@ -99,7 +99,7 @@
 			echo "<input type='hidden' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
 			echo "<input type='hidden' name='author' id='author' class='txtfield' value='$author' readonly tabindex='2'>";
 			echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly>";
-			echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
+			echo '<input type="submit" name="submit" id="loginbtn" value="View Book">';
 			echo '</form>';
 			echo '</div>';
 			
