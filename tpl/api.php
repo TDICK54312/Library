@@ -71,7 +71,7 @@
 		echo '<label for="summary"> Summary: </label>';
 		echo "<input type='textarea' name='summary' id='summary' class='txtfield' value='$summary' readonly cols='30' rows='4' tabindex='6'>";
 		echo "<input type='hidden' name='invID' id='invID' class='txtfield' value='$invID' readonly>";
-		echo '<input type="submit" name="submit" id="loginbtn" value="Check Out">';
+		echo '<input type="submit" name="submit" id="loginbtn" value="View">';
 		echo '</form>';
 		echo '</div>';
 	}
