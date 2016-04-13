@@ -372,6 +372,45 @@
   		return $didItWork2;
 	}
 	
+	function search($stype, $cnt) {
+		include ('dbConnection.php');
+		// 1 = title search
+		// 2 = author search
+		// 3 = isbn search
+		
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		if($stype == 1) {
+			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE TITLE LIKE '%$cnt%';"; 
+		}
+		else if($stype == 2) {
+			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE (AUTHOR_FNAME LIKE '%$cnt%' OR AUTHOR_LNAME LIKE '%$cnt') ;"; 
+		}
+		else if($stype == 3) {
+			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE ISBN LIKE '$cnt';"; 
+		}
+		
+		$result = mysqli_query($con,$query);
+		
+		echo '<table width="100%" cellspacing="0" cellpadding="0">';
+			echo '<tr>';
+			echo '   <td><strong>Title</strong></td>';
+			echo '	<td><strong>ISBN</strong></td>';
+			echo '	<td><strong>Quantity Avail.</strong></td>';
+			echo '</tr>';
+		
+		while($row = mysqli_fetch_array($result)) {
+			
+			echo '<tr>';
+			echo '	<td>'.$row['TITLE'].'</td>';
+			echo '	<td>'.$row['ISBN'].'</td>';
+			echo '	<td>'.$row['Inv'].'</td>';
+			echo '</tr>';
+		}
+		echo '</table>';
+	}
+	
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
 		include 'dbConnection.php';
 		
