@@ -5,8 +5,8 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$username = mysql_real_escape_string($username);
-		$password = mysql_real_escape_string($password);
+		$username = mysqli_real_escape_string($username);
+		$password = mysqli_real_escape_string($password);
 		
 		$result = mysqli_query($con,"SELECT * FROM $tableName WHERE USER_EMAIL = '$username' AND PASSWORD = '$password'");
 		$array = mysqli_fetch_row($result);
@@ -20,7 +20,7 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$userID = mysql_real_escape_string($userID);
+		$userID = mysqli_real_escape_string($userID);
 		
 		//i was working here
 		$query = "SELECT Transactions.RETURN_DATE, Transactions.DID_RETURN, Transactions.AMOUNT_DUE, Inventory.ISBN_NUMBER , Book.TITLE FROM Transactions, Inventory, Book WHERE Transactions.USER_ID = '$userID' AND Transaction.INVENTORY_ID = Inventory.INVENTORY_ID;";
@@ -32,9 +32,9 @@
 		$date = date('Y-m-d', strtotime("+7 days"));
 		$date = $date . " 21:00:00";
 		
-		$date = mysql_real_escape_string($date);
-		$userID = mysql_real_escape_string($userID);
-		$isbn = mysql_real_escape_string($isbn);
+		$date = mysqli_real_escape_string($date);
+		$userID = mysqli_real_escape_string($userID);
+		$isbn = mysqli_real_escape_string($isbn);
 		$getinventoryIDQuery = "SELECT INVENTORY_ID FROM Inventory WHERE Inventory.ISBN_NUMBER = $isbn;";
 		
 		$invId = mysqli_query($con, $getinventoryIDQuery);
@@ -63,7 +63,7 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$isbn = mysql_real_escape_string($isbn);
+		$isbn = mysqli_real_escape_string($isbn);
 		//$query = "SELECT  FROM Book WHERE ISBN_NUMBER = '$isbn';";
 		$query = "SELECT Book.TAG, Book.PUBLISHER, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.SUMMARY, Inventory.AMOUNT_IN, Inventory.INVENTORY_ID, Book.IMAGE, Book.TITLE FROM Book, Inventory WHERE Book.ISBN_NUMBER = '$isbn' AND Inventory.ISBN_NUMBER = '$isbn';";
 		
@@ -175,7 +175,7 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$userID = mysql_real_escape_string($userID);
+		$userID = mysqli_real_escape_string($userID);
 		$query = "UPDATE User SET LAST_ACTIVITY = now() WHERE USER_ID = '$userID';";
 		
 		$result = mysqli_query($con, $query);
@@ -188,8 +188,8 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$userID = mysql_real_escape_string($userID);
-		$role = mysql_real_escape_string($role);
+		$userID = mysqli_real_escape_string($userID);
+		$role = mysqli_real_escape_string($role);
 		
 		if($role == 1){
 			$query = "SELECT * FROM Administrator WHERE USER_ID = '$userID';";
@@ -211,8 +211,9 @@
 		include 'dbConnection.php';
 		
 		//Need to check if the user has any fines or transactions still
-		$userID = mysql_real_escape_string($userID);
-		$usersEmail = mysql_real_escape_string($usersEmail);
+		$userID = mysqli_real_escape_string($userID);
+		$usersEmail = mysqli_real_escape_string($usersEmail);
+		
 		//query
 		$getRoleQuery = "SELECT USER_ROLE FROM User WHERE USER_ID = '$usersID' AND USER_EMAIL = '$usersEmail'";
 		$deleteUserQuery = "DELETE FROM User WHERE User.USER_ID = '$usersID' AND User.USER_EMAIL = '$usersEmail';";
@@ -261,13 +262,14 @@
 	}
 	function deleteBook($isbn, $numToRemove){
 		include 'dbConnection.php';
-		$checkInventoryQuery = "SELECT AMOUNT_IN, AMOUNT_OUT FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
 		$message = "";
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$isbn = mysql_real_escape_string($isbn);
-		$numToRemove = mysql_real_escape_string($numToRemove);
+		$isbn = mysqli_real_escape_string($isbn);
+		$numToRemove = mysqli_real_escape_string($numToRemove);
+		
+		$checkInventoryQuery = "SELECT AMOUNT_IN, AMOUNT_OUT FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
 		
 		$result = mysqli_query($con, $checkInventoryQuery);
 		$arrayInventory = mysqli_fetch_row($result);
@@ -329,6 +331,16 @@
 		
 		$didItWork = " ";
 		$didItwork2 = " ";
+		
+		$isbn = mysqli_real_escape_string($isbn);
+		$authorFname = mysqli_real_escape_string($authorFname);
+		$authorLname = mysqli_real_escape_string($authorLname);
+		$publisher = mysqli_real_escape_string($publisher);
+		$summary = mysqli_real_escape_string($summary);
+		$tag = mysqli_real_escape_string($tag);
+		$title = mysqli_real_escape_string($title);
+		$image = mysqli_real_escape_string($image);
+		
 		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME, IMAGE) VALUES ('$isbn','$authorFname','$publisher','$summary','$tag','$title','$authorLname', '$image');";
 		$checkIfBookExistQuery = "SELECT ISBN_NUMBER FROM Book WHERE ISBN_NUMBER = '$isbn';";
 		//$addToInventoryQuery = "";
@@ -336,14 +348,6 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$isbn = mysql_real_escape_string($isbn);
-		$authorFname = mysql_real_escape_string($authorFname);
-		$authorLname = mysql_real_escape_string($authorLname);
-		$publisher = mysql_real_escape_string($publisher);
-		$summary = mysql_real_escape_string($summary);
-		$tag = mysql_real_escape_string($tag);
-		$title = mysql_real_escape_string($title);
-		$image = mysql_real_escape_string($image);
 		
 		$checkBook = mysqli_query($con,$checkIfBookExistQuery);
 		
@@ -377,6 +381,9 @@
 		// 1 = title search
 		// 2 = author search
 		// 3 = isbn search
+		
+		$stype = mysqli_real_escape_string($stype);
+		$cnt = mysqli_real_escape_string($cnt);
 		
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
@@ -419,14 +426,14 @@
 		$didItWork = " ";
 		
 		
-		$addThisTable = mysql_real_escape_string($addThisTable);
-		$role = mysql_real_escape_string($role);
-		$pWord = mysql_real_escape_string($pWord);
-		$Email = mysql_real_escape_string($Email;
-		$fname = mysql_real_escape_string($fname);
-		$lname = mysql_real_escape_string($lname);
-		$street = mysql_real_escape_string($street);
-		$maxBooks = mysql_real_escape_string($maxBooks);
+		$addThisTable = mysqli_real_escape_string($addThisTable);
+		$role = mysqli_real_escape_string($role);
+		$pWord = mysqli_real_escape_string($pWord);
+		$Email = mysqli_real_escape_string($Email;
+		$fname = mysqli_real_escape_string($fname);
+		$lname = mysqli_real_escape_string($lname);
+		$street = mysqli_real_escape_string($street);
+		$maxBooks = mysqli_real_escape_string($maxBooks);
 		
 		//queries
 		$addUserQuery = "INSERT INTO User (USER_ROLE, PASSWORD, USER_EMAIL, HOLD) VALUES ('$role', '$pWord', '$Email', 0);";
