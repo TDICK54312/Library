@@ -429,7 +429,7 @@
 		$addThisTable = mysqli_real_escape_string($addThisTable);
 		$role = mysqli_real_escape_string($role);
 		$pWord = mysqli_real_escape_string($pWord);
-		$Email = mysqli_real_escape_string($Email;
+		$Email = mysqli_real_escape_string($Email);
 		$fname = mysqli_real_escape_string($fname);
 		$lname = mysqli_real_escape_string($lname);
 		$street = mysqli_real_escape_string($street);
