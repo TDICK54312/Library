@@ -1,5 +1,5 @@
 <div id="searchDiv">
-	<form id="searchform" name="searchform" method="post" action="">
+	<form id="searchform" name="searchform" method="post" action="search.php">
 		<select name="searchType" id="searchRole" class="txtfield" style="display: inline-block; margin-right: 3px;">
 			<option value="1">Title</option>
 			<option value="2">Author</option>

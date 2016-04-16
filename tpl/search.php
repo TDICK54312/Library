@@ -1,15 +1,18 @@
 <?php 
-	if($_POST['tp' ] == "Title")
-		$type = 1;
-	else if($_POST['tp'] == "Author")
-		$type = 2;
-	else if($_POST['tp'] == "ISBN")
-		$type = 3;
-	else {
-		echo "Invalid input.";
+	$theSearchResult = " ";
+	$checker = false;
+	if(!empty($_POST['submitEnter'])){
+		if(!empty($_POST['searchType'])){
+			$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
+			$checker = true;
+			//echo "<h1>$theSearchResult</h1>";
+		}
+		else{
+			echo "Wrong search";
+		}
 	}
 	
-	$content = htmlspecialchars($_POST['c']);
+	//$content = htmlspecialchars($_POST['c']);
 	// search function
 	include_once('header.php');
 	include('api.php');	
@@ -19,14 +22,9 @@
 ?>
 <div id="content">
 	<?php 
-	 if(isset($type) && isset($content)) {
-	 	echo "$type";
-		echo  "$content";
-		search($type,$content);
-	 }
-	else 
-		echo "Invalid search.";
-		
+	 if($checker == true){
+		 echo "<h1>$theSearchResult</h1>";
+	}	
 	 ?>
 
 </div>
