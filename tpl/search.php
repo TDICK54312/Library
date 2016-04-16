@@ -5,9 +5,11 @@
 	$checker = false;
 	if(!empty($_POST['searchEnter'])){
 		if(!empty($_POST['searchType'])){
-			$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
-			//$checker = $_POST['searchText'];
-			echo "<h1>$theSearchResult</h1>";
+			//$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
+			$checker1 = $_POST['searchText'];
+			$checker2 = $_POST['searchType'];
+			echo "<h1>$checker1</h1>";
+			echo "<h1>$checker2</h1>";
 		}
 		else{
 			echo "Wrong search";
