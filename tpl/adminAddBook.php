@@ -3,6 +3,7 @@
 	include_once('header.php');
 
 	include 'api.php';
+	include('inc_search.php');
 	$everythingSet = true;
 	$uploadOk = 1;
 	if(!empty($_POST['submit'])){

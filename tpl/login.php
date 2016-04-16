@@ -2,6 +2,7 @@
 	include_once('header.php');
 	
 	include 'api.php';
+	include('inc_search.php');
 	if(!empty($_POST['submit'])){
 		if(!empty($_POST['email'])){
 			if(!empty($_POST['password'])){

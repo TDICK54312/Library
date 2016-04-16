@@ -4,6 +4,7 @@
 	include_once('header.php');
 	
 	include 'api.php';
+	include('inc_search.php');
 	$everythingSet = true;
 	if(!empty($_POST['submit'])){
 		if(empty($_POST['isbn'])){

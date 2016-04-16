@@ -4,6 +4,7 @@
 <?php
 	include 'api.php';
 	include 'header.php';
+	include('inc_search.php');
 	$userID = 0;
 	$userEmail = " ";
 	$userIDSet = false;
