@@ -2,6 +2,7 @@
 	include('api.php');
 	include_once('header.php');
 	include('inc_search.php');
+	$checker = false;
 	$everythingSet = true;
 	if(!empty($_POST['submit'])){
 		if(empty($_POST['isbn'])){
@@ -18,7 +19,8 @@
 	if(!empty($_POST['submitEnter'])){
 		if(!empty($_POST['searchType'])){
 			$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
-			echo "<h1>$theSearchResult</h1>";
+			$checker = true;
+			//echo "<h1>$theSearchResult</h1>";
 		}
 		else{
 			echo "Wrong search";
@@ -26,6 +28,7 @@
 	}
 ?>
 <div id="content">
+	<?php if($checker == true){echo "<h1>$theSearchResult</h1>";}?>
 	<h1>Welcome to our Library!</h1>
     <p> Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing elit. Vestibulum in euismod nisl. Proin et ultrices est. Fusce mattis ligula a tellus dignissim, bibendum cursus magna aliquam. Fusce ullamcorper, sapien at dignissim dictum, odio purus placerat lorem, ac eleifend lectus ex vel urna. Vivamus porta accumsan tincidunt. Sed facilisis, erat eu fringilla lacinia, dui velit euismod lectus, tincidunt condimentum sem turpis in leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam convallis pharetra ligula vel maximus. Quisque sem nibh, aliquam non nibh scelerisque, fringilla finibus neque. Sed sagittis sagittis lorem a sagittis. Nulla eget enim sit amet erat commodo aliquet eu eu enim.
 </p><p>
