@@ -18,7 +18,10 @@
 	if(!empty($_POST['submitEnter'])){
 		if(!empty($_POST['searchType'])){
 			$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
-			echo "<h1>" . $theSearchResult . "</h1>";
+			echo "<h1>$theSearchResult</h1>";
+		}
+		else{
+			echo "Wrong search";
 		}
 	}
 ?>
