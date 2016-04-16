@@ -4,10 +4,10 @@
 	$theSearchResult = " ";
 	$checker = false;
 	if(!empty($_POST['searchEnter'])){
-		if(!empty($_POST['searchType'])){
+		if(!empty($_POST['searchText'])){
 			$theSearchResult = searchBar($_POST['searchType'], $_POST['searchText']);
-			$checker1 = $_POST['searchText'];
-			$checker2 = $_POST['searchType'];
+			//$checker1 = $_POST['searchText'];
+			//$checker2 = $_POST['searchType'];
 			print_r(array_values($theSearchResult));
 		}
 		else{

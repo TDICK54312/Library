@@ -395,8 +395,8 @@
 			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.ISBN_NUMBER LIKE '$cnt';"; 
 		}
 		else{
-			$errors2 = "Invalid input";
-			return $errors2;
+			$errors = "Invalid input";
+			return $errors;
 		}
 		
 		$errors = "FAILED TO RUN";
@@ -409,19 +409,6 @@
 			return $resultArray;
 		}
 		return $errors;
-		/*
-		if(!mysqli_query($con,$query)){
-			$theError = mysqli_error($con);
-			mysqli_close($con);
-			return $theError;
-		}
-		else{
-			$result = mysqli_query($con, $query);
-			$resultArray = mysqli_fetch_array($result);
-			mysqli_close($con);
-			return $resultArray;
-		}*/
-		//return $errors;
 		
 	}
 	
