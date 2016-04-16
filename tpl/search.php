@@ -30,9 +30,11 @@
 ?>
 <div id="content">
 	<?php
-		/*foreach($theSearchResult as $value){
-			getSearchResults($value);
-		}*/		
+		foreach($theSearchResult as $value){
+			//getSearchResults($value['ISBN_NUMBER']);
+			$som = $value['ISBN_NUMBER'];
+			echo "<h1>$som</h1>";
+		}		
 	?>
 </div>
 <?php include_once('footer.php'); ?>
