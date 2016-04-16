@@ -401,8 +401,16 @@
 		}
 		
 		$result = mysqli_query($con,$query);
-		$resultArray = mysqli_fetch_array($result);
-		return $resultArray;
+		if(!$result){
+			$theError = mysqli_error($con);
+			mysqli_close($con);
+			return $theError;
+		}
+		else{
+			$resultArray = mysqli_fetch_array($result);
+			mysqli_close($con);
+			return $resultArray;
+		}
 		/*echo '<table width="100%" cellspacing="0" cellpadding="0">';
 			echo '<tr>';
 			echo '   <td><strong>Title</strong></td>';
