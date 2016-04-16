@@ -1,6 +1,7 @@
 <?php 
 	include_once('header.php');
-	include('api.php');	
+	include('api.php');
+	include('inc_search.php');
 	$theSearchResult = " ";
 	$checker = false;
 	if(!empty($_POST['searchEnter'])){
