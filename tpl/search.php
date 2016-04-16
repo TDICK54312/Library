@@ -6,6 +6,7 @@
 	if(!empty($_POST['searchEnter'])){
 		if(!empty($_POST['searchText'])){
 			$theSearchResult = searchBar($_POST['searchType'], $_POST['searchText']);
+			print_r(array_values($theSearchResult));
 		}
 		else{
 			echo "Wrong search";
