@@ -29,7 +29,7 @@
 ?>
 <div id="content">
 	<?php
-		while(list($key, $value) = each($theSearchResult)){
+		foreach($theSearchResult as $value){
 			getSearchResults($value);
 		}		
 	?>
