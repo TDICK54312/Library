@@ -25,6 +25,6 @@
 
 ?>
 <div id="content">
-	<?php getSearchResult($theSearchResult); ?>
+	<!--<?php getSearchResult($theSearchResult); ?>-->
 </div>
 <?php include_once('footer.php'); ?>
