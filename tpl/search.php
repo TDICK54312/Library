@@ -20,7 +20,8 @@
 <div id="content">
 	<?php
 		while(list($key, $value) = each($theSearchResult)){
-			lookAtBook($value);
+			//lookAtBook($value);
+			echo "<h1>$value</h1>";
 		}		
 	?>
 </div>
