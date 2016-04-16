@@ -383,7 +383,7 @@
 		// 1 = title search
 		// 2 = author search
 		// 3 = isbn search
-		
+		$query = " ";
 		$stype = mysqli_real_escape_string($stype);
 		$cnt = mysqli_real_escape_string($cnt);
 		
