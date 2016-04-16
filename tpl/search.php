@@ -10,7 +10,7 @@
 			$checker2 = $_POST['searchType'];
 			echo "<h1>$checker1</h1>";
 			echo "<h1>$checker2</h1>";
-			echo "<h1>$theSearchResult</h1>"
+			echo "<h1>$theSearchResult</h1>";
 		}
 		else{
 			echo "Wrong search";
