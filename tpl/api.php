@@ -377,7 +377,14 @@
 		mysqli_close($con);
   		return $didItWork2;
 	}
-	
+	function getSearchResult($searchResult){
+		//TDICK was working here
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		//while()
+	}
 	function searchBar($stype, $cnt) {
 		include ('dbConnection.php');
 		// 1 = title search
@@ -420,32 +427,6 @@
 			return $resultArray;
 		}
 		return $errors;
-		/*if(!$result){
-			$theError = mysqli_error($con);
-			mysqli_close($con);
-			return $theError;
-		}
-		else{
-			$resultArray = mysqli_fetch_array($result);
-			mysqli_close($con);
-			return $resultArray;
-		}*/
-		/*echo '<table width="100%" cellspacing="0" cellpadding="0">';
-			echo '<tr>';
-			echo '   <td><strong>Title</strong></td>';
-			echo '	<td><strong>ISBN</strong></td>';
-			echo '	<td><strong>Quantity Avail.</strong></td>';
-			echo '</tr>';
-		
-		while($row = mysqli_fetch_array($result)) {
-			
-			echo '<tr>';
-			echo '	<td>'.$row['TITLE'].'</td>';
-			echo '	<td>'.$row['ISBN'].'</td>';
-			echo '	<td>'.$row['Inv'].'</td>';
-			echo '</tr>';
-		}
-		echo '</table>';*/
 		
 	}
 	

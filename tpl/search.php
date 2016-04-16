@@ -8,10 +8,6 @@
 			$theSearchResult = searchBar($_POST['searchType'], $_POST['searchText']);
 			$checker1 = $_POST['searchText'];
 			$checker2 = $_POST['searchType'];
-			$checker3 = $theSearchResult[0];
-			echo "<h1>$checker1</h1>";
-			echo "<h1>$checker2</h1>";
-			echo "<h1>$checker3</h1>";
 		}
 		else{
 			echo "Wrong search";
@@ -29,6 +25,6 @@
 
 ?>
 <div id="content">
-
+	<?php getSearchResult($theSearchResult); ?>
 </div>
 <?php include_once('footer.php'); ?>
