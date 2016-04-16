@@ -19,9 +19,10 @@
 ?>
 <div id="content">
 	<?php  
-		foreach($theSearchResult){
+		foreach($theSearchResult as $value){
 			lookAtBook($value);
 		}
+		unset($value);
 	?>
 </div>
 <?php include_once('footer.php'); ?>
