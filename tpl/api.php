@@ -147,7 +147,7 @@
 		
 		$query = "SELECT Book.ISBN_NUMBER, Book.TITLE, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.IMAGE FROM Book, Inventory WHERE Book.ISBN_NUMBER = Inventory.ISBN_NUMBER AND Inventory.AMOUNT_IN != '0' AND Book.ISBN_NUMBER = '$isbn';";
 		
-		$result = mysqli_query($con, $queryBookTable);
+		$result = mysqli_query($con, $query);
 		mysqli_close($con);
 		$row = mysqli_fetch_array($result);
 		
