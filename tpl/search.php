@@ -30,9 +30,9 @@
 ?>
 <div id="content">
 	<?php
-		foreach($theSearchResult as $value){
+		/*foreach($theSearchResult as $value){
 			getSearchResults($value);
-		}		
+		}*/		
 	?>
 </div>
 <?php include_once('footer.php'); ?>
