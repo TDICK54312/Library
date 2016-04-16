@@ -341,7 +341,9 @@
 		$title = mysqli_real_escape_string($title);
 		$image = mysqli_real_escape_string($image);
 		
-		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME, IMAGE) VALUES ('$isbn','$authorFname','$publisher','$summary','$tag','$title','$authorLname', '$image');";
+		$authorFULLName = $authorFname . " " . $authorLname;
+		
+		$query = "INSERT INTO Book (ISBN_NUMBER, AUTHOR_FNAME, PUBLISHER, SUMMARY, TAG, TITLE, AUTHOR_LNAME, IMAGE, AUTHOR_FULL_NAME) VALUES ('$isbn','$authorFname','$publisher','$summary','$tag','$title','$authorLname', '$image', '$authorFULLName');";
 		$checkIfBookExistQuery = "SELECT ISBN_NUMBER FROM Book WHERE ISBN_NUMBER = '$isbn';";
 		//$addToInventoryQuery = "";
 		
@@ -389,18 +391,19 @@
 		$dbs = mysqli_select_db($con, $databaseName);
 		
 		if($stype == 1) {
-			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE TITLE LIKE '%$cnt%';"; 
+			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.TITLE LIKE '%$cnt%';"; 
 		}
 		else if($stype == 2) {
-			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE (AUTHOR_FNAME LIKE '%$cnt%' OR AUTHOR_LNAME LIKE '%$cnt') ;"; 
+			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.AUTHOR_FULL_NAME LIKE '%$cnt%';"; 
 		}
 		else if($stype == 3) {
-			$query = "SELECT Book.TITLE, Book.ISBN, Book.Inv FROM BOOK WHERE ISBN LIKE '$cnt';"; 
+			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.ISBN_NUMBER LIKE '$cnt';"; 
 		}
 		
 		$result = mysqli_query($con,$query);
-		
-		echo '<table width="100%" cellspacing="0" cellpadding="0">';
+		$resultArray = mysqli_fetch_array($result);
+		return $resultArray;
+		/*echo '<table width="100%" cellspacing="0" cellpadding="0">';
 			echo '<tr>';
 			echo '   <td><strong>Title</strong></td>';
 			echo '	<td><strong>ISBN</strong></td>';
@@ -415,7 +418,8 @@
 			echo '	<td>'.$row['Inv'].'</td>';
 			echo '</tr>';
 		}
-		echo '</table>';
+		echo '</table>';*/
+		
 	}
 	
 	function addUser($addThisTable, $role, $pWord, $Email, $fname, $lname, $street, $maxBooks){
