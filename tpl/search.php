@@ -24,9 +24,6 @@
 
 ?>
 <div id="content">
-	<?php 
-	 
-	 ?>
 
 </div>
 <?php include_once('footer.php'); ?>
