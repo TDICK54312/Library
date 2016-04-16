@@ -1,7 +1,7 @@
 <?php 
 	$theSearchResult = " ";
 	$checker = false;
-	if(!empty($_POST['submitEnter'])){
+	if(!empty($_POST['searchEnter'])){
 		if(!empty($_POST['searchType'])){
 			//$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
 			$checker = true;
