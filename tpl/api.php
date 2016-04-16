@@ -381,8 +381,8 @@
 		$dbs = mysqli_select_db($con, $databaseName);
 
 		$query = " ";
-		$stype = mysqli_real_escape_string($con, $stype);
-		$cnt = mysqli_real_escape_string($con, $cnt);
+		//$stype = mysqli_real_escape_string($con, $stype);
+		//$cnt = mysqli_real_escape_string($con, $cnt);
 		
 		
 		if($stype == 1) {
