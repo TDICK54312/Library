@@ -19,7 +19,7 @@
 ?>
 <div id="content">
 	<?php  
-		foreach($theSearchResult as $value){
+		foreach($theSearchResult){
 			lookAtBook($value);
 		}
 	?>
