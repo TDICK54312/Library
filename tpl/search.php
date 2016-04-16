@@ -6,7 +6,7 @@
 	if(!empty($_POST['searchEnter'])){
 		if(!empty($_POST['searchText'])){
 			$theSearchResult = searchBar($_POST['searchType'], $_POST['searchText']);
-			print_r(array_values($theSearchResult));
+			//print_r(array_values($theSearchResult));
 		}
 		else{
 			echo "Wrong search";
@@ -31,9 +31,9 @@
 <div id="content">
 	<?php
 		foreach($theSearchResult as $value){
-			//getSearchResults($value['ISBN_NUMBER']);
-			$som = $value['ISBN_NUMBER'];
-			echo "<h1>$som</h1>";
+			getSearchResults($value['ISBN_NUMBER']);
+			//$som = $value['ISBN_NUMBER'];
+			//echo "<h1>$som</h1>";
 		}		
 	?>
 </div>
