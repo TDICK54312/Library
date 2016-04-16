@@ -6,9 +6,6 @@
 	if(!empty($_POST['searchEnter'])){
 		if(!empty($_POST['searchText'])){
 			$theSearchResult = searchBar($_POST['searchType'], $_POST['searchText']);
-			//$checker1 = $_POST['searchText'];
-			//$checker2 = $_POST['searchType'];
-			print_r(array_values($theSearchResult));
 		}
 		else{
 			echo "Wrong search";
@@ -17,12 +14,23 @@
 	else{
 		echo "NOTHING ENTERED!";
 	}
+	if(!empty($_POST['submit'])){
+		if(empty($_POST['isbn'])){
+			$everythingSet = false;
+			echo "ISBN Number not entered!";
+		}
+		else{
+			$theISBN = $_POST['isbn'];
+			$theTitle = $_POST['title'];
+			header("Location: lookAtBook.php?isbn=$theISBN");
+			exit;
+		}
+	}
 ?>
 <div id="content">
 	<?php
 		while(list($key, $value) = each($theSearchResult)){
-			//lookAtBook($value);
-			echo "<h1>$value</h1>";
+			lookAtBook($value);
 		}		
 	?>
 </div>
