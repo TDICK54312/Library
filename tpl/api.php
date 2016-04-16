@@ -384,20 +384,26 @@
 		// 2 = author search
 		// 3 = isbn search
 		$query = " ";
-		$stype = mysqli_real_escape_string($stype);
+		$theNum = $stype;
+		$stuff = $cnt;
+		//$stype = mysqli_real_escape_string($stype);
 		$cnt = mysqli_real_escape_string($cnt);
 		
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		if($stype == 1) {
-			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.TITLE LIKE '%$cnt%';"; 
+		if($theNum == 1) {
+			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.TITLE LIKE '%$stuff%';"; 
 		}
-		else if($stype == 2) {
-			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.AUTHOR_FULL_NAME LIKE '%$cnt%';"; 
+		else if($theNum == 2) {
+			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.AUTHOR_FULL_NAME LIKE '%$stuff%';"; 
 		}
-		else if($stype == 3) {
-			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.ISBN_NUMBER LIKE '$cnt';"; 
+		else if($theNum == 3) {
+			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.ISBN_NUMBER LIKE '$stuff';"; 
+		}
+		else{
+			$errors2 = "Invalid input";
+			return $errors2;
 		}
 		
 		//$result = mysqli_query($con,$query);
