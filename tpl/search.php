@@ -3,13 +3,16 @@
 	$checker = false;
 	if(!empty($_POST['submitEnter'])){
 		if(!empty($_POST['searchType'])){
-			$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
+			//$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
 			$checker = true;
 			//echo "<h1>$theSearchResult</h1>";
 		}
 		else{
 			echo "Wrong search";
 		}
+	}
+	else{
+		echo "NOTHING ENTERED!";
 	}
 	
 	//$content = htmlspecialchars($_POST['c']);
