@@ -378,7 +378,7 @@
   		return $didItWork2;
 	}
 	
-	function search($stype, $cnt) {
+	function searchBar($stype, $cnt) {
 		include ('dbConnection.php');
 		// 1 = title search
 		// 2 = author search
@@ -400,8 +400,21 @@
 			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.ISBN_NUMBER LIKE '$cnt';"; 
 		}
 		
-		$result = mysqli_query($con,$query);
-		if(!$result){
+		//$result = mysqli_query($con,$query);
+		$errors = "FAILED TO RUN";
+		if(!mysqli_query($con,$query)){
+			$theError = mysqli_error($con);
+			mysqli_close($con);
+			return $theError;
+		}
+		else{
+			$result = mysqli_query($con, $query);
+			$resultArray = mysqli_fetch_array($result);
+			mysqli_close($con);
+			return $resultArray;
+		}
+		return $errors;
+		/*if(!$result){
 			$theError = mysqli_error($con);
 			mysqli_close($con);
 			return $theError;
@@ -410,7 +423,7 @@
 			$resultArray = mysqli_fetch_array($result);
 			mysqli_close($con);
 			return $resultArray;
-		}
+		}*/
 		/*echo '<table width="100%" cellspacing="0" cellpadding="0">';
 			echo '<tr>';
 			echo '   <td><strong>Title</strong></td>';

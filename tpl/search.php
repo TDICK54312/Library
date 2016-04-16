@@ -5,7 +5,7 @@
 	$checker = false;
 	if(!empty($_POST['searchEnter'])){
 		if(!empty($_POST['searchType'])){
-			//$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
+			//$theSearchResult = searchBar($_POST['searchType'], $_POST['searchText']);
 			$checker1 = $_POST['searchText'];
 			$checker2 = $_POST['searchType'];
 			echo "<h1>$checker1</h1>";
