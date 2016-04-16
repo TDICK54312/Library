@@ -8,6 +8,7 @@
 			$theSearchResult = searchBar($_POST['searchType'], $_POST['searchText']);
 			$checker1 = $_POST['searchText'];
 			$checker2 = $_POST['searchType'];
+			print_r(array_values($theSearchResult));
 		}
 		else{
 			echo "Wrong search";

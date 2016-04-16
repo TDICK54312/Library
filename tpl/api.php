@@ -379,12 +379,8 @@
 		include ('dbConnection.php');
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
-		// 1 = title search
-		// 2 = author search
-		// 3 = isbn search
+
 		$query = " ";
-		//$theNum = $stype;
-		//$stuff = $cnt;
 		$stype = mysqli_real_escape_string($con, $stype);
 		$cnt = mysqli_real_escape_string($con, $cnt);
 		
@@ -404,6 +400,16 @@
 		}
 		
 		$errors = "FAILED TO RUN";
+		$result = mysqli_query($con, $query);
+		if(empty($result)){
+			mysqli_error($con);
+		}
+		else{
+			$resultArray = mysqli_fetch_array($result);
+			return $resultArray;
+		}
+		return $errors;
+		/*
 		if(!mysqli_query($con,$query)){
 			$theError = mysqli_error($con);
 			mysqli_close($con);
@@ -414,8 +420,8 @@
 			$resultArray = mysqli_fetch_array($result);
 			mysqli_close($con);
 			return $resultArray;
-		}
-		return $errors;
+		}*/
+		//return $errors;
 		
 	}
 	
