@@ -16,14 +16,6 @@
 			exit;
 		}
 	}
-	/*if(!empty($_POST['submitEnter'])){
-		if(!empty($_POST['searchType'])){
-			$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
-		}
-		else{
-			echo "Wrong search";
-		}
-	}*/
 ?>
 <div id="content">
 	<h1>Welcome to our Library!</h1>

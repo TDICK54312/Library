@@ -16,15 +16,12 @@
 	else{
 		echo "NOTHING ENTERED!";
 	}
-	
-	//$content = htmlspecialchars($_POST['c']);
-	// search function
-	
-	
-		
-
 ?>
 <div id="content">
-	<!--<?php getSearchResult($theSearchResult); ?>-->
+	<?php  
+		foreach($theSearchResult as $value){
+			lookAtBook($value);
+		}
+	?>
 </div>
 <?php include_once('footer.php'); ?>
