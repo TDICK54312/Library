@@ -63,7 +63,7 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$isbn = mysqli_real_escape_string($isbn);
+		$isbn = mysqli_real_escape_string($con, $isbn);
 		//$query = "SELECT  FROM Book WHERE ISBN_NUMBER = '$isbn';";
 		$query = "SELECT Book.TAG, Book.PUBLISHER, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.SUMMARY, Inventory.AMOUNT_IN, Inventory.INVENTORY_ID, Book.IMAGE, Book.TITLE FROM Book, Inventory WHERE Book.ISBN_NUMBER = '$isbn' AND Inventory.ISBN_NUMBER = '$isbn';";
 		
