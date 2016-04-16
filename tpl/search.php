@@ -4,8 +4,8 @@
 	if(!empty($_POST['searchEnter'])){
 		if(!empty($_POST['searchType'])){
 			//$theSearchResult = search($_POST['searchType'], $_POST['searchText']);
-			$checker = true;
-			//echo "<h1>$theSearchResult</h1>";
+			$checker = $_POST['searchText'];
+			echo "<h1>$checker</h1>";
 		}
 		else{
 			echo "Wrong search";
