@@ -421,7 +421,7 @@
 			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.AUTHOR_FULL_NAME LIKE '%$cnt%';"; 
 		}
 		else if($stype == 3) {
-			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.ISBN_NUMBER LIKE '$cnt';"; 
+			$query = "SELECT Book.ISBN_NUMBER FROM Book WHERE Book.ISBN_NUMBER LIKE '%$cnt%';"; 
 		}
 		else{
 			$errors = "Invalid input";
@@ -434,7 +434,7 @@
 			mysqli_error($con);
 		}
 		else{
-			$resultArray = mysqli_fetch_array($result);
+			$resultArray = mysqli_fetch_assoc($result);
 			return $resultArray;
 		}
 		return $errors;
