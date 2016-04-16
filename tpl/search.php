@@ -8,7 +8,7 @@
 			$theSearchResult = searchBar($_POST['searchType'], $_POST['searchText']);
 			$checker1 = $_POST['searchText'];
 			$checker2 = $_POST['searchType'];
-			$checker3 = $theSearchResult[0];
+			$checker3 = $theSearchResult;
 			echo "<h1>$checker1</h1>";
 			echo "<h1>$checker2</h1>";
 			echo "<h1>$checker3</h1>";
