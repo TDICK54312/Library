@@ -1,4 +1,6 @@
 <?php 
+	include_once('header.php');
+	include('api.php');	
 	$theSearchResult = " ";
 	$checker = false;
 	if(!empty($_POST['searchEnter'])){
@@ -17,8 +19,7 @@
 	
 	//$content = htmlspecialchars($_POST['c']);
 	// search function
-	include_once('header.php');
-	include('api.php');	
+	
 	
 		
 
