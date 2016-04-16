@@ -140,6 +140,35 @@
 			
 		}
 	}
+	function getSearchResults($isbn){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$query = "SELECT Book.ISBN_NUMBER, Book.TITLE, Book.AUTHOR_FNAME, Book.AUTHOR_LNAME, Book.IMAGE FROM Book, Inventory WHERE Book.ISBN_NUMBER = Inventory.ISBN_NUMBER AND Inventory.AMOUNT_IN != '0' AND Book.ISBN_NUMBER = '$isbn';";
+		
+		$result = mysqli_query($con, $queryBookTable);
+		mysqli_close($con);
+		$row = mysqli_fetch_array($result);
+		
+		$isbn = $row['ISBN_NUMBER'];
+		$title = $row['TITLE'];
+		$author = $row['AUTHOR_FNAME'] . " " . $row['AUTHOR_LNAME'];
+		$image = $row['IMAGE'];
+			
+		echo '<div class="book-cont">';
+		echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/><br>';
+		echo "<strong>$title</strong><br>";
+		echo $author;
+		echo '<form class="inv-form" name="inv" method="POST" action=""';
+		echo "<input type='hidden' name='title' id='title' class='txtfield' value='$title' readonly tabindex='1'>";
+		echo "<input type='hidden' name='author' id='author' class='txtfield' value='$author' readonly tabindex='2'>";
+		echo "<input type='hidden' name='isbn' id='isbn' class='txtfield' value='$isbn' readonly>";
+		echo '<input type="submit" name="submit" id="loginbtn" value="View Book">';
+		echo '</form>';
+		echo '</div>';
+		
+	}
 	function getNewBooksInventory(){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);

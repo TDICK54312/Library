@@ -30,7 +30,7 @@
 <div id="content">
 	<?php
 		while(list($key, $value) = each($theSearchResult)){
-			lookAtBook($value);
+			getSearchResults($value);
 		}		
 	?>
 </div>
