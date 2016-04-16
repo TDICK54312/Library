@@ -434,7 +434,7 @@
 			mysqli_error($con);
 		}
 		else{
-			$resultArray = mysqli_fetch_assoc($result);
+			$resultArray = mysqli_fetch_array($result);
 			return $resultArray;
 		}
 		return $errors;
