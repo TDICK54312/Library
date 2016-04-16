@@ -18,11 +18,10 @@
 	}
 ?>
 <div id="content">
-	<?php  
-		foreach($theSearchResult as $value){
+	<?php
+		while(list($key, $value) = each($theSearchResult)){
 			lookAtBook($value);
-		}
-		unset($value);
+		}		
 	?>
 </div>
 <?php include_once('footer.php'); ?>
