@@ -50,6 +50,7 @@
   		}
   		else{
 	  		$moveToOutQuery = "UPDATE Inventory SET AMOUNT_IN = (AMOUNT_IN - 1), AMOUNT_OUT = (AMOUNT_OUT + 1) WHERE ISBN_NUMBER = '$isbn';";
+	  		//$updateUserAllowedRentalsQuery = "UPDATE User SET "
 	  		if (!mysqli_query($con,$moveToOutQuery)){
 				$didItWork = mysqli_error($con);
   			}
