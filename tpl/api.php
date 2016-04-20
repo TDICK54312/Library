@@ -51,7 +51,7 @@
 			echo '</ul>';
 			echo '</div>';
 		}
-		echo "<p> Fines: " . $fine . "</p>";
+		echo "<p> Outstanding Fines: $" . $fine . "</p>";
 		mysqli_close($con);	
 	}
 	function addToUserRental($userID, $isbn){
