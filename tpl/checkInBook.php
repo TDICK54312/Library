@@ -19,7 +19,7 @@
 					
 					case 2:
 						echo "User has a fine for this transaction!";
-						break
+						break;
 					
 					default:
 						echo "ERROR!";
