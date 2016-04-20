@@ -29,7 +29,7 @@
 		//get USER_ID by username entered
 		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$userEmail';";
 		
-		if(!mysqli_query($con, $getUserIDQuery){
+		if(!mysqli_query($con, $getUserIDQuery)){
 			$error = mysqli_error($con);
 			mysqli_close($con);
 			return $error;
