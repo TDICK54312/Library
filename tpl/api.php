@@ -15,6 +15,105 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function checkInBook($userEmail, $isbn){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$userEmail = mysqli_real_escape_string($con, $userEmail);
+		$isbn = mysqli_real_escape_string($con, $isbn);
+		$userID = 0;
+		$inventoryID = 0;
+		$didReturnNumber = 0;
+		
+		//get USER_ID by username entered
+		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$userEmail';";
+		
+		if(!mysqli_query($con, $getUserIDQuery){
+			$error = mysqli_error($con);
+			mysqli_close($con);
+			return $error;
+		}
+		else{
+			$userID = mysqli_insert_id($con);
+		}
+		
+		//get Inventory_ID
+		$getInvIDQuery = "SELECT INVENTORY_ID FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
+		
+		if(!mysqli_query($con, $getInvIDQuery)){
+			$error = mysqli_error($con);
+			mysqli_close($con);
+			return $error;
+		}
+		else{
+			$inventoryID = mysqli_insert_id($con);
+		}
+		
+		//get transaction with the same isbn and username
+		$getUserTransactionQuery = "SELECT DID_RETURN FROM Transaction WHERE INVENTORY_ID = '$inventoryID' AND USER_ID = '$userID';";
+		$userTransactionResult = mysqli_query($con, $getUserTransactionQuery);
+		$userTransactionArray = mysqli_fetch_row($userTransactionResult);
+		
+		if(empty($userTransactionArray)){
+			$error = mysqli_error($con);
+			mysqli_close($con);
+			return $error;
+		}
+		else{
+			$didReturnNumber = $userTransactionArray[0];
+			mysqli_close($con);
+		}
+		
+		//switch cases based on what the didReturnNumber is
+		switch($didReturnNumber){
+			//If = 0; Set Transaction DID_RETURN  = 1 : This means the book was returned on time.
+			case 0:
+				$result = updateTransactionToOne($inventoryID, $userID);
+				break;
+			//If = 1; Return back the user already returned this book.
+			case 1:
+				$result = 1;
+				break;
+			//If = 2; User has a fine and must pay the fine.
+			case 2:
+				$result = 2;
+				break;
+			//Error happened.	
+			default:
+				$result = "Error happened!";
+				break;
+		}
+		
+		return $result;
+	}
+	function updateTransactionToOne($invID, $userID){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$updateTransactionQuery = "UPDATE Transaction SET DID_RETURN = '1' WHERE INVENTORY_ID = '$invID' AND USER_ID = '$userID';";
+		
+		if(!mysqli_query($con, $updateTransactionQuery)){
+			$error = mysqli_error($con);
+			mysqli_close($con);
+			return $error;
+		}
+		else{
+			//update Inventory.AMOUNT_IN = AMOUNT_IN + 1; Inventory.AMOUNT_OUT = AMOUNT_OUT - 1;
+			$updateInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = AMOUNT_IN + 1 , AMOUNT_OUT = AMOUNT_OUT - 1 WHERE INVENTORY_ID = '$invID';";
+			if(!mysqli_query($con, $updateInventoryQuery)){
+				$error = mysqli_error($con);
+				mysqli_close($con);
+				return $error;
+			}
+			else{
+				$result = 0;
+				return $result;
+			}
+		}
+		
+	}
 	function getRentedBooks($userID, $amountOfCheckedOut, $userRole){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
@@ -23,7 +122,7 @@
 		$userID = mysqli_real_escape_string($con, $userID);
 		
 		//Query to get all rented books
-		$getRentedBooksTransactionQuery = "SELECT Transactions.ACTUAL_DATE, Transactions.RETURN_DATE, Transactions.DID_RETURN, Transactions.AMOUNT_DUE, Inventory.ISBN_NUMBER FROM Transactions, Inventory WHERE Transactions.USER_ID = '$userID' AND Transactions.INVENTORY_ID = Inventory.INVENTORY_ID;";
+		$getRentedBooksTransactionQuery = "SELECT Transactions.ACTUAL_DATE, Transactions.RETURN_DATE, Transactions.DID_RETURN, Transactions.AMOUNT_DUE, Inventory.ISBN_NUMBER FROM Transactions, Inventory WHERE Transactions.USER_ID = '$userID' AND Transactions.INVENTORY_ID = Inventory.INVENTORY_ID AND Transactions.DID_RETURN != '1';";
 		$getRentedBooksTransactionResult = mysqli_query($con, $getRentedBooksTransactionQuery);
 		
 		

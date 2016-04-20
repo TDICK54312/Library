@@ -3,6 +3,36 @@
 	include('inc_search.php');
 	include('api.php');
 ?>
+<?php
+	if(!empty($_POST['submit'])){
+		if(!empty($_POST['adminEmail']) && !empty($_POST['adminPassword'])){
+			$adminResult = authenticateUser($_POST['adminEmail'], $_POST['adminPassword']);
+			if(!empty($adminResult) && !empty($_POST['userEmail']) && !empty($_POST['isbn'])){
+				$checkinResult = checkInBook($_POST['userEmail'], $_POST['isbn']);
+				switch($checkinResult){
+					case 0:
+						echo "SUCCESS!";
+						break;
+					case 1:
+						echo "User has already turned this book in!";
+						break;
+					
+					case 2:
+						echo "User has a fine for this transaction!";
+						break
+					
+					default:
+						echo "ERROR!";
+						break;
+				}
+			}
+			else{
+				//admin username or password bad
+				echo "username or password for admin is bad.";
+			}
+		}
+	}
+	?>
 <div id="content">
 	<h1>Check-In Book</h1>
      <style type="text/css">
