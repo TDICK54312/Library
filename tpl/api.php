@@ -28,18 +28,18 @@
 		
 		
 		//Query to use the getRentedBookArray to get all the books from the ISBN field
-		while($getRentedBooksTransactionArray = mysqli_fetch_array($getRentedBooksTransactionResult)){
-			$isbnNum = $getRentedBooksTransactionArray['ISBN_NUMBER'];
-			$returnDate = $getRentedBooksTransactionArray['RETURN_DATE'];
-			$dateRented = $getRentedBooksTransactionArray['ACTUAL_DATE'];
+		while($row = mysqli_fetch_array($getRentedBooksTransactionResult)){
+			$isbnNum = $row['ISBN_NUMBER'];
+			$returnDate = $row['RETURN_DATE'];
+			$dateRented = $row['ACTUAL_DATE'];
 			
 			//need to pull books checked out by the user
-			$getRentedBookQuery = "SELECT Book.IMAGE, Book.TITLE FROM Book WHERE Book.ISBN_NUMBER = '$isbnNum';";
+			$getRentedBookQuery = "SELECT IMAGE, TITLE FROM Book WHERE ISBN_NUMBER = '$isbnNum';";
 			$getRentedBookResult = mysqli_query($con, $getRentedBookQuery);
 			$getRentedBookArray = mysqli_fetch_row($getRentedBookResult);
 			
-			$image = $getRentedBookArray['IMAGE'];
-			$title = $getRentedBookArray['TITLE'];
+			$image = $getRentedBookArray[0];
+			$title = $getRentedBookArray[1];
 			
 			echo '<div class="book-cont">';
 			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/><br>';
