@@ -15,15 +15,41 @@
 	//	echo json_encode($array);
 		return $array;
 	}
-	function getRentedBooks($userID){
+	function getRentedBooks($userID, $amountOfCheckedOut, $userRole){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
 		$userID = mysqli_real_escape_string($con, $userID);
 		
-		//i was working here
-		$query = "SELECT Transactions.RETURN_DATE, Transactions.DID_RETURN, Transactions.AMOUNT_DUE, Inventory.ISBN_NUMBER , Book.TITLE FROM Transactions, Inventory, Book WHERE Transactions.USER_ID = '$userID' AND Transaction.INVENTORY_ID = Inventory.INVENTORY_ID;";
+		//Query to get all rented books
+		$getRentedBooksTransactionQuery = "SELECT Transactions.ACTUAL_DATE, Transactions.RETURN_DATE, Transactions.DID_RETURN, Transactions.AMOUNT_DUE, Inventory.ISBN_NUMBER FROM Transactions, Inventory WHERE Transactions.USER_ID = '$userID' AND Transactions.INVENTORY_ID = Inventory.INVENTORY_ID;";
+		$getRentedBooksTransactionResult = mysqli_query($con, $getRentedBooksTransactionQuery);
+		
+		
+		//Query to use the getRentedBookArray to get all the books from the ISBN field
+		while($getRentedBooksTransactionArray = mysqli_fetch_array($getRentedBooksTransactionResult)){
+			$isbnNum = $getRentedBooksTransactionArray['ISBN_NUMBER'];
+			$returnDate = $getRentedBooksTransactionArray['RETURN_DATE'];
+			$dateRented = $getRentedBooksTransactionArray['ACTUAL_DATE'];
+			
+			//need to pull books checked out by the user
+			$getRentedBookQuery = "SELECT Book.IMAGE, Book.TITLE FROM Book WHERE Book.ISBN_NUMBER = '$isbnNum';";
+			$getRentedBookResult = mysqli_query($con, $getRentedBookQuery);
+			$getRentedBookArray = mysqli_fetch_row($getRentedBookResult);
+			
+			$image = $getRentedBookArray['IMAGE'];
+			$title = $getRentedBookArray['TITLE'];
+			
+			echo '<div class="book-cont">';
+			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/><br>';
+			echo "<strong>$title</strong><br>";
+			echo "Date Checked out: " . $dateRented;
+			echo "Return Date: " . $returnDate;
+			echo "User Role: " . $userRole;
+			echo '</div>';
+		}
+		mysqli_close($con);	
 	}
 	function addToUserRental($userID, $isbn){
 		include 'dbConnection.php';
@@ -41,8 +67,24 @@
 		$arrayInvID = mysqli_fetch_row($invId);
 		$invID_NEW = $arrayInvID[0];
 		
-		//$dueDate = date
-
+		//Check if the user has gone over max transactions if not update max transaction of the user
+		$checkIfMaxTransQuery = "SELECT MAX_TRANSACTION FROM User WHERE USER_ID = '$userID';";
+		$userMaxTransResult = mysqli_query($con, $checkIfMaxTransQuery);
+		$arrayMaxTrans = mysqli_fetch_row($userMaxTransResult);
+		
+		if($arrayMaxTrans[0] == 0){
+			$maxMessage = "You have maxed out the amount of rentals you can have. Please return your books in order to checkout more!";
+			return $maxMessage;
+		}
+		else{
+			$updateMaxTransQuery = "UPDATE User SET MAX_TRANSACTION = (MAX_TRANSACTION - 1) WHERE USER_ID = '$userID';";
+			if(!mysqli_query($con, $updateMaxTransQuery)){
+				$maxUpdateError = mysqli_errno($con);
+				return $maxUpdateError;
+			}
+		}
+		
+		//Add to Transactions and update Inventory table
 		$addTransactionQuery = "INSERT INTO Transactions (INVENTORY_ID, USER_ID, RETURN_DATE, DID_RETURN, AMOUNT_DUE) VALUES ('$invID_NEW', '$userID', '$date', '0', '0.00');";
 		
 		if (!mysqli_query($con,$addTransactionQuery)){
@@ -443,8 +485,10 @@
 			while($row = mysqli_fetch_assoc($result)){
 				$arrayResult[] = $row;
 			}
+			mysqli_close($con);
 			return $arrayResult;
 		}
+		mysqli_close($con);
 		return $errors;
 		
 	}
@@ -471,7 +515,7 @@
 		$maxBooks = mysqli_real_escape_string($con, $maxBooks);
 		
 		//queries
-		$addUserQuery = "INSERT INTO User (USER_ROLE, PASSWORD, USER_EMAIL, HOLD) VALUES ('$role', '$pWord', '$Email', 0);";
+		$addUserQuery = "INSERT INTO User (USER_ROLE, PASSWORD, USER_EMAIL, HOLD, MAX_TRANSACTION) VALUES ('$role', '$pWord', '$Email', 0, '$maxBooks');";
 		$emailCheckQuery = "SELECT USER_EMAIL FROM User WHERE USER_EMAIL = '$Email'";
 		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$Email'";
 		
@@ -487,7 +531,7 @@
 			$user_ID = mysqli_insert_id($con);
 			
 			//Assigning the USER_ID to the correct table ID
-			$addUserToCorrectTableQuery = "INSERT INTO $tableName (USER_ID, FIRSTNAME, LASTNAME, MAX_TRANSACTION, ADDRESS) VALUES ('$user_ID', '$fname', '$lname', '$maxBooks', '$street');";
+			$addUserToCorrectTableQuery = "INSERT INTO $tableName (USER_ID, FIRSTNAME, LASTNAME, ADDRESS) VALUES ('$user_ID', '$fname', '$lname', '$street');";
 			
 			if (!mysqli_query($con,$addUserToCorrectTableQuery)){
 				$didItWork = mysqli_error($con);
