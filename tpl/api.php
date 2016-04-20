@@ -19,7 +19,7 @@
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
-		
+		$fine = 0;
 		$userID = mysqli_real_escape_string($con, $userID);
 		
 		//Query to get all rented books
@@ -32,6 +32,7 @@
 			$isbnNum = $row['ISBN_NUMBER'];
 			$returnDate = $row['RETURN_DATE'];
 			$dateRented = $row['ACTUAL_DATE'];
+			$fine = $row['AMOUNT_DUE'] + $fine;
 			
 			//need to pull books checked out by the user
 			$getRentedBookQuery = "SELECT IMAGE, TITLE FROM Book WHERE ISBN_NUMBER = '$isbnNum';";
@@ -44,11 +45,13 @@
 			echo '<div class="book-cont">';
 			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/><br>';
 			echo "<strong>$title</strong><br>";
-			echo "Date Checked out: " . $dateRented;
-			echo "Return Date: " . $returnDate;
-			echo "User Role: " . $userRole;
+			echo '<ul style="text-align: left; margin-left: 5%;">';
+			echo '<li><strong>Date Checked Out: </strong>: '.$dateRented.'</li>';
+			echo '<li><strong>Return Date: </strong>: '.$returnDate.'</li>';
+			echo '</ul>';
 			echo '</div>';
 		}
+		echo "<p> Fines: " . $fine . "</p>";
 		mysqli_close($con);	
 	}
 	function addToUserRental($userID, $isbn){
