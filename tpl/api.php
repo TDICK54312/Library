@@ -28,26 +28,28 @@
 		
 		//get USER_ID by username entered
 		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$userEmail';";
-		
-		if(!mysqli_query($con, $getUserIDQuery)){
+		$getUserIDResult = mysqli_query($con, $getUserIDQuery);
+		$getUserIDArray = mysqli_fetch_row($getUserIDResult);
+		if(empty($getUserIDArray)){
 			$error = mysqli_error($con);
 			mysqli_close($con);
 			return $error;
 		}
 		else{
-			$userID = mysqli_insert_id($con);
+			$userID = $getUserIDArray[0];
 		}
 		
 		//get Inventory_ID
 		$getInvIDQuery = "SELECT INVENTORY_ID FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
-		
-		if(!mysqli_query($con, $getInvIDQuery)){
+		$getInvIDResult = mysqli_query($con, $getInvIDQuery);
+		$getInvIDArray = mysqli_fetch_row($getInvIDResult);
+		if(empty($getInvIDArray)){
 			$error = mysqli_error($con);
 			mysqli_close($con);
 			return $error;
 		}
 		else{
-			$inventoryID = mysqli_insert_id($con);
+			$inventoryID = $getInvIDArray[0];
 		}
 		
 		//get transaction with the same isbn and username
