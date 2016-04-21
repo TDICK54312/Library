@@ -26,6 +26,7 @@ $(function(){
 	    		<ul>
 		    		<li><a href="checkInBook.php">Check-In Book</a></li>
 		    		<li><a href="viewLibrary.php">Check-Out Book</a></li>
+		    		<li><a href="payFine.php">Pay Fines</a></li>
 		    		<li><a href="adminAddUser.php">Add User</a></li>
 		    		<li><a href="adminAddBook.php">Add Book</a></li>
 		    		<li><a href="adminDeleteUser.php">Delete User</a></li>

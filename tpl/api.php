@@ -111,6 +111,13 @@
 			}
 			else{
 				$result = 0;
+				$updateUserMaxTransQuery = "UPDATE User SET MAX_TRANSACTION = MAX_TRANSACTION + 1 WHERE USER_ID = '$userID';";
+				if(!mysqli_query($con, $updateUserMaxTransQuery)){
+					$error = mysqli_error($con);
+					mysqli_close($con);
+					return $error;
+				}
+				
 				return $result;
 			}
 		}
@@ -183,7 +190,7 @@
 		else{
 			$updateMaxTransQuery = "UPDATE User SET MAX_TRANSACTION = (MAX_TRANSACTION - 1) WHERE USER_ID = '$userID';";
 			if(!mysqli_query($con, $updateMaxTransQuery)){
-				$maxUpdateError = mysqli_errno($con);
+				$maxUpdateError = mysqli_error($con);
 				return $maxUpdateError;
 			}
 		}
