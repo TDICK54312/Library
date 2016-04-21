@@ -51,7 +51,7 @@
 		}
 		
 		//get transaction with the same isbn and username
-		$getUserTransactionQuery = "SELECT DID_RETURN FROM Transaction WHERE INVENTORY_ID = '$inventoryID' AND USER_ID = '$userID';";
+		$getUserTransactionQuery = "SELECT DID_RETURN FROM Transactions WHERE INVENTORY_ID = '$inventoryID' AND USER_ID = '$userID';";
 		$userTransactionResult = mysqli_query($con, $getUserTransactionQuery);
 		$userTransactionArray = mysqli_fetch_row($userTransactionResult);
 		
@@ -92,7 +92,7 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$updateTransactionQuery = "UPDATE Transaction SET DID_RETURN = '1' WHERE INVENTORY_ID = '$invID' AND USER_ID = '$userID';";
+		$updateTransactionQuery = "UPDATE Transactions SET DID_RETURN = '1' WHERE INVENTORY_ID = '$invID' AND USER_ID = '$userID';";
 		
 		if(!mysqli_query($con, $updateTransactionQuery)){
 			$error = mysqli_error($con);
