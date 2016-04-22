@@ -626,7 +626,7 @@
 		$maxBooks = mysqli_real_escape_string($con, $maxBooks);
 		
 		//queries
-		$addUserQuery = "INSERT INTO User (USER_ROLE, PASSWORD, USER_EMAIL, HOLD, MAX_TRANSACTION) VALUES ('$role', '$pWord', '$Email', 0, '$maxBooks');";
+		$addUserQuery = "INSERT INTO User (USER_ROLE, PASSWORD, USER_EMAIL, HOLD, MAX_TRANSACTION) VALUES ('$role', '$pWord', '$Email', 0, 0);";
 		$emailCheckQuery = "SELECT USER_EMAIL FROM User WHERE USER_EMAIL = '$Email'";
 		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$Email'";
 		

@@ -4,7 +4,7 @@
 	include('api.php');
 ?>
 <div id="content">
-	<h1>Check-In Book</h1>
+	<h1>Pay Fine</h1>
      <style type="text/css">
 		.login-cont {
 			width: 30%;
