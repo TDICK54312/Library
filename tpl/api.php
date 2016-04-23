@@ -968,7 +968,7 @@
 		
 		//variables
 		$tableName = $addThisTable;
-		$didItWork = " ";
+		$didItWork = "";
 		
 		
 		$addThisTable = mysqli_real_escape_string($con, $addThisTable);
