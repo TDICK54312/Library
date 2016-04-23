@@ -41,7 +41,60 @@
 		}
 		echo "</table>";
 		mysql_close($con);
+	}
+	function teacherUserReport(){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
 		
+		$getAdminUserQuery = "SELECT Teacher.FIRSTNAME, Teacher.LASTNAME, Teacher.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Teacher WHERE User.USER_ID = Teacher.USER_ID;";
+		$getAdminUserResult = mysqli_query($con, $getAdminUserQuery);
+		echo "<table>";
+		echo "<tr>";
+			echo "<th>Firstname</th>";
+			echo "<th>Lastname</th>";
+			echo "<th>Address</th>";
+			echo "<th>Email</th>";
+			echo "<th>Hold</th>";
+			echo "<th>Last Activity</th>";
+			echo "<th>Available Transactions</th>";
+		echo "</tr>\n";
+		while($row = mysqli_fetch_row($getAdminUserResult)){
+			echo "<tr>";
+			foreach($row as $cell){
+				echo "<td>$cell</td>";
+			}
+			echo "</tr>\n";
+		}
+		echo "</table>";
+		mysql_close($con);
+	}
+	function studentUserReport(){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$getAdminUserQuery = "SELECT Student.FIRSTNAME, Student.LASTNAME, Student.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Student WHERE User.USER_ID = Student.USER_ID;";
+		$getAdminUserResult = mysqli_query($con, $getAdminUserQuery);
+		echo "<table>";
+		echo "<tr>";
+			echo "<th>Firstname</th>";
+			echo "<th>Lastname</th>";
+			echo "<th>Address</th>";
+			echo "<th>Email</th>";
+			echo "<th>Hold</th>";
+			echo "<th>Last Activity</th>";
+			echo "<th>Available Transactions</th>";
+		echo "</tr>\n";
+		while($row = mysqli_fetch_row($getAdminUserResult)){
+			echo "<tr>";
+			foreach($row as $cell){
+				echo "<td>$cell</td>";
+			}
+			echo "</tr>\n";
+		}
+		echo "</table>";
+		mysql_close($con);
 	}
 	function payFine($userEmail, $isbn, $amount){
 		include 'dbConnection.php';

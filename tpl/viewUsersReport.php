@@ -18,5 +18,13 @@ th, td {
 	<?php
 		adminUserReport();
 	?>
+	<h2>Teachers</h2>
+	<?php
+		teacherUserReport();
+	?>
+	<h2>Students</h2>
+	<?php
+		studentUserReport();
+	?>
 </div>
 <?php include_once('header.php'); ?>
