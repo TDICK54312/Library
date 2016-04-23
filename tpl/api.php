@@ -86,7 +86,7 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$payFineQuery = "UPDATE Transactions SET AMOUNT_DUE = 0, DID_RETURN = 0 WHERE TRANSACTION_ID = '$transID';";
+		$payFineQuery = "UPDATE Transactions SET AMOUNT_DUE = 0, DID_RETURN = 1 WHERE TRANSACTION_ID = '$transID';";
 		if(!mysqli_query($con, $payFineQuery)){
 			$error = mysqli_error($con);
 			mysqli_close($con);
