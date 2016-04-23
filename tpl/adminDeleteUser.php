@@ -31,27 +31,50 @@
 		echo $result;
 	}
 ?>
-<!--<!doctype html>
-<html>
-<head>
- <meta charset='utf-8'>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="style/menu-styleTest.css">
-   <link rel="stylesheet" href="style/deleteUser.css">
-   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-   <script src="js/menu_script.js"></script><title>Library Database System</title>
-   <script src="http://use.edgefonts.net/berkshire-swash;noticia-text.js"></script>
-</head>
-
-<body>
-<div id="wrapper">
-<div id="header"><img src="images/header.jpg" style="width: 100%;"></div>
-<div id="navarea" style="text-align: center; display: block; margin: 0 auto;">
-	<?php include_once('navmenuTest.php'); ?>
-</div>-->
 <div id="content">
 	<h1>Delete User</h1>
+	 <style type="text/css">
+		.login-cont {
+			width: 30%;
+			display: block;
+			margin: 0 auto;
+		}
+		.login-cont label {
+			width: 100%;
+		}
+		.login-cont input, .login-cont input[type=email], .login-cont input[type=password] {
+			width: 95%;
+			-webkit-box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
+			-moz-box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
+			box-shadow: inset 0px 0px 16px -7px rgba(255,0,0,0.49);
+			border-radius: 15px 15px 15px 15px;
+			-moz-border-radius: 15px 15px 15px 15px;
+			-webkit-border-radius: 15px 15px 15px 15px;
+			border: 1px solid #CF8283;
+			height: 25px;
+			margin-bottom: 20px;
+			font-size: 15px;
+			padding-left: 8px;
+			color: #848484;
+			text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
+		}
+		.login-cont input[type=submit] {
+			width: 100%;
+			height: 30px;
+			background-color: #CF8283;
+			font-size: 18px;
+			color: white;
+			border: 0;
+		}
+		.login-cont input[type=submit]:active {
+			background-color: #5A0507;
+			color: #848484;
+			padding-top: 5px;
+			webkit-box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+			-moz-box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+			box-shadow:  0px 0px 16px -7px rgba(255,0,0,0.49);
+		}
+	</style>
 	<div class="login-cont">
 		<form id ="loginForm" name="loginForm" method="POST" action="">
 			<label for="email">Email:</label>
