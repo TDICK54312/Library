@@ -33,7 +33,7 @@
 			echo "<th>Title</th>";
 			echo "<th>Return Date</th>";
 		echo "</tr>\n";
-		while(row = mysqli_fetch_row($getTransactionAdminResult)){
+		while($row = mysqli_fetch_row($getTransactionAdminResult)){
 			echo "<tr>";
 			foreach($row as $cell){
 				echo "<td>$cell</td>";
@@ -54,7 +54,7 @@
 			echo "<th>Title</th>";
 			echo "<th>Return Date</th>";
 		echo "</tr>\n";
-		while(row = mysqli_fetch_row($getTransactionTeacherResult)){
+		while($row = mysqli_fetch_row($getTransactionTeacherResult)){
 			echo "<tr>";
 			foreach($row as $cell){
 				echo "<td>$cell</td>";
@@ -75,7 +75,7 @@
 			echo "<th>Title</th>";
 			echo "<th>Return Date</th>";
 		echo "</tr>\n";
-		while(row = mysqli_fetch_row($getTransactionStudentResult)){
+		while($row = mysqli_fetch_row($getTransactionStudentResult)){
 			echo "<tr>";
 			foreach($row as $cell){
 				echo "<td>$cell</td>";
