@@ -40,7 +40,7 @@
 			echo "</tr>\n";
 		}
 		echo "</table>";
-		mysql_close($con);
+		mysqli_close($con);
 	}
 	function teacherUserReport(){
 		include 'dbConnection.php';
@@ -67,7 +67,7 @@
 			echo "</tr>\n";
 		}
 		echo "</table>";
-		mysql_close($con);
+		mysqli_close($con);
 	}
 	function studentUserReport(){
 		include 'dbConnection.php';
@@ -94,7 +94,7 @@
 			echo "</tr>\n";
 		}
 		echo "</table>";
-		mysql_close($con);
+		mysqli_close($con);
 	}
 	function payFine($userEmail, $isbn, $amount){
 		include 'dbConnection.php';
