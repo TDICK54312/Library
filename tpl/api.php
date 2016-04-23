@@ -187,10 +187,11 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$getAdminUserQuery = "SELECT Administrator.FIRSTNAME, Administrator.LASTNAME, Administrator.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Administrator WHERE User.USER_ID = Administrator.USER_ID;";
+		$getAdminUserQuery = "SELECT Administrator.USER_ID, Administrator.FIRSTNAME, Administrator.LASTNAME, Administrator.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Administrator WHERE User.USER_ID = Administrator.USER_ID;";
 		$getAdminUserResult = mysqli_query($con, $getAdminUserQuery);
 		echo "<table>";
 		echo "<tr>";
+			echo "<th>UserID</th>";
 			echo "<th>Firstname</th>";
 			echo "<th>Lastname</th>";
 			echo "<th>Address</th>";
@@ -214,10 +215,11 @@
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$getAdminUserQuery = "SELECT Teacher.FIRSTNAME, Teacher.LASTNAME, Teacher.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Teacher WHERE User.USER_ID = Teacher.USER_ID;";
+		$getAdminUserQuery = "SELECT Teacher.USER_ID, Teacher.FIRSTNAME, Teacher.LASTNAME, Teacher.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Teacher WHERE User.USER_ID = Teacher.USER_ID;";
 		$getAdminUserResult = mysqli_query($con, $getAdminUserQuery);
 		echo "<table>";
 		echo "<tr>";
+			echo "<th>UserID</th>";
 			echo "<th>Firstname</th>";
 			echo "<th>Lastname</th>";
 			echo "<th>Address</th>";
@@ -1007,7 +1009,6 @@
 			return $duplicate;
 		}
 		mysqli_close($con);
-		//return $didItWork;
-		return $didItWork;
+		if(empty($didItWork)) return "User added successfully."; else return $didItWork;
 	}
 ?>

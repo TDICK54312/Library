@@ -14,6 +14,7 @@ th, td {
 </style>
 <div id="content">
 	<h1>Transactions</h1>
+    <a href="viewReports.php">&lt;&lt; Back to Reports</a><br><br>
 	<?php
 		transactionReport();
 	?>

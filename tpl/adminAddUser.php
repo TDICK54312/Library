@@ -15,6 +15,11 @@
 	$pas = "";
 	$maxBooks = 0;
 	
+?>
+<div id="content">
+	<h1>Add User</h1>
+    <?php 
+	
 	if(!empty($_POST['submit'])){
 		if(empty($_POST['role'])){
 			echo "User Role was not entered!";
@@ -84,9 +89,7 @@
 			echo $result;
 		}
 	}
-?>
-<div id="content">
-	<h1>Add User</h1>
+	?>
      <style type="text/css">
 		.login-cont {
 			width: 30%;
