@@ -15,6 +15,77 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function transactionReport(){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$getTransactionsQueryAdmin = "SELECT Administrator.FIRSTNAME, Administrator.LASTNAME, User.USER_EMAIL, Inventory.ISBN_NUMBER, Book.TITLE, Transactions.RETURN_DATE FROM User INNER JOIN Administrator ON User.USER_ID = Administrator.USER_ID INNER JOIN Transactions ON User.USER_ID = Transactions.USER_ID INNER JOIN Inventory ON Transactions.INVENTORY_ID = Inventory.INVENTORY_ID INNER JOIN Book ON Inventory.ISBN_NUMBER = Book.ISBN_NUMBER;";
+		
+		$getTransactionAdminResult = mysqli_query($con, $getTransactionsQueryAdmin);
+		echo "<h2>Admin</h2>";
+		echo "<table>";
+		echo "<tr>";
+			echo "<th>Firstname</th>";
+			echo "<th>Lastname</th>";
+			echo "<th>Email</th>";
+			echo "<th>ISBN</th>";
+			echo "<th>Title</th>";
+			echo "<th>Return Date</th>";
+		echo "</tr>\n";
+		while(row = mysqli_fetch_row($getTransactionAdminResult)){
+			echo "<tr>";
+			foreach($row as $cell){
+				echo "<td>$cell</td>";
+			}
+			echo "</tr>\n";
+		}
+		echo "</table>";
+		
+		$getTransactionTeacherQuery = "SELECT Teacher.FIRSTNAME, Teacher.LASTNAME, User.USER_EMAIL, Inventory.ISBN_NUMBER, Book.TITLE, Transactions.RETURN_DATE FROM User INNER JOIN Teacher ON User.USER_ID = Teacher.USER_ID INNER JOIN Transactions ON User.USER_ID = Transactions.USER_ID INNER JOIN Inventory ON Transactions.INVENTORY_ID = Inventory.INVENTORY_ID INNER JOIN Book ON Inventory.ISBN_NUMBER = Book.ISBN_NUMBER;";
+		$getTransactionTeacherResult = mysqli_query($con, $getTransactionTeacherQuery);
+		echo "<h2>Teacher</h2>";
+		echo "<table>";
+		echo "<tr>";
+			echo "<th>Firstname</th>";
+			echo "<th>Lastname</th>";
+			echo "<th>Email</th>";
+			echo "<th>ISBN</th>";
+			echo "<th>Title</th>";
+			echo "<th>Return Date</th>";
+		echo "</tr>\n";
+		while(row = mysqli_fetch_row($getTransactionTeacherResult)){
+			echo "<tr>";
+			foreach($row as $cell){
+				echo "<td>$cell</td>";
+			}
+			echo "</tr>\n";
+		}
+		echo "</table>";
+		
+		$getTransactionStudentQuery = "SELECT Student.FIRSTNAME, Student.LASTNAME, User.USER_EMAIL, Inventory.ISBN_NUMBER, Book.TITLE, Transactions.RETURN_DATE FROM User INNER JOIN Student ON User.USER_ID = Student.USER_ID INNER JOIN Transactions ON User.USER_ID = Transactions.USER_ID INNER JOIN Inventory ON Transactions.INVENTORY_ID = Inventory.INVENTORY_ID INNER JOIN Book ON Inventory.ISBN_NUMBER = Book.ISBN_NUMBER;";
+		$getTransactionStudentResult = mysqli_query($con, $getTransactionStudentQuery);
+		echo "<h2>Teacher</h2>";
+		echo "<table>";
+		echo "<tr>";
+			echo "<th>Firstname</th>";
+			echo "<th>Lastname</th>";
+			echo "<th>Email</th>";
+			echo "<th>ISBN</th>";
+			echo "<th>Title</th>";
+			echo "<th>Return Date</th>";
+		echo "</tr>\n";
+		while(row = mysqli_fetch_row($getTransactionStudentResult)){
+			echo "<tr>";
+			foreach($row as $cell){
+				echo "<td>$cell</td>";
+			}
+			echo "</tr>\n";
+		}
+		echo "</table>";
+		mysqli_close($con);
+		
+	}
 	function adminUserReport(){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);

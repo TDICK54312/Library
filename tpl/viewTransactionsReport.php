@@ -4,9 +4,9 @@
 	include('inc_search.php');
 ?>
 <div id="content">
-	<h1>User Report</h1>
+	<h1>Transactions</h1>
 	<?php
-		
+		transactionReport();
 	?>
 </div>
 <?php include_once('header.php'); ?>
