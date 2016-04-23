@@ -798,7 +798,7 @@
   			}		
   		}
   		mysqli_close($con);	
-		if($feedBack == 0) return "User $usersID was deleted successfully"; else return "Deletion failed";
+		if($feedBack == 0) return "User $usersID was deleted successfully"; else return "Deletion failed. Error: $didItWork";
 	}
 	function deleteBook($isbn, $numToRemove){
 		include 'dbConnection.php';
