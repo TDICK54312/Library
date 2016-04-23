@@ -1,10 +1,13 @@
 <?php 
 	session_start();
-?>
-<?php
 	include 'api.php';
 	include 'header.php';
 	include('inc_search.php');
+?>
+
+<div id="content">
+<?php
+	
 	$userID = 0;
 	$userEmail = " ";
 	$userIDSet = false;
@@ -31,7 +34,6 @@
 		echo $result;
 	}
 ?>
-<div id="content">
 	<h1>Delete User</h1>
 	 <style type="text/css">
 		.login-cont {
