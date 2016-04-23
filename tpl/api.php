@@ -15,6 +15,32 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function bookReport(){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$getBookReportQuery = "SELECT Book.TITLE, Book.ISBN_NUMBER, Book.AUTHOR_FULL_NAME, Inventory.AMOUNT_IN, Inventory.AMOUNT_OUT FROM Book INNER JOIN Inventory ON Book.ISBN_NUMBER = Inventory.ISBN_NUMBER;";
+		$getBookReportResult = mysqli_query($con, $getBookReportQuery);
+		echo "<h2>Books</h2>";
+		echo "<table>";
+		echo "<tr>";
+			echo "<th>Title</th>";
+			echo "<th>ISBN</th>";
+			echo "<th>Author Name</th>";
+			echo "<th>Amount In</th>";
+			echo "<th>Amount Checked Out</th>";
+		echo "</tr>\n";
+		while($row = mysqli_fetch_row($getBookReportResult)){
+			echo "<tr>";
+			foreach($row as $cell){
+				echo "<td>$cell</td>";
+			}
+			echo "</tr>\n";
+		}
+		echo "</table>";
+		mysqli_close($con);
+	}
 	function oldTransactionReport(){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
