@@ -22,6 +22,7 @@
 		
 		$getAdminUserQuery = "SELECT Administrator.FIRSTNAME, Administrator.LASTNAME, Administrator.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Administrator WHERE User.USER_ID = Administrator.USER_ID;";
 		$getAdminUserResult = mysqli_query($con, $getAdminUserQuery);
+		echo "<table>";
 		echo "<tr>";
 			echo "<th>Firstname</th>";
 			echo "<th>Lastname</th>";
@@ -30,14 +31,15 @@
 			echo "<th>Hold</th>";
 			echo "<th>Last Activity</th>";
 			echo "<th>Available Transactions</th>";
-		echo "</tr>";
-		echo "<tr>";
+		echo "</tr>\n";
 		while($row = mysqli_fetch_row($getAdminUserResult)){
+			echo "<tr>";
 			foreach($row as $cell){
 				echo "<td>$cell</td>";
 			}
 			echo "</tr>\n";
 		}
+		echo "</table>";
 		mysql_close($con);
 		
 	}
