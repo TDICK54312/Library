@@ -26,6 +26,7 @@
 		$userID = 0;
 		$inventoryID = 0;
 		$didReturnNumber = 0;
+		$transactionID = 0;
 		
 		//get USER_ID by username entered
 		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$userEmail';";
@@ -71,7 +72,7 @@
 		//pay the fine of the user by this transaction id
 		if($didReturnNumber == 2){
 			mysqli_close($con);
-			$fineResult = payOffFine($inventoryID, $userID);
+			$fineResult = payOffFine($inventoryID, $userID, $transactionID);
 			return $fineResult;
 		}
 		else{
@@ -80,12 +81,12 @@
 			return 2;
 		}
 	}
-	function payOffFine($invID, $userID){
+	function payOffFine($invID, $userID, $transID){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
 		$dbs = mysqli_select_db($con, $databaseName);
 		
-		$payFineQuery = "UPDATE Transactions SET AMOUNT_DUE = 0, DID_RETURN = 0 WHERE TRANSACTION_ID = '$transactionID';";
+		$payFineQuery = "UPDATE Transactions SET AMOUNT_DUE = 0, DID_RETURN = 0 WHERE TRANSACTION_ID = '$transID';";
 		if(!mysqli_query($con, $payFineQuery)){
 			$error = mysqli_error($con);
 			mysqli_close($con);
