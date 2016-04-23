@@ -3,6 +3,27 @@
 	include('inc_search.php');
 	include('api.php');
 ?>
+<?php
+	if(!empty($_POST['submit'])){
+		if(!empty($_POST['adminEmail']) && !empty($_POST['adminPassword'])){
+			$adminResult = authenticateUser($_POST['adminEmail'], $_POST['adminPassword']);
+			if(!empty($adminResult) && !empty($_POST['userEmail']) && !empty($_POST['isbn']) && $adminResult[1] == 1 && !empty($_POST['amount'])){
+				$payFineResult = payFine($_POST['userEmail'], $_POST['isbn'], $_POST['amount']);
+				switch($payFineResult){
+					case 1:
+						echo "Successfully removed fine!";
+						break;
+					case 2:
+						echo "Could not find transaction!";
+						break;
+					default:
+						echo "error";
+						break;
+				}
+			}
+		}
+	}	
+?>
 <div id="content">
 	<h1>Pay Fine</h1>
      <style type="text/css">
@@ -53,10 +74,12 @@
 			<input type="text" name="userEmail" id="userEmail" class="txtfield" tabindex="1" required>
 			<label for="isbn">ISBN Number*:</label>
 			<input type="text" name="isbn" id="isbn" class="txtfield" tabindex="2" required>
+			<label for="amount">Amount*:</label>
+			<input type="number" name="amount" id="amount" class="txtfield" tabindex="3" required>
 			<label for="adminEmail">Admin Email*:</label>
-			<input type="text" name="adminEmail" id="adminEmail" class="txtfield" tabindex="3" required>
+			<input type="text" name="adminEmail" id="adminEmail" class="txtfield" tabindex="4" required>
 			<label for="adminPassword">Admin Password*:</label>
-			<input type="text" name="adminPassword" id="adminPassword" class="txtfield" tabindex="4" required>
+			<input type="password" name="adminPassword" id="adminPassword" class="txtfield" tabindex="5" required>
 			<div class="center"><input type="submit" name="submit" id="loginbtn" value="send"></div>
 		</form>
 	</div>

@@ -15,6 +15,102 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function payFine($userEmail, $isbn, $amount){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$userEmail = mysqli_real_escape_string($con, $userEmail);
+		$isbn = mysqli_real_escape_string($con, $isbn);
+		$amount = mysqli_real_escape_string($con, $amount);
+		$userID = 0;
+		$inventoryID = 0;
+		$didReturnNumber = 0;
+		
+		//get USER_ID by username entered
+		$getUserIDQuery = "SELECT USER_ID FROM User WHERE USER_EMAIL = '$userEmail';";
+		$getUserIDResult = mysqli_query($con, $getUserIDQuery);
+		$getUserIDArray = mysqli_fetch_row($getUserIDResult);
+		if(empty($getUserIDArray)){
+			$error = mysqli_error($con);
+			mysqli_close($con);
+			return $error;
+		}
+		else{
+			$userID = $getUserIDArray[0];
+		}
+		
+		//get Inventory_ID
+		$getInvIDQuery = "SELECT INVENTORY_ID FROM Inventory WHERE ISBN_NUMBER = '$isbn';";
+		$getInvIDResult = mysqli_query($con, $getInvIDQuery);
+		$getInvIDArray = mysqli_fetch_row($getInvIDResult);
+		if(empty($getInvIDArray)){
+			$error = mysqli_error($con);
+			mysqli_close($con);
+			return $error;
+		}
+		else{
+			$inventoryID = $getInvIDArray[0];
+		}
+		
+		//get transaction with the same isbn and username
+		$getUserTransactionQuery = "SELECT TRANSACTION_ID, DID_RETURN FROM Transactions WHERE INVENTORY_ID = '$inventoryID' AND USER_ID = '$userID' AND DID_RETURN = '2';";
+		$userTransactionResult = mysqli_query($con, $getUserTransactionQuery);
+		$userTransactionArray = mysqli_fetch_row($userTransactionResult);
+		
+		if(empty($userTransactionArray)){
+			$error = mysqli_error($con);
+			mysqli_close($con);
+			return $error;
+		}
+		else{
+			$transactionID = $userTransactionArray[0];
+			$didReturnNumber = $userTransactionArray[1];
+			//mysqli_close($con);
+		}
+		//pay the fine of the user by this transaction id
+		if($didReturnNumber == 2){
+			mysqli_close($con);
+			$fineResult = payOffFine($inventoryID, $userID);
+			return $fineResult;
+		}
+		else{
+			//return 2 if there was not a 2 in the field
+			mysqli_close($con);
+			return 2;
+		}
+	}
+	function payOffFine($invID, $userID){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$payFineQuery = "UPDATE Transactions SET AMOUNT_DUE = 0, DID_RETURN = 0 WHERE TRANSACTION_ID = '$transactionID';";
+		if(!mysqli_query($con, $payFineQuery)){
+			$error = mysqli_error($con);
+			mysqli_close($con);
+			return $error;
+		}
+		else{
+			$updateInventoryQuery = "UPDATE Inventory SET AMOUNT_IN = AMOUNT_IN + 1 , AMOUNT_OUT = AMOUNT_OUT - 1 WHERE INVENTORY_ID = '$invID';";
+			if(!mysqli_query($con, $updateInventoryQuery)){
+				$error = mysqli_error($con);
+				mysqli_close($con);
+				return $error;
+			}
+			else{
+				$updateUserMaxTransQuery = "UPDATE User SET MAX_TRANSACTION = MAX_TRANSACTION + 1, HOLD = 0 WHERE USER_ID = '$userID';";
+				if(!mysqli_query($con, $updateUserMaxTransQuery)){
+					$error = mysqli_error($con);
+					mysqli_close($con);
+					return $error;
+				}
+				else{
+					return 1;
+				}
+			}
+		}
+	}
 	function checkInBook($userEmail, $isbn){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);

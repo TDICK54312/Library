@@ -7,7 +7,7 @@
 	if(!empty($_POST['submit'])){
 		if(!empty($_POST['adminEmail']) && !empty($_POST['adminPassword'])){
 			$adminResult = authenticateUser($_POST['adminEmail'], $_POST['adminPassword']);
-			if(!empty($adminResult) && !empty($_POST['userEmail']) && !empty($_POST['isbn'])){
+			if(!empty($adminResult) && !empty($_POST['userEmail']) && !empty($_POST['isbn']) && $adminResult[1] == 1){
 				$checkinResult = checkInBook($_POST['userEmail'], $_POST['isbn']);
 				switch($checkinResult){
 					case 0:
