@@ -1009,6 +1009,6 @@
 			return $duplicate;
 		}
 		mysqli_close($con);
-		if(empty($didItWork)) return "User added successfully."; else return $didItWork;
+		if(empty($didItWork)) return "<center><strong>User added successfully.</strong></center>"; else return $didItWork;
 	}
 ?>
