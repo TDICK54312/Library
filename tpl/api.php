@@ -15,6 +15,30 @@
 	//	echo json_encode($array);
 		return $array;
 	}
+	function adminUserReport(){
+		include 'dbConnection.php';
+		$con = mysqli_connect($host, $user, $pass);
+		$dbs = mysqli_select_db($con, $databaseName);
+		
+		$getAdminUserQuery = "SELECT Administrator.FIRSTNAME, Administrator.LASTNAME, Administrator.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Administrator WHERE User.USER_ID = Administrator.USER_ID;";
+		$getAdminUserResult = mysqli_query($con, $getAdminUserQuery);
+		while($row = mysqli_fetch_array($getAdminUserResult){
+			echo "<tr>";
+			echo "<th>Firstname</th>";
+			echo "<th>Lastname</th>";
+			echo "<th>Address</th>";
+			echo "<th>Email</th>";
+			echo "<th>Hold</th>";
+			echo "<th>Last Activity</th>";
+			echo "<th>Available Transactions</th>";
+			foreach($row as $cell){
+				echo "<td>$cell</td>";
+			}
+			echo "</tr>\n";
+		}
+		mysql_close($con);
+		
+	}
 	function payFine($userEmail, $isbn, $amount){
 		include 'dbConnection.php';
 		$con = mysqli_connect($host, $user, $pass);
