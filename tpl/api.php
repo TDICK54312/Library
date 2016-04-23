@@ -22,7 +22,8 @@
 		
 		$getAdminUserQuery = "SELECT Administrator.FIRSTNAME, Administrator.LASTNAME, Administrator.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Administrator WHERE User.USER_ID = Administrator.USER_ID;";
 		$getAdminUserResult = mysqli_query($con, $getAdminUserQuery);
-		while($row = mysqli_fetch_array($getAdminUserResult){
+		
+		while($row = mysqli_fetch_array($getAdminUserResult)){
 			echo "<tr>";
 			echo "<th>Firstname</th>";
 			echo "<th>Lastname</th>";
