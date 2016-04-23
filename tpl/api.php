@@ -757,6 +757,7 @@
 		$deleteQuery = "";
 		$didItWork = "";
 		$didItWork2 = "";
+		$feedBack = 0;
 		
 		$usersRoleResult = mysqli_query($con, $getRoleQuery);
 		$array = mysqli_fetch_row($usersRoleResult);
@@ -765,9 +766,11 @@
 			$deleteQuery = "DELETE FROM Administrator WHERE Administrator.USER_ID = '$usersID';";
 			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
+				$feedBack = 1;
   			}
   			if (!mysqli_query($con,$deleteUserQuery)){
 				$didItWork2 = mysqli_error($con);
+				$feedBack = 1;
   			}		
 		}
 		
@@ -775,9 +778,11 @@
 			$deleteQuery = "DELETE FROM Teacher WHERE Teacher.USER_ID = '$usersID';"; 
 			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
+				$feedBack = 1;
   			}
   			if (!mysqli_query($con,$deleteUserQuery)){
 				$didItWork2 = mysqli_error($con);
+				$feedBack = 1;
   			}			
   		}
   		
@@ -785,13 +790,15 @@
 			$deleteQuery = "DELETE FROM Student WHERE Student.USER_ID = '$usersID';";
 			if (!mysqli_query($con,$deleteQuery)){
 				$didItWork = mysqli_error($con);
+				$feedBack = 1;
   			}
   			if (!mysqli_query($con,$deleteUserQuery)){
 				$didItWork2 = mysqli_error($con);
+				$feedBack = 1;
   			}		
   		}
-  		mysqli_close($con);
-  		return $didItWork;	
+  		mysqli_close($con);	
+		if($feedBack == 0) return "User $usersID was deleted successfully"; else return "Deletion failed";
 	}
 	function deleteBook($isbn, $numToRemove){
 		include 'dbConnection.php';
