@@ -65,7 +65,7 @@
 		
 		$getTransactionStudentQuery = "SELECT Student.FIRSTNAME, Student.LASTNAME, User.USER_EMAIL, Inventory.ISBN_NUMBER, Book.TITLE, Transactions.RETURN_DATE FROM User INNER JOIN Student ON User.USER_ID = Student.USER_ID INNER JOIN Transactions ON User.USER_ID = Transactions.USER_ID INNER JOIN Inventory ON Transactions.INVENTORY_ID = Inventory.INVENTORY_ID INNER JOIN Book ON Inventory.ISBN_NUMBER = Book.ISBN_NUMBER;";
 		$getTransactionStudentResult = mysqli_query($con, $getTransactionStudentQuery);
-		echo "<h2>Teacher</h2>";
+		echo "<h2>Student</h2>";
 		echo "<table>";
 		echo "<tr>";
 			echo "<th>Firstname</th>";
