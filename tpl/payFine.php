@@ -3,7 +3,9 @@
 	include('inc_search.php');
 	include('api.php');
 ?>
-<?php
+<div id="content">
+	<h1>Pay Fine</h1>
+    <?php
 	if(!empty($_POST['submit'])){
 		if(!empty($_POST['adminEmail']) && !empty($_POST['adminPassword'])){
 			$adminResult = authenticateUser($_POST['adminEmail'], $_POST['adminPassword']);
@@ -24,8 +26,6 @@
 		}
 	}	
 ?>
-<div id="content">
-	<h1>Pay Fine</h1>
      <style type="text/css">
 		.login-cont {
 			width: 30%;
