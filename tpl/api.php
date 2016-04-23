@@ -243,7 +243,7 @@
 		
 		$getAdminUserQuery = "SELECT Student.USER_ID, Student.FIRSTNAME, Student.LASTNAME, Student.ADDRESS, User.USER_EMAIL, User.HOLD, User.LAST_ACTIVITY, User.MAX_TRANSACTION FROM User, Student WHERE User.USER_ID = Student.USER_ID;";
 		$getAdminUserResult = mysqli_query($con, $getAdminUserQuery);
-		echo "<table>";
+		echo "<table style=\"width: 100%\">";
 		echo "<tr>";
 			echo "<th>UserID</th>";
 			echo "<th>Firstname</th>";
