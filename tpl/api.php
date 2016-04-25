@@ -884,7 +884,7 @@
 		$summary = mysqli_real_escape_string($con, $summary);
 		$tag = mysqli_real_escape_string($con, $tag);
 		$title = mysqli_real_escape_string($con, $title);
-		$image = mysqli_real_escape_string($con, $image);
+		//$image = mysqli_real_escape_string($con, $image);
 		
 		$authorFULLName = $authorFname . " " . $authorLname;
 		
