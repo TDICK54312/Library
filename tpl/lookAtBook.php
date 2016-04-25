@@ -12,7 +12,7 @@
 				echo "<p>$result</p>";
 			}
 		}
-		else{
+		if(!$_SESSION["userinfo"]){
 			echo "<p>Please Login in order to add this book.</p>";
 		}
 		if($_SESSION["userinfo"][6] == 0){
