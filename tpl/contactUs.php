@@ -2,7 +2,7 @@
 	
 	include_once('header.php');
 	include('inc_search.php');
-	include_once ('javascript sdk');
+	
 ?>
 
 <div id="content">
