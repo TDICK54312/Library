@@ -11,7 +11,7 @@ $(function(){
 <ul>
    <li><a href="index.php">Home</a></li>
    <li><a href="aboutUs.php">About</a></li>
-   <li><a href="#">Library</a>
+   <li><a href="viewLibrary.php">Library</a>
       <ul>
          <li><a href="viewLibrary.php">View Books</a></li>
       </ul>
