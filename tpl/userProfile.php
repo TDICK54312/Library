@@ -3,6 +3,7 @@
 	include_once('header.php');
 	include('inc_search.php');
 	include('api.php');
+	$_SESSION["userinfo"] = authenticateUser($_SESSION["userinfo"][3], $_SESSION["userinfo"][2]);
 ?>
 
 
