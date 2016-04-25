@@ -13,7 +13,7 @@
 			}
 		}
 		else{
-			echo "<p>Please Login in order to add this book.</p>";
+			echo "<p style="color:red;">**Please Login in order to add this book.</p>";
 		}
 		if($_SESSION["userinfo"][6] == 0){
 			echo "You have checked out the max number of books please return your books!";
