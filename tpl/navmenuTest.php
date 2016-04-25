@@ -9,7 +9,7 @@ $(function(){
 </script>
 <div id="cssmenu" class="align-center">
 <ul>
-   <li><a href="indexx.php">Home</a></li>
+   <li><a href="index.php">Home</a></li>
    <li><a href="aboutUs.php">About</a></li>
    <li><a href="#">Library</a>
       <ul>

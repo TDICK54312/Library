@@ -1,64 +1,30 @@
-<!doctype html>
-<html>
-<head>
- <meta charset='utf-8'>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="style/menu-style.css">
-   <link rel="stylesheet" href="style/main.css">
-   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-   <script src="js/menu_script.js"></script><title>Library Database System</title>
-   <script src="http://use.edgefonts.net/berkshire-swash;noticia-text.js"></script>
-
-</head>
-
-<body>
-<div id="wrapper">
-<div id="header"><img src="images/header.jpg" style="width: 100%;"></div>
-<div id="navarea" style="text-align: center; display: block; margin: 0 auto;">
-	<?php include_once('navmenu.php'); ?>
-</div>
+<?php
+	include('api.php');
+	include_once('header.php');
+	include('inc_search.php');
+	//$checker = false;
+	$everythingSet = true;
+	if(!empty($_POST['submit'])){
+		if(empty($_POST['isbn'])){
+			$everythingSet = false;
+			echo "ISBN Number not entered!";
+		}
+		else{
+			$theISBN = $_POST['isbn'];
+			$theTitle = $_POST['title'];
+			header("Location: lookAtBook.php?isbn=$theISBN");
+			exit;
+		}
+	}
+?>
 <div id="content">
 	<h1>Welcome to our Library!</h1>
-    <p> Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing elit. Vestibulum in euismod nisl. Proin et ultrices est. Fusce mattis ligula a tellus dignissim, bibendum cursus magna aliquam. Fusce ullamcorper, sapien at dignissim dictum, odio purus placerat lorem, ac eleifend lectus ex vel urna. Vivamus porta accumsan tincidunt. Sed facilisis, erat eu fringilla lacinia, dui velit euismod lectus, tincidunt condimentum sem turpis in leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam convallis pharetra ligula vel maximus. Quisque sem nibh, aliquam non nibh scelerisque, fringilla finibus neque. Sed sagittis sagittis lorem a sagittis. Nulla eget enim sit amet erat commodo aliquet eu eu enim.
-</p><p>
-Fusce at iaculis urna. Cras sagittis, quam nec porttitor finibus, purus felis efficitur leo, non rhoncus urna turpis a ligula. Curabitur condimentum libero vel augue iaculis, ut imperdiet erat fringilla. Aenean id finibus neque. Nullam imperdiet maximus mollis. Cras aliquam molestie est id congue. Fusce congue nunc eget sodales vestibulum. Integer eget dictum velit. Donec consequat vel ipsum sed interdum. Proin ut diam at lacus lobortis tristique. Donec commodo tellus sed nunc malesuada, quis ullamcorper augue consequat. In maximus facilisis iaculis. </p>
-
+	<body link="blue">
+    <p> Our Digital Library is well known throughout the database class in Spring 2016 since this is one of the only two groups. This website is solely for database project. If you attempt to check out a book for real, sorry, we are unable to satisfied you. However, you can listen to some pop music while staring at our background that is created by our web developer lead, Albien. We do not know how he did it, but it looks cool, so we will keep it cool like that. Moreover, you can enjoy our main database features that allow you to view books, search books, log in, check out, and etc. Our database lead is Tim who is a very down to earth man. Tim does not complain, Tim does not care, Tim is easygoing, be like Tim. Well, those two are the core members, while the rest of the members are more of like noobies. They do what they are told, they asked what they do not know, sometimes they broke the server, sometimes nothing happened, they just have no clues. You can find more about us<a href="http://dev.tdickson.co/tpl/aboutUs.php">HERE</a>
+</p></body>
 	<h1>New Additions</h1>
 	<div>
-    	<div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
-        <div class="book-cont">
-        	<img src="http://placehold.it/150x120.jpg"><br>
-            <a href="#">Book Title</a><br>
-            Publisher
-        </div>
+	<?php getNewBooksInventory(); ?>
     </div>
 </div>
-<div id="footer">Copyright (c) 2016. Template by <a href="mailto:albien.fezga@live.com">Albien Fezga</a>.</div>
-</div>
-</body>
-</html>
+<?php include_once('footer.php'); ?>
