@@ -14,7 +14,6 @@ $(function(){
    <li><a href="#">Library</a>
       <ul>
          <li><a href="viewLibrary.php">View Books</a></li>
-         <li><a href="#">View Authors</a></li>
       </ul>
    </li>
    <li><a href="contactUs.php">Contact</a></li>
